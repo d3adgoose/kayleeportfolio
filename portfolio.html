@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portfolio — Kaylee Linette Morales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* ============================
+       Swap short/long views
+       ============================ */
+    .mac-window .desc-long { display: none; }
+    .mac-window.is-max .desc-short { display: none; }
+    .mac-window.is-max .desc-long { display: block; }
+
+    /* ============================
+       Maximized window: scroll + sticky header chrome only
+       ============================ */
+    .mac-window.is-max .win-header{
+      position: sticky; top: 0; z-index: 3;
+      background: #e8e6f1;
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+    .mac-window.is-max .win-body{
+      max-height: calc(100vh - 180px);
+      overflow: auto;
+      padding: 18px 18px 22px;
+      background:
+        radial-gradient(800px 300px at 0% -10%, rgba(159,140,255,.08), transparent 50%),
+        #fff;
+      scroll-behavior: smooth;
+    }
+
+    /* Custom scrollbar in maximized window only */
+    .mac-window.is-max .win-body::-webkit-scrollbar{ width: 10px; }
+    .mac-window.is-max .win-body::-webkit-scrollbar-track{
+      background: #f1eefb; border-radius: 10px;
+    }
+    .mac-window.is-max .win-body::-webkit-scrollbar-thumb{
+      background: #c7bdfc; border-radius: 10px; border: 2px solid #f1eefb;
+    }
+    .mac-window.is-max .win-body::-webkit-scrollbar-thumb:hover{ background: #b4a5ff; }
+
+    /* ============================
+       Video (thumbnail mode) — for Markus
+       ============================ */
+    .video-wrap{
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      background: #000;
+      margin-bottom: 12px;
+      cursor: pointer;
+    }
+    .video-wrap img{
+      display: block; width: 100%; height: 100%; object-fit: cover;
+    }
+    .video-wrap iframe{
+      position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block;
+    }
+    .video-wrap .play-btn{
+      position: absolute; inset: 0;
+      display: grid; place-items: center;
+      background: linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.35));
+      color: #fff; pointer-events: none;
+    }
+    .video-wrap .icon{
+      width: 66px; height: 66px; border-radius: 50%;
+      background: rgba(255,255,255,.9); color: #000;
+      display: grid; place-items: center; font-size: 26px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+      transition: transform .18s ease;
+    }
+    .video-wrap:hover .icon{ transform: scale(1.05); }
+
+    /* ============================
+       Maximized media row (media + buttons)
+       ============================ */
+    .media-row{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 22px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .video-box,
+    .image-box{
+      width: min(520px, 90vw);
+    }
+    .ratio,
+    .media-frame{
+      position: relative;
+      width: 100%;
+      border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--border); box-shadow: var(--shadow);
+      background: #000;
+    }
+    .ratio::before,
+    .media-frame::before{ content:""; display:block; padding-top:56.25%; } /* 16:9 */
+    .ratio iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
+    .media-frame img{
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .video-caption{
+      margin-top: 6px;
+      font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;
+      color: rgba(0,0,0,0.6); text-align: center;
+    }
+
+    .action-col{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-width: 220px;
+    }
+    .btn{
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 14px; border-radius: 12px; font-weight: 700;
+      text-decoration: none; border: 1px solid var(--border);
+      background: #fff; color: var(--primary);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      box-shadow: var(--shadow);
+    }
+    .btn i{ font-size: 1.05rem; }
+    .btn:hover{ transform: translateY(-1px); border-color: #ddd6fe; }
+
+    .btn-steam{
+      background: linear-gradient(180deg, #ffffff, #f7f6ff);
+      color: var(--ink);
+    }
+    .btn-ig{
+      color: #fff;
+      background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+      border: none;
+    }
+    .btn-x{
+      background: #000;
+      color: #fff;
+      border: none;
+    }
+    .btn-itch{
+      background: #ff2449;  /* itch red */
+      color: #fff;
+      border: none;
+    }
+    .btn-gh{
+      background: #24292e;  /* GitHub dark */
+      color: #fff;
+      border: none;
+    }
+
+    /* ============================
+       Boxed sections
+       ============================ */
+    .desc-box{
+      position: relative;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfaff 100%);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin: 0 0 18px;
+      box-shadow: 0 10px 22px rgba(43, 16, 84, 0.06);
+    }
+    .desc-box h3{
+      margin: 0 0 10px;
+      font-size: 1.06rem; letter-spacing: .2px; color: var(--ink);
+    }
+    .desc-box p{
+      margin: 0 0 12px; color: var(--muted); line-height: 1.78;
+    }
+    .desc-box ul{
+      margin: 8px 0 0 18px; color: var(--muted); line-height: 1.7;
+    }
+    .desc-box li{ margin: 6px 0; }
+
+    /* Features: two columns on wide screens */
+    @media (min-width: 980px){
+      .desc-box.features ul{
+        column-count: 2; column-gap: 28px;
+        list-style: none; padding-left: 0; margin-left: 0;
+      }
+      .desc-box.features li{
+        break-inside: avoid; padding-left: 18px; position: relative;
+      }
+      .desc-box.features li::before{
+        content: "•"; position: absolute; left: 0; top: 0; color: var(--primary);
+      }
+    }
+  </style>
+</head>
+<body data-page="portfolio">
+  <!-- Banner -->
+  <header class="site-banner">
+    <div class="banner-inner">
+      <a class="brand" href="index.html">
+        <div class="brand-badge">KM</div>
+        <div class="brand-title">
+          <span class="name">Kaylee Linette Morales</span>
+          <span class="tag">Game Designer</span>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a class="active" href="portfolio.html">Portfolio</a>
+        <a href="studies.html">Studies</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <h1 class="hero-title">Portfolio</h1>
+    <p class="hero-sub">Video Games</p>
+
+    <!-- ===== Steam Releases ===== -->
+    <section style="margin-top:24px">
+      <h2 class="section-heading"><i class="fa-brands fa-steam-symbol"></i> Games on Steam</h2>
+      <div class="grid">
+        <!-- Steam Game 1 — Markus’s Miasma -->
+        <article class="mac-window" data-win-id="steam-markus">
+          <div class="win-header">
+            <button class="dot red" data-action="close" aria-label="Close"></button>
+            <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
+            <button class="dot green" data-action="maximize" aria-label="Maximize"></button>
+            <div class="win-title">Markus’s Miasma — Steam</div>
+          </div>
+          <div class="win-body">
+            <!-- Minimized -->
+            <div class="desc-short">
+              <div class="video-wrap" data-video="xxYVIywezPc">
+                <img src="https://img.youtube.com/vi/xxYVIywezPc/hqdefault.jpg" alt="Markus’s Miasma Trailer Thumbnail" />
+                <div class="play-btn" aria-hidden="true">
+                  <div class="icon"><i class="fa-solid fa-play"></i></div>
+                </div>
+              </div>
+              <p>
+                Explore a fog-shrouded, distorted version of UCSC in this 2D puzzle horror game. Uncover cryptic clues and hidden memories to piece together the disturbing truth behind one man’s obsession. 
+              </p>
+              <a class="btn btn-steam" href="https://store.steampowered.com/app/3674920/Markuss_Miasma/" target="_blank" rel="noopener">
+                <i class="fa-brands fa-steam-symbol"></i> View on Steam
+              </a>
+            </div>
+
+            <!-- Maximized -->
+            <div class="desc-long">
+              <div class="media-row">
+                <div class="video-box">
+                  <div class="ratio" data-video="xxYVIywezPc" data-role="max-player"><!-- iframe injected on maximize --></div>
+                  <div class="video-caption">Markus’s Miasma — June 2025</div>
+                </div>
+                <div class="action-col">
+                  <a class="btn btn-steAM btn-steam" href="https://store.steampowered.com/app/3674920/Markuss_Miasma/" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-steam-symbol"></i> View on Steam
+                  </a>
+                  <a class="btn btn-ig" href="https://www.instagram.com/progamerstudios/" target="_blank" rel="noopener" aria-label="Instagram: ProGamer Studios">
+                    <i class="fa-brands fa-instagram"></i> Instagram
+                  </a>
+                </div>
+              </div>
+
+              <div class="desc-box">
+                <h3>Overview</h3>
+                <p>
+                  Welcome to UCSC—sort of. <em>Markus’s Miasma</em> drops players into a fog-drenched, uncanny version of UC Santa Cruz where familiar landmarks are warped and the silence carries weight. Navigate eerie footpaths and unsettling interiors as you uncover the story of Markus—a man whose past is bleeding into reality through puzzles, fragments, and memory. 
+                </p>
+              </div>
+
+              <div class="desc-box features">
+                <h3>Key Features</h3>
+                <ul>
+                  <li><strong>Puzzle-Driven Exploration:</strong> Traverse haunted reinterpretations of labs, libraries, and forest trails. Solve logic and environmental puzzles to unlock new areas and assemble Markus’s fractured narrative.</li>
+                  <li><strong>Atmospheric Horror:</strong> Slow-building dread, sound design, and psychological unease—not jump scares.</li>
+                  <li><strong>A Twisted UCSC:</strong> Quarry Plaza and Porter Meadow reimagined through guilt, memory, and distortion.</li>
+                  <li><strong>Narrative-Forward:</strong> Themes of trauma, regret, and identity; choices shape the truth you uncover.</li>
+                  <li><strong>Estimated Playtime:</strong> 1–2 hours.</li>
+                </ul>
+              </div>
+
+              <div class="desc-box">
+                <h3>My Role & Production</h3>
+                <p>
+                  <strong>Product Owner & Project Manager</strong> for a six-month development cycle. Led an interdisciplinary team of eight using Scrum: sprint planning, backlog management, milestone builds. Directed creative vision, coordinated cross-discipline work (design, programming, art, audio), presented regularly, and maintained documentation.
+                </p>
+                <p>
+                  Originated as a <strong>UCSC undergraduate capstone</strong>. Progressed from <strong>pre-production</strong> (vision, scope, prototypes) to <strong>production</strong> (feature/content) and <strong>post-production</strong> (polish, QA). Refined via structured playtests with classmates and faculty.
+                </p>
+              </div>
+
+              <div class="desc-box">
+                <h3>Notes</h3>
+                <p>
+                  All characters, locations, and events are fictional. While inspired by the aesthetics of UC Santa Cruz, this work does not depict the real university.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Steam Game 2 — Red Trees Rail Co -->
+        <article class="mac-window" data-win-id="steam-2">
+          <div class="win-header">
+            <button class="dot red" data-action="close" aria-label="Close"></button>
+            <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
+            <button class="dot green" data-action="maximize" aria-label="Maximize"></button>
+            <div class="win-title">Red Trees Rail Co — Steam</div>
+          </div>
+          <div class="win-body">
+            <!-- Minimized -->
+            <div class="desc-short">
+              <img class="win-thumb" src="assets/images/railco.jpg" alt="Red Trees Rail Co cover" />
+              <p>
+                Red Trees Rail Co is a VR Horror Train simulator set in a Redwood Forest. Work a tiny night train by yourself, transporting passengers from town to town. 
+              </p>
+              <a class="btn btn-steam" href="https://store.steampowered.com/app/2967460/RED_TREES_RAIL_CO/" target="_blank" rel="noopener">
+                <i class="fa-brands fa-steam-symbol"></i> View on Steam
+              </a>
+            </div>
+
+            <!-- Maximized -->
+            <div class="desc-long">
+              <div class="media-row">
+                <div class="image-box">
+                  <div class="media-frame">
+                    <img src="assets/images/railco.jpg" alt="Red Trees Rail Co cover art" />
+                  </div>
+                  <div class="video-caption">Red Trees Rail Co — June 2024</div>
+                </div>
+                <div class="action-col">
+                  <a class="btn btn-steam" href="https://store.steampowered.com/app/2967460/RED_TREES_RAIL_CO/" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-steam-symbol"></i> View on Steam
+                  </a>
+                  <a class="btn btn-x" href="https://x.com/RedTreesRailCo" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-x-twitter"></i> Follow on X
+                  </a>
+                </div>
+              </div>
+
+              <div class="desc-box">
+                <h3>Overview</h3>
+                <p>
+                  <em>Red Trees Rail Co</em> is a VR horror train simulator placing you in a restored steam locomotive on a new night route through redwood forest towns. Reports of unsettling phenomena complicate routine operations.
+                </p>
+              </div>
+
+              <div class="desc-box features">
+                <h3>Operator Duties</h3>
+                <ul>
+                  <li><strong>Drive the Train</strong> via realistic locomotive controls.</li>
+                  <li><strong>Pick Up & Drop Off</strong> passengers on schedule.</li>
+                  <li><strong>Check Tickets</strong> and keep the timetable on track.</li>
+                </ul>
+              </div>
+
+              <div class="desc-box">
+                <h3>Horror Elements</h3>
+                <p>
+                  Expect hallucinations—figures in the trees, impossible interior damage, and other reality-bending events. Rely on the former engineer’s notebook for procedures and survival.
+                </p>
+              </div>
+
+              <div class="desc-box">
+                <h3>My Role</h3>
+                <p>
+                  <strong>2D artist, storyboarder, QA tester, generalist.</strong> Joined a <strong>UCSC capstone team</strong> as a sophomore to support a senior team delivering a polished VR experience.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== Prototypes ===== -->
+    <section style="margin-top:36px">
+      <h2 class="section-heading"><i class="fa-solid fa-flask"></i> Prototypes</h2>
+      <div class="grid">
+        <!-- Prototype 1 — Bat Bomb -->
+        <article class="mac-window" data-win-id="proto-batbomb">
+          <div class="win-header">
+            <button class="dot red" data-action="close" aria-label="Close"></button>
+            <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
+            <button class="dot green" data-action="maximize" aria-label="Maximize"></button>
+            <div class="win-title">Bat Bomb — Prototype</div>
+          </div>
+          <div class="win-body">
+            <!-- Minimized -->
+            <div class="desc-short">
+              <img class="win-thumb" src="assets/images/batbomb.webp" alt="Bat Bomb prototype cover" />
+              <p>
+                A vibrant 2D platformer developed in Unity, replacing WASD with a deliberate slingshot movement system. 
+              </p>
+              <a class="btn btn-itch" href="https://calvinhunter03.itch.io/bombat-web" target="_blank" rel="noopener">
+                <i class="fa-brands fa-itch-io"></i> Play
+              </a>
+            </div>
+
+            <!-- Maximized -->
+            <div class="desc-long">
+              <div class="media-row">
+                <div class="image-box">
+                  <div class="media-frame">
+                    <img src="assets/images/batbomb.webp" alt="Bat Bomb gameplay art" />
+                  </div>
+                  <div class="video-caption">Bat Bomb — November 2024</div>
+                </div>
+                <div class="action-col">
+                  <a class="btn btn-itch" href="https://calvinhunter03.itch.io/bombat-web" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-itch-io"></i> Play on itch.io
+                  </a>
+                  <a class="btn btn-gh" href="https://github.com/CalvinHunter03/PrototypeTwoCMPM170" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-github"></i> GitHub
+                  </a>
+                </div>
+              </div>
+
+              <div class="desc-box">
+                <h3>Overview</h3>
+                <p>
+                  <em>Bat Bomb</em> is a Unity platformer that rethinks movement by replacing continuous WASD input with a deliberate <strong>slingshot mechanic</strong>. Players line up shots and commit to each launch to traverse floating platforms with precision. 
+                </p>
+              </div>
+
+              <div class="desc-box features">
+                <h3>Gameplay Mechanics</h3>
+                <ul>
+                  <li><strong>Slingshot Movement:</strong> Aim and launch to traverse; success demands careful planning and angle control.</li>
+                  <li><strong>Avoiding Bats (Lose Condition):</strong> Alerted bats pursue the player; getting caught ends the run.</li>
+                  <li><strong>Collectibles & Crowd Control:</strong> High-skill pickups trigger explosive effects to clear bat swarms.</li>
+                </ul>
+              </div>
+
+              <div class="desc-box">
+                <h3>Team & My Role</h3>
+                <p>
+                  Built by a <strong>3-person team</strong> for a <strong>UCSC Prototype class</strong> focused on creative mechanics exploration. I served as <strong>Concept Refiner, Coder, and Documenter</strong>, shaping the slingshot design, implementing core interactions, and maintaining design/technical docs.
+                </p>
+              </div>
+
+              <div class="desc-box">
+                <h3>Developer Notes</h3>
+                <p>
+                  The prototype explores how platformers feel when <em>committed motion</em> replaces continuous input, encouraging foresight and risk management over constant micro-adjustment.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Prototype 2 — Puzzle Path -->
+        <article class="mac-window" data-win-id="proto-puzzlepath">
+          <div class="win-header">
+            <button class="dot red" data-action="close" aria-label="Close"></button>
+            <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
+            <button class="dot green" data-action="maximize" aria-label="Maximize"></button>
+            <div class="win-title">Puzzle Path — Prototype</div>
+          </div>
+          <div class="win-body">
+            <!-- Minimized -->
+            <div class="desc-short">
+              <img class="win-thumb" src="assets/images/puzzle.webp" alt="Puzzle Path prototype cover" />
+              <p>
+                A creatively designed puzzle platformer featuring unique levels, narrative elements, and responsive controls.
+              </p>
+              <a class="btn" href="https://saminame.github.io/PuzzlePath/" target="_blank" rel="noopener">
+                <i class="fa-solid fa-play"></i> Play
+              </a>
+            </div>
+
+            <!-- Maximized -->
+            <div class="desc-long">
+              <div class="media-row">
+                <div class="image-box">
+                  <div class="media-frame">
+                    <img src="assets/images/puzzle.webp" alt="Puzzle Path gameplay art" />
+                  </div>
+                  <div class="video-caption">Puzzle Path — June 2024</div>
+                </div>
+                <div class="action-col">
+                  <a class="btn" href="https://saminame.github.io/PuzzlePath/" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-play"></i> Play
+                  </a>
+                </div>
+              </div>
+
+              <div class="desc-box">
+                <h3>Overview</h3>
+                <p>
+                  <em>Puzzle Path</em> is a puzzle-platformer built in <strong>Phaser</strong> for a <strong>foundational game design class at UCSC</strong>. The project emphasizes readable level design, tight controls, and light narrative framing. 
+                </p>
+              </div>
+
+              <div class="desc-box features">
+                <h3>Design Goals</h3>
+                <ul>
+                  <li>Craft <strong>distinct puzzle rooms</strong> that teach and iterate on mechanics.</li>
+                  <li>Blend <strong>narrative cues</strong> with traversal to guide player intent.</li>
+                  <li>Maintain <strong>responsive input</strong> and clear feedback for each challenge.</li>
+                </ul>
+              </div>
+
+              <div class="desc-box">
+                <h3>Team & My Role</h3>
+                <p>
+                  Built by a <strong>4-person team</strong>. My contributions focused on <strong>map and platform concept design</strong> and <strong>coding</strong> core interactions and level logic in Phaser.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Kaylee Linette Morales
+  </footer>
+
+  <!-- Ambient code layer (optional) -->
+  <div class="code-jumble-layer" aria-hidden="true"></div>
+  <script src="code-jumble.js"></script>
+
+  <!-- Page helper: click-to-play thumbnail only (minimized) -->
+  <script>
+    // Thumbnail click → inline play (minimized state only)
+    document.addEventListener('click', (e) => {
+      const wrap = e.target.closest('.video-wrap');
+      if (!wrap || wrap.dataset.loaded === '1') return;
+      const id = wrap.dataset.video;
+      const src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1`;
+      wrap.innerHTML = `<iframe src="${src}" title="Trailer" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+      wrap.dataset.loaded = '1';
+    });
+
+    // Observe .is-max state to autoplay/reset video WITHOUT touching classes
+    (function observeMaxState(){
+      const target = document.querySelector('[data-win-id="steam-markus"]');
+      if (!target) return;
+      const maxBox = target.querySelector('[data-role="max-player"]');
+      const thumbWrap = target.querySelector('.desc-short .video-wrap');
+      if (!maxBox || !thumbWrap) return;
+
+      const loadAutoplay = (el) => {
+        if (!el || el.dataset.loaded === '1') return;
+        const id = el.dataset.video || maxBox.dataset.video;
+        const src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1`;
+        el.innerHTML = `<iframe src="${src}" title="Trailer" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+        el.dataset.loaded = '1';
+      };
+      const resetThumb = (wrap) => {
+        const id = wrap.dataset.video;
+        wrap.innerHTML = `
+          <img src="https://img.youtube.com/vi/${id}/hqdefault.jpg" alt="Trailer Thumbnail" />
+          <div class="play-btn" aria-hidden="true">
+            <div class="icon"><i class="fa-solid fa-play"></i></div>
+          </div>`;
+        wrap.dataset.loaded = '0';
+      };
+
+      const mo = new MutationObserver((muts) => {
+        for (const m of muts) {
+          if (m.attributeName === 'class') {
+            const isMax = target.classList.contains('is-max');
+            if (isMax) {
+              // entering maximized → autoplay in the large player
+              loadAutoplay(maxBox);
+            } else {
+              // leaving maximized → reset both
+              resetThumb(thumbWrap);
+              maxBox.innerHTML = '';
+              maxBox.dataset.loaded = '0';
+            }
+          }
+        }
+      });
+      mo.observe(target, { attributes: true });
+    })();
+  </script>
+
+  <!-- Window behavior (fullscreen on all pages, smooth FLIP, stable close) -->
+  <script src="window-ui.js"></script>
+</body>
+</html>

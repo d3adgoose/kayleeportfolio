@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Studies — Kaylee Linette Morales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Match portfolio formatting */
+    .mac-window .desc-long { display: none; }
+    .mac-window.is-max .desc-short { display: none; }
+    .mac-window.is-max .desc-long { display: block; }
+
+    .mac-window.is-max .win-header{
+      position: sticky; top: 0; z-index: 3;
+      background: #e8e6f1;
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+    .mac-window.is-max .win-body{
+      max-height: calc(100vh - 180px);
+      overflow: auto;
+      padding: 18px 18px 22px;
+      background:
+        radial-gradient(800px 300px at 0% -10%, rgba(159,140,255,.08), transparent 50%),
+        #fff;
+      scroll-behavior: smooth;
+    }
+    .mac-window.is-max .win-body::-webkit-scrollbar{ width: 10px; }
+    .mac-window.is-max .win-body::-webkit-scrollbar-track{ background: #f1eefb; border-radius: 10px; }
+    .mac-window.is-max .win-body::-webkit-scrollbar-thumb{
+      background: #c7bdfc; border-radius: 10px; border: 2px solid #f1eefb;
+    }
+    .mac-window.is-max .win-body::-webkit-scrollbar-thumb:hover{ background: #b4a5ff; }
+
+    .media-row{
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 22px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .slides-box, .image-box{ width: min(820px, 92vw); }
+    .media-frame{
+      position: relative; width: 100%;
+      border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--border); box-shadow: var(--shadow);
+      background: #fff;
+    }
+    .media-frame::before{ content:""; display:block; padding-top:56.25%; } /* 16:9 */
+    .media-frame iframe, .media-frame img{
+      position:absolute; inset:0; width:100%; height:100%;
+      border:0; display:block; object-fit: cover;
+    }
+    .video-caption{
+      margin-top: 6px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;
+      color: rgba(0,0,0,0.6); text-align: center;
+    }
+
+    .action-col{
+      display: flex; flex-direction: column; gap: 12px; align-items: center; justify-content: center;
+      min-width: 220px;
+    }
+    .btn{
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 14px; border-radius: 12px; font-weight: 700;
+      text-decoration: none; border: 1px solid var(--border);
+      background: #fff; color: var(--primary);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      box-shadow: var(--shadow);
+    }
+    .btn:hover{ transform: translateY(-1px); border-color: #ddd6fe; }
+    .btn-ext{ background: linear-gradient(180deg, #ffffff, #f7f6ff); color: var(--ink); }
+    .btn-deck{ background: #5b6ee1; color: #fff; border: none; }
+
+    .desc-box{
+      position: relative;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfaff 100%);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin: 0 0 18px;
+      box-shadow: 0 10px 22px rgba(43, 16, 84, 0.06);
+    }
+    .desc-box h3{ margin: 0 0 10px; font-size: 1.06rem; color: var(--ink); }
+    .desc-box p{ margin: 0 0 12px; color: var(--muted); line-height: 1.78; }
+
+    /* Center the cards nicely */
+    .grid{
+      display: grid; gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 720px));
+      justify-content: center;
+    }
+
+    /* Slides fallback (if embed is blocked) */
+    .slides-fallback{
+      display:grid; place-items:center; text-align:center;
+      border: 1px dashed var(--border); border-radius: 12px;
+      padding: 24px; height: 0; padding-top: 56.25%;
+      position: relative; overflow:hidden;
+      background: #faf9ff;
+    }
+    .slides-fallback > div{
+      position:absolute; inset:0; display:grid; place-items:center; padding: 16px;
+    }
+  </style>
+</head>
+<body data-page="studies">
+  <!-- Banner -->
+  <header class="site-banner">
+    <div class="banner-inner">
+      <a class="brand" href="index.html">
+        <div class="brand-badge">KM</div>
+        <div class="brand-title">
+          <span class="name">Kaylee Linette Morales</span>
+          <span class="tag">Game Designer</span>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a class="active" href="studies.html">Studies</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <h1 class="hero-title">Studies & Research</h1>
+    <p class="hero-sub">UCSC • B.S. Computer Science: Game Design</p>
+
+    <div class="grid" style="margin-top: 22px;">
+      <!-- ===== (NEWER) Study 1: Time-Based Systems Slides ===== -->
+      <article class="mac-window" data-win-id="study-time">
+        <div class="win-header">
+          <button class="dot red" data-action="close" aria-label="Close"></button>
+          <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
+          <button class="dot green" data-action="maximize" aria-label="Maximize"></button>
+          <div class="win-title">System Analysis: Time-Based Puzzles — CMPM 176</div>
+        </div>
+        <div class="win-body">
+          <!-- Minimized -->
+          <div class="desc-short">
+            <div class="media-frame" style="margin-bottom:12px;">
+              <iframe
+                data-slides="https://docs.google.com/presentation/d/1HBdXfh3Ckwq3aEtR4FS3suNRUBb1oX-wW0ZPxTg_XlI/edit?usp=sharing"
+                title="System Analysis on Time-Based Puzzles (UCSC)">
+              </iframe>
+            </div>
+            <p>
+              In a team project, I analyzed time-based systems (e.g., <em>Portal 2</em>, <em>Overcooked</em>, <em>Pikmin 3</em>) and pitched a new implementation—delivered as a slide deck.
+            </p>
+          </div>
+
+          <!-- Maximized -->
+          <div class="desc-long">
+            <div class="media-row">
+              <div class="slides-box">
+                <div class="media-frame">
+                  <iframe
+                    data-slides="https://docs.google.com/presentation/d/1HBdXfh3Ckwq3aEtR4FS3suNRUBb1oX-wW0ZPxTg_XlI/edit?usp=sharing"
+                    allowfullscreen
+                    title="System Analysis on Time-Based Puzzles (UCSC)">
+                  </iframe>
+                </div>
+                <div class="video-caption">System Analysis on Time-Based Puzzles — Slides (UCSC) • July 2024</div>
+              </div>
+              <div class="action-col">
+              </div>
+            </div>
+
+            <div class="desc-box">
+              <h3>Overview</h3>
+              <p>
+                For my <strong>CMPM 176: Game Systems</strong> class at UCSC, I conducted a deep analysis of time-based game systems with,
+                creating an extensive slide deck that explores this topic in detail. I began with an elevator pitch explaining the concept,
+                then delved into the distinctive traits of these systems, using frameworks like verb/noun pairings and playstyle assumptions.
+                I showcased examples of games that utilize time-based systems, highlighting titles like <em>Portal 2</em>, <em>Overcooked</em>,
+                and <em>Pikmin 3</em> for their unique interpretations. Finally, I pitched a new implementation of a time-based system in an
+                existing game, demonstrating my understanding and creativity in game design. 
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== (OLDER) Study 2: Outlast Trials Systems (Miro) ===== -->
+      <article class="mac-window" data-win-id="study-outlast">
+        <div class="win-header">
+          <button class="dot red" data-action="close" aria-label="Close"></button>
+          <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
+          <button class="dot green" data-action="maximize" aria-label="Maximize"></button>
+          <div class="win-title">Game Systems of “The Outlast Trials” — CMPM 176</div>
+        </div>
+        <div class="win-body">
+          <!-- Minimized -->
+          <div class="desc-short">
+            <p>
+              I explored game systems and analyzed <em>The Outlast Trials</em> to understand progression mechanics
+              and player dynamics using Miro. 
+            </p>
+            <a class="btn btn-ext"
+               href="https://miro.com/miroverse/game-systems-of-outlast-trials/?social=copy-link"
+               target="_blank" rel="noopener">
+              <i class="fa-solid fa-up-right-from-square"></i> View on Miroverse
+            </a>
+          </div>
+
+          <!-- Maximized -->
+          <div class="desc-long">
+            <div class="media-row">
+              <div class="image-box">
+                <div class="media-frame">
+                  <!-- Optional cover image if you have one -->
+                  <img src="assets/images/outlast.png" alt="Outlast Trials systems analysis board preview (Miro)" />
+                </div>
+                <div class="video-caption">Systems Analysis Board — Miro (UCSC) • June 2024</div>
+              </div>
+              <div class="action-col">
+                <a class="btn btn-ext"
+                   href="https://miro.com/miroverse/game-systems-of-outlast-trials/?social=copy-link"
+                   target="_blank" rel="noopener">
+                  <i class="fa-solid fa-up-right-from-square"></i> View on Miroverse
+                </a>
+              </div>
+            </div>
+
+            <div class="desc-box">
+              <h3>Overview</h3>
+              <p>
+                In my <strong>CMPM 176</strong> class at UCSC, I had the opportunity to delve deeply into game systems, gaining a comprehensive
+                understanding of how different elements connect to create a cohesive experience. I worked extensively on various game systems,
+                exploring their interactions and the impact they have on gameplay. One of the highlights was my in-depth analysis of
+                <em>The Outlast Trials</em> on the Miro application where I examined its intricate systems, including progression mechanics,
+                environmental storytelling, and player dynamics. This hands-on experience not only enhanced my technical skills but also broadened
+                my perspective on game design, allowing me to appreciate the complexity and creativity involved in crafting immersive game worlds.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Kaylee Linette Morales
+  </footer>
+
+  <!-- Ambient code layer (optional) -->
+  <div class="code-jumble-layer" aria-hidden="true"></div>
+  <script src="code-jumble.js"></script>
+
+  <!-- Slides embed helper: convert share URL to /embed; if blocked, show fallback -->
+  <script>
+    document.querySelectorAll('iframe[data-slides]').forEach((frame) => {
+      const share = frame.getAttribute('data-slides') || '';
+      const match = share.match(/\/d\/([a-zA-Z0-9_-]+)/);
+      if (!match) return;
+
+      const id = match[1];
+      const embed = `https://docs.google.com/presentation/d/${id}/embed?start=false&loop=false&delayms=3000`;
+      let loaded = false;
+
+      frame.addEventListener('load', () => { loaded = true; });
+      frame.src = embed;
+
+      setTimeout(() => {
+        if (loaded) return;
+
+        const parent = frame.parentElement;
+        const link = document.createElement('a');
+        link.href = share;
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.className = 'btn btn-deck';
+        link.innerHTML = '<i class="fa-solid fa-presentation-screen"></i> Open Slides';
+
+        const fallback = document.createElement('div');
+        fallback.className = 'slides-fallback';
+        fallback.innerHTML = `
+          <div>
+            <p style="margin:0 0 10px;color:var(--muted);">
+              The slide deck can’t be embedded by Google on this site.
+            </p>
+            <p style="margin:0 0 14px;color:var(--muted);">
+              Click below to open it in a new tab.
+            </p>
+          </div>
+        `;
+
+        const wrap = document.createElement('div');
+        wrap.style.position = 'relative';
+        wrap.appendChild(fallback);
+        parent.replaceChild(wrap, frame);
+        fallback.appendChild(link);
+      }, 2000);
+    });
+  </script>
+
+  <!-- Window behavior (fullscreen on all pages, smooth FLIP, stable close) -->
+  <script src="window-ui.js"></script>
+</body>
+</html>

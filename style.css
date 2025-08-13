@@ -1,0 +1,608 @@
+/* ==============================
+   Fonts
+   ============================== */
+   @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+   /* ==============================
+      Theme
+      ============================== */
+   :root{
+     --bg: #f6f5fa;         /* light gray-lilac */
+     --surface: #ffffff;    /* cards / surfaces */
+     --ink: #1f1b2e;        /* main text */
+     --muted: #6c6780;      /* secondary text */
+     --primary: #6f3aff;    /* purple */
+     --primary-600: #5e30d6;
+     --accent: #9b8cff;     /* soft purple highlight */
+     --border: #e7e4ef;     /* subtle borders */
+     --shadow: 0 10px 30px rgba(43, 16, 84, 0.12);
+   }
+   
+   /* ==============================
+      Base
+      ============================== */
+   * { box-sizing: border-box; }
+   html, body { margin: 0; padding: 0; }
+   body{
+     font-family: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+     color: var(--ink);
+     background: linear-gradient(180deg, #faf9ff 0%, #f6f5fa 100%);
+   }
+   
+   /* ==============================
+      Banner / Header
+      ============================== */
+   .site-banner{
+     position: sticky;
+     top: 0;
+     z-index: 1000;
+     background:
+       radial-gradient(1200px 400px at 20% -50%, rgba(159,140,255,.35), transparent 60%),
+       linear-gradient(90deg, #521f90, #9e5fe5 40%, #a07cff 100%);
+     color: #fff;
+     box-shadow: var(--shadow);
+     border-bottom: 1px solid rgba(255,255,255,.15);
+   }
+   
+   .banner-inner{
+     max-width: 1100px;
+     margin: 0 auto;
+     padding: 16px 24px;
+     display: flex;
+     align-items: center;
+     gap: 18px;
+   }
+   
+   .brand{
+     display: flex; align-items: center; gap: 14px;
+     text-decoration: none; color: #fff;
+   }
+   .brand-badge{
+     width: 36px; height: 36px; border-radius: 10px;
+     background: rgba(255,255,255,.15);
+     backdrop-filter: blur(6px);
+     display: grid; place-items: center;
+     font-weight: 700; letter-spacing: .5px;
+     border: 1px solid rgba(255,255,255,.25);
+   }
+   .brand-title{
+     display: flex; flex-direction: column; line-height: 1.05;
+   }
+   .brand-title .name{
+     font-family: "Playfair Display", serif;
+     font-weight: 700; font-size: 1.2rem; letter-spacing: .2px;
+   }
+   .brand-title .tag{
+     font-size: .8rem; opacity: .9; margin-top: 2px;
+   }
+   
+   .nav{
+     margin-left: auto; display: flex; gap: 8px; align-items: center;
+   }
+   .nav a{
+     color: #fff; text-decoration: none; font-weight: 600; font-size: .95rem;
+     padding: 10px 14px; border-radius: 12px; opacity: .95;
+     transition: transform .18s ease, opacity .18s ease, background-color .18s ease;
+   }
+   .nav a:hover{
+     opacity: 1; background: rgba(255,255,255,.12); transform: translateY(-1px);
+   }
+   .nav a.active{
+     background: #fff; color: var(--primary); box-shadow: 0 6px 18px rgba(0,0,0,.08);
+   }
+   
+   /* ==============================
+      Page Layout
+      ============================== */
+   .section{
+     max-width: 1100px; margin: 48px auto; padding: 0 24px;
+   }
+   
+   .hero{
+     display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px;
+     align-items: center; padding-top: 32px;
+   }
+   @media (max-width: 900px){
+     .hero{ grid-template-columns: 1fr; }
+   }
+   
+   .hero-title{
+     font-family: "Playfair Display", serif;
+     font-size: clamp(28px, 5vw, 44px);
+     margin: 0 0 8px;
+   }
+   .hero-sub{
+     color: var(--primary); font-weight: 700; letter-spacing: .3px;
+     margin: 0 0 20px;
+   }
+   .hero p{
+     color: var(--muted); font-size: 1.05rem; line-height: 1.8;
+     margin: 0 0 14px;
+   }
+   .hero-portrait{
+     width: 100%; max-width: 360px; justify-self: center;
+     aspect-ratio: 1/1; border-radius: 20px;
+     border: 1px solid var(--border); background: var(--surface);
+     box-shadow: var(--shadow); object-fit: cover;
+   }
+   
+   /* ==============================
+      Mac-style Frame + Tabs + Content
+      ============================== */
+   .macbook-frame{
+     position: relative; /* context for inner elements if needed */
+     border: 1px solid var(--border);
+     border-radius: 14px;
+     background: var(--surface);
+     box-shadow: var(--shadow);
+     overflow: hidden;
+     margin-bottom: 16px;
+   }
+   
+   .tabs{
+     display: flex;
+     gap: 6px;
+     padding: 10px 12px 0;
+     background: linear-gradient(#fbfaff, #f4f2fb);
+     border-bottom: 1px solid var(--border);
+   }
+   .tab{
+     display: inline-flex; align-items: center; gap: 8px;
+     padding: 8px 12px; border-radius: 10px 10px 0 0;
+     font-weight: 600; font-size: .95rem; color: var(--muted);
+     background: #ece9f7; border: 1px solid var(--border);
+     border-bottom: none;
+     text-decoration: none; cursor: pointer;
+     transition: background .18s ease, color .18s ease, transform .18s ease;
+   }
+   .tab .tab-favicon{ display: inline-flex; align-items: center; }
+   .tab:hover{ background: #e6e1fa; transform: translateY(-1px); }
+   .tab.active{
+     color: var(--ink);
+     background: #fff;
+     box-shadow: 0 8px 20px rgba(43,16,84,.08);
+   }
+   
+   .macbook-header{
+     background: #e0dee7;
+     padding: 6px 12px; display: flex; gap: 6px;
+     border-top: 1px solid rgba(0,0,0,.03);
+     border-bottom: 1px solid rgba(0,0,0,.06);
+   }
+   .macbook-header .dot{ width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+   .dot.red{ background:#ff5f57; } .dot.yellow{ background:#ffbd2e; } .dot.green{ background:#28c840; }
+   
+   .macbook-content{ padding: 22px; background: #fff; }
+   
+   /* ==============================
+      Floating Popups (separate About + Photo)
+      ============================== */
+   /* Make the hero a positioning context for floating popups */
+   .hero--with-popups { position: relative; }
+   
+   /* About popup (left-most of the two) */
+   .about-popup{
+     position: absolute;
+     right: 140px;           /* sits a bit left so photo can be further right */
+     top: -28px;
+     transform: translate(18%, -10%);
+     width: 260px;
+     background: var(--surface);
+     border: 1px solid var(--border);
+     border-radius: 16px;
+     box-shadow: var(--shadow);
+     overflow: hidden;
+     z-index: 4;
+   }
+   .about-popup .mini-header{
+     background: #e8e6f1;
+     padding: 6px 10px;
+     display: flex; gap: 6px;
+     border-bottom: 1px solid rgba(0,0,0,.06);
+   }
+   .about-popup .dot{
+     width: 12px; height: 12px; border-radius: 50%; display: inline-block;
+   }
+   .about-popup .dot.red{ background:#ff5f57; }
+   .about-popup .dot.yellow{ background:#ffbd2e; }
+   .about-popup .dot.green{ background:#28c840; }
+   
+   .about-popup-body{ padding: 12px 14px; }
+   .about-popup-body p{
+     margin: 6px 0 0; color: var(--muted); line-height: 1.6; font-size: .95rem;
+   }
+   .about-popup:hover{
+     transform: translate(18%, -12%);
+     box-shadow: 0 14px 30px rgba(43,16,84,.16);
+   }
+   
+   /* Photo popup (further right, separate from About popup) */
+   .photo-popup{
+     position: absolute;
+     right: 100px;           /* a bit more to the right than About popup */
+     top: 200px;             /* slightly lower than About popup */
+     transform: translate(18%, -10%);
+     width: 300px;           /* smaller than About popup */
+     background: var(--surface);
+     border: 1px solid var(--border);
+     border-radius: 16px;
+     box-shadow: var(--shadow);
+     overflow: hidden;
+     z-index: 5;
+   }
+   .photo-popup .mini-header{
+     background: #e8e6f1;
+     padding: 6px 10px;
+     display: flex; gap: 6px;
+     border-bottom: 1px solid rgba(0,0,0,.06);
+   }
+   .photo-popup .dot{
+     width: 12px; height: 12px; border-radius: 50%; display: inline-block;
+   }
+   .photo-popup .dot.red{ background:#ff5f57; }
+   .photo-popup .dot.yellow{ background:#ffbd2e; }
+   .photo-popup .dot.green{ background:#28c840; }
+   .photo-popup img{
+     display: block; width: 100%; height: auto;
+   }
+   .photo-popup:hover{
+     transform: translate(18%, -12%);
+     box-shadow: 0 14px 30px rgba(43,16,84,.16);
+   }
+   
+   /* ==============================
+      Cards / Grids (Portfolio & Studies)
+      ============================== */
+   .grid{
+     display: grid; gap: 18px;
+     grid-template-columns: repeat(3, 1fr);
+   }
+   @media (max-width: 1000px){ .grid{ grid-template-columns: repeat(2, 1fr); } }
+   @media (max-width: 680px){ .grid{ grid-template-columns: 1fr; } }
+   
+   .card{
+     background: var(--surface);
+     border: 1px solid var(--border);
+     border-radius: 16px;
+     padding: 18px;
+     box-shadow: var(--shadow);
+     transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+   }
+   .card:hover{
+     transform: translateY(-3px);
+     box-shadow: 0 14px 30px rgba(43,16,84,.16);
+     border-color: #ddd6fe;
+   }
+   .card h3{
+     margin: 0 0 6px; font-size: 1.05rem;
+   }
+   .card p{
+     margin: 0; color: var(--muted); font-size: .98rem; line-height: 1.6;
+   }
+   
+   /* ==============================
+      Buttons
+      ============================== */
+   .btn{
+     display: inline-flex; align-items: center; gap: 8px;
+     padding: 10px 14px; border-radius: 12px; font-weight: 700;
+     text-decoration: none; border: 1px solid var(--border);
+     background: #fff; color: var(--primary);
+     transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+   }
+   .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow); border-color: #ddd6fe; }
+   
+   /* ==============================
+      Footer
+      ============================== */
+   footer{
+     margin-top: 64px; padding: 28px 24px; text-align: center; color: var(--muted);
+     border-top: 1px solid var(--border); background: #fff;
+   }
+   
+   /* ==============================
+      Responsive Adjustments
+      ============================== */
+   @media (max-width: 1000px){
+     .about-popup,
+     .photo-popup{
+       position: static; transform: none; width: auto; margin-top: 12px;
+     }
+   }
+   
+   /* Copy grid (no bullet points, clean buttons) */
+.copy-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 14px;
+  }
+  
+  .copy-btn{
+    position: relative;
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--ink);
+    font-weight: 600;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease, background .16s ease;
+  }
+  .copy-btn i{ color: var(--primary); width: 20px; text-align: center; }
+  .copy-btn:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 14px 30px rgba(43,16,84,.16);
+    border-color: #ddd6fe;
+    background: #fff;
+  }
+  
+  .copied{
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%) translateX(8px);
+    opacity: 0;
+    pointer-events: none;
+    font-style: normal;
+    font-weight: 700;
+    color: var(--primary);
+    transition: opacity .16s ease, transform .16s ease;
+  }
+  .copied.show{
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+  
+  /* Centered popup layout */
+.hero--centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 120px); /* account for header/footer */
+    padding: 20px;
+  }
+  
+  .centered-popup {
+    width: 400px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+  }
+
+  
+  
+  /* Copy grid buttons */
+  .copy-grid {
+    display: grid;
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .copy-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--ink);
+    font-weight: 600;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+  }
+  .copy-btn:hover {
+    background: #fff;
+    border-color: #ddd6fe;
+  }
+  .copied {
+    position: absolute;
+    right: 12px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .copied.show {
+    opacity: 1;
+  }
+  
+  /* Section heading */
+.section-heading{
+    font-family: "Playfair Display", serif;
+    font-size: 1.35rem;
+    margin: 0 0 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  
+  /* Mac window (card state) */
+  .mac-window{
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .mac-window:hover{
+    transform: translateY(-2px);
+    border-color: #ddd6fe;
+    box-shadow: 0 14px 30px rgba(43,16,84,.16);
+  }
+  
+  /* Window header with dots */
+  .win-header{
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 10px;
+    background: #e8e6f1;
+    border-bottom: 1px solid rgba(0,0,0,.06);
+  }
+  .win-title{
+    margin-left: 8px; font-weight: 700; color: var(--ink);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .dot{
+    width: 12px; height: 12px; border-radius: 50%;
+    border: none; cursor: pointer; padding: 0; display: inline-block;
+  }
+  .dot.red{ background:#ff5f57; }
+  .dot.yellow{ background:#ffbd2e; }
+  .dot.green{ background:#28c840; }
+  
+  .win-body{ padding: 14px; }
+  .win-thumb{
+    width: 100%; height: 160px; object-fit: cover;
+    border-radius: 10px; border: 1px solid var(--border);
+    margin-bottom: 10px; background:#fafafa;
+  }
+  
+  /* Maximize / Minimize transition states */
+  .mac-window.is-animating{
+    transition: left .28s ease, top .28s ease, width .28s ease, height .28s ease, transform .28s ease, box-shadow .28s ease;
+  }
+  
+  /* Fullscreen (portfolio) and centered (other pages) target styles are applied inline by JS */
+  
+  /* Exit modal */
+  .exit-overlay{
+    position: fixed; inset: 0; background: rgba(10, 5, 20, .45);
+    display: none; align-items: center; justify-content: center;
+    z-index: 2000;
+  }
+  .exit-overlay.show{ display: flex; }
+  .exit-modal{
+    width: min(520px, 92vw);
+    background: #fff; color: var(--ink);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .exit-modal-header{
+    background: #f3f1fa; padding: 10px 14px; font-weight: 700;
+    border-bottom: 1px solid var(--border);
+  }
+  .exit-modal-body{ padding: 14px; color: var(--muted); }
+  .exit-modal-actions{
+    padding: 12px 14px; display: flex; gap: 10px; justify-content: flex-end;
+    border-top: 1px solid var(--border);
+  }
+  .btn-danger{ background: #ff5f57; color: #fff; border: 1px solid #ff8b84; }
+  .btn-ghost{ background: #fff; color: var(--ink); }
+  .btn-danger:hover{ filter: brightness(1.05); }
+  .btn-ghost:hover{ background: #faf9ff; }
+
+  /* Center project popups (cards) on the Portfolio page */
+body[data-page="portfolio"] .grid{
+    display: grid;
+    /* create centered columns that wrap nicely */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 420px));
+    justify-content: center;   /* center the columns as a group */
+    gap: 22px;
+  }
+  
+  /* Constrain each popup to a nice width so centering is visible */
+  body[data-page="portfolio"] .mac-window{
+    width: 100%;
+    max-width: 420px;          /* match the max in minmax() above */
+    margin: 0;                 /* no extra margins needed */
+  }
+  /* Center section headings in Portfolio page */
+body[data-page="portfolio"] .section-heading {
+    justify-content: center;  /* centers flex contents */
+    text-align: center;       /* aligns the text itself */
+  }
+  
+  :root { --win-pad: 22px; }              /* match your .macbook-content padding */
+
+.mac-window .win-body { padding: var(--win-pad); }
+
+/* Make the tab bar span the exact window width */
+.mac-window .win-body > .tabs{
+  margin-left: calc(-1 * var(--win-pad));
+  margin-right: calc(-1 * var(--win-pad));
+  padding-left: var(--win-pad);
+  padding-right: var(--win-pad);
+  border-radius: 0;                      /* flush to window edges */
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(#fbfaff, #f4f2fb);
+}
+
+/* keep tabs visible at top when maximized (sticky inside the window) */
+.mac-window .win-body > .tabs {
+  position: sticky;
+  top: 0;
+  z-index: 1;                            /* sit above window content */
+}
+
+/* Tabs directly under the header should already be full width */
+.mac-window > .tabs{
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(#fbfaff, #f4f2fb);
+  border-radius: 0;
+  padding: 10px 12px 0;
+}
+.mac-window > .win-body{ padding: var(--win-pad, 22px); }
+
+/* Center the Home window and make it a bit bigger */
+.mac-window--home{
+  width: min(960px, 92vw);
+  margin: 0 auto;
+}
+
+/* Full-bleed tabs when directly under header (no body padding offsets) */
+.mac-window > .tabs{
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(#fbfaff, #f4f2fb);
+  border-radius: 0;
+  padding: 10px 12px 0;
+}
+
+/* Inner layout: text left, photo right */
+.about-grid{
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 24px;
+  align-items: center;
+}
+
+.about-photo{
+  display: grid;
+  place-items: center;
+}
+.about-photo img{
+  width: min(380px, 100%);
+  aspect-ratio: 1 / 1;          /* perfect square */
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  background: #fff;
+}
+
+@media (max-width: 900px){
+  .about-grid{
+    grid-template-columns: 1fr;
+  }
+  .about-photo{
+    order: -1;                   /* photo above text on small screens (optional) */
+  }
+}
+
+/* Prevent hover bumps while animating */
+.mac-window.no-hover:hover,
+.photo-popup.no-hover:hover { transform: none !important; }
+
+.desc-box {
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+/* Make every box start below the floated video */
+.desc-long .desc-box { clear: both; }
