@@ -606,3 +606,74 @@ body[data-page="portfolio"] .section-heading {
 }
 /* Make every box start below the floated video */
 .desc-long .desc-box { clear: both; }
+/* ==============================
+   MOBILE NAV / HEADER
+   ============================== */
+   .nav-toggle{
+    display:none;
+    margin-left:auto;
+    font-size:1.2rem;
+    line-height:1;
+    padding:8px 10px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,.3);
+    background: rgba(255,255,255,.12);
+    color:#fff;
+    cursor:pointer;
+  }
+  @media (max-width: 820px){
+    .nav-toggle{ display:block; }
+    .nav{
+      position:absolute;
+      right:16px; top:60px;
+      display:none;
+      flex-direction:column;
+      gap:8px;
+      background: rgba(20,10,40,.92);
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:12px;
+      padding:10px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
+    }
+    .nav.show{ display:flex; }
+  }
+  
+  /* ==============================
+     RESPONSIVE LAYOUT TWEAKS
+     ============================== */
+  @media (max-width: 820px){
+    .section{ margin:32px auto; padding: 0 16px; }
+    .hero-title{ font-size: clamp(24px, 7vw, 34px); }
+    .hero p{ font-size: 1rem; line-height: 1.7; }
+    .tabs{ flex-wrap: wrap; gap:6px; }
+    .tab{ font-size:.9rem; padding:7px 10px; }
+    .macbook-content{ padding:16px; }
+    .grid{ grid-template-columns: 1fr !important; }
+    .about-popup, .photo-popup{
+      position: static !important;
+      transform: none !important;
+      width: 100% !important;
+      margin-top: 12px !important;
+    }
+  }
+  
+  /* Make action column buttons comfortable on small screens */
+  @media (max-width: 580px){
+    .action-col{ width:100%; }
+    .action-col .btn{ width:100%; justify-content:center; }
+  }
+  
+  /* ==============================
+     MAX WINDOW: MOBILE VIEWPORT + SCROLL
+     ============================== */
+  .mac-window.is-max .win-body{
+    -webkit-overflow-scrolling: touch;  /* momentum scrolling on iOS */
+  }
+  
+  /* Slightly bigger tap targets */
+  .dot{ width: 14px; height: 14px; }
+  
+  /* Optional: lazy iframes where possible */
+  iframe[loading="lazy"]{ contain: content; }
+  
