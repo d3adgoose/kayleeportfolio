@@ -727,3 +727,6 @@ body[data-page="portfolio"] .section-heading {
   outline: 2px solid #fff;
   outline-offset: 2px;
 }
+
+/* Add this */
+.banner-inner { position: relative; }
