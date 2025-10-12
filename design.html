@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Design — Kaylee Linette Morales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .mac-window .desc-long { display: none; }
+    .mac-window.is-max .desc-short { display: none; }
+    .mac-window.is-max .desc-long { display: block; }
+    .mac-window.is-max .win-header{ position: sticky; top: 0; z-index: 3; background: #e8e6f1; border-bottom: 1px solid rgba(0,0,0,.06); }
+    .mac-window.is-max .win-body{ max-height: calc(100vh - 180px); overflow: auto; padding: 18px 18px 22px; background: radial-gradient(800px 300px at 0% -10%, rgba(159,140,255,.08), transparent 50%), #fff; scroll-behavior: smooth; }
+    .mac-window.is-max .win-body::-webkit-scrollbar{ width: 10px; }
+    .mac-window.is-max .win-body::-webkit-scrollbar-track{ background: #f1eefb; border-radius: 10px; }
+    .mac-window.is-max .win-body::-webkit-scrollbar-thumb{ background: #c7bdfc; border-radius: 10px; border: 2px solid #f1eefb; }
+    .mac-window.is-max .win-body::-webkit-scrollbar-thumb:hover{ background: #b4a5ff; }
+
+    /* Adjusted Sushi Rat Revolution image sizing */
+    .usc-srr .win-thumb {
+      display: block;
+      width: 80%;
+      max-width: 380px;
+      height: auto;
+      object-fit: contain;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      margin: 0 auto 10px;
+    }
+
+    .usc-srr .media-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .usc-srr .image-box {
+      width: min(400px, 85vw);
+      margin: 0 auto;
+    }
+
+    .usc-srr .media-frame.cover::before {
+      content: "";
+      display: block;
+      padding-top: 40%; /* smaller visual footprint */
+    }
+
+    .usc-srr .media-frame img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 10px;
+      background: #fff;
+      border: 1px solid var(--border);
+    }
+      /* Right to Carry mural sizing */
+    .mural-thumb{
+      display:block; width: clamp(220px, 60%, 360px); height:auto; object-fit:contain; margin:0 auto 10px;
+      background:#fff; border:1px solid var(--border); border-radius:12px; box-shadow: var(--shadow);
+    }
+    .mural-frame{ position:relative; width:min(520px, 80vw); margin:0 auto 10px; border-radius:12px; overflow:hidden; border:1px solid var(--border); box-shadow: var(--shadow); background:#fff; }
+    .mural-frame img{ display:block; width:100%; height:auto; object-fit:contain; max-height: clamp(260px, 42vh, 560px); }
+  </style>
+</head>
+<body data-page="design">
+  <header class="site-banner">
+    <div class="banner-inner">
+      <a class="brand" href="home.html">
+        <div class="brand-badge">KM</div>
+        <div class="brand-title"><span class="name">Kaylee Linette Morales</span><span class="tag">Game Designer</span></div>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+      <nav class="nav">
+        <a href="home.html">Home</a>
+        <a href="published.html">Published</a>
+        <a class="active" href="design.html">Design</a>
+        <a href="studies.html">Studies</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <h1 class="hero-title">Design</h1>
+    <p class="hero-sub">Case Studies • Systems • UX • Production</p>
+
+    <!-- ===== USC • M.S. Computer Science: Game Development ===== -->
+    <section style="margin-top:24px">
+      <h2 class="section-heading"><i class="fa-solid fa-graduation-cap"></i> USC • M.S. Computer Science: Game Development</h2>
+      <div class="grid">
+        <article class="mac-window usc-srr" data-win-id="usc-sushi">
+          <div class="win-header">
+            <button class="dot red" data-action="close" aria-label="Close"></button>
+            <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
+            <button class="dot green" data-action="maximize" aria-label="Maximize"></button>
+            <div class="win-title">Board Game — Sushi Rat Revolution</div>
+          </div>
+          <div class="win-body">
+            <!-- Minimized -->
+            <div class="desc-short">
+              <img class="win-thumb" src="assets/images/srr-cover.png" alt="Sushi Rat Revolution cover art" />
+              <p><strong>USC • Game Design Workshop:</strong> A two-week team project modding <em>Up the River</em> into an original board game. I contributed as designer and documenter.</p>
+            </div>
+
+            <!-- Maximized -->
+            <div class="desc-long">
+              <div class="media-row">
+                <div class="image-box">
+                  <div class="media-frame">
+                    <img src="assets/images/srr-cover.png" alt="Sushi Rat Revolution poster" />
+                  </div>
+                  <div class="video-caption">USC • CTIN-488 — 2025</div>
+                </div>
+                <div class="action-col">
+                  <a class="btn btn-pdf" href="assets/files/Team4-Rules.pdf" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-book"></i> Rules
+                  </a>
+                  <a class="btn btn-pdf" href="assets/files/Team4-PlaytestReport-Wk5.pdf" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-clipboard-check"></i> Playtest Report (Wk5)
+                  </a>
+                  <a class="btn btn-pdf" href="assets/files/Team4-Playtests-Wk6.pdf" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-clipboard-list"></i> Playtests (Wk6)
+                  </a>
+                  <a class="btn btn-pdf" href="assets/files/Team4-DesignPhotoJournal-Wk5.pdf" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-pen"></i> Design Journal (Wk5)
+                  </a>
+                  <a class="btn btn-pdf" href="assets/files/Team4-DesignPhotoJournal-Wk6.pdf" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-pen"></i> Design Journal (Wk6)
+                  </a>
+                  <a class="btn btn-pdf" href="assets/files/Sushi-Rat-Revolution-Cards.pdf" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-clone"></i> Card Designs
+                  </a>
+                  <a class="btn btn-pdf" href="assets/files/Shing-Team4-UtR-Presentation.pdf" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-file-powerpoint"></i> Presentation Deck
+                  </a>
+                </div>
+              </div>
+
+              <div class="desc-box">
+                <h3>Overview</h3>
+                <p>
+                  Built for <strong>USC’s Game Design Workshop</strong>, our four-person team reimagined <em>Up the River</em> over a focused two-week sprint. The result, <em>Sushi Rat Revolution</em>, introduces a rotating conveyor for spatial tension, set-collection goals, and playful push-your-luck dynamics. I owned <strong>design documentation</strong>—drafting rules, logging playtest iterations, and aligning the team.
+                </p>
+              </div>
+              <div class="desc-box">
+                <h3>Design Process </h3>
+                <p>We worked in a compact, evidence-driven loop: <strong>pitch → paper prototype → playtest → iterate</strong>. The first week scoped rules and validated the conveyor as the tension engine with index-card trials. The second week ran short, goal-focused playtests to tune readability (iconography, turn order, hints) and drama (risk spikes from rat movement). Each session produced a quick changelog and action items, culminating in polished rules and card layouts.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== UCSC • B.S. Computer Science: Game Design ===== -->
+    <section style="margin-top:36px">
+      <h2 class="section-heading"><i class="fa-solid fa-school"></i> UCSC • B.S. Computer Science: Game Design</h2>
+      <div class="grid">
+        <!-- Wireframes -->
+        <article class="mac-window" data-win-id="ucsc-wireframes">
+          <div class="win-header">
+            <button class="dot red" data-action="close" aria-label="Close"></button>
+            <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
+            <button class="dot green" data-action="maximize" aria-label="Maximize"></button>
+            <div class="win-title">Wireframes — UI & UX Design</div>
+          </div>
+          <div class="win-body">
+            <!-- Minimized -->
+            <div class="desc-short">
+              <p><strong>UI/UX portfolio:</strong> Work from UCSC CMPM‑130 and other courses — annotated wireframes, user journeys, personas, and accessibility‑first flows.</p>
+            </div>
+            <!-- Maximized -->
+            <div class="desc-long">
+              <div class="action-col">
+                <a class="btn btn-pdf" href="assets/files/annotated-UX%20Project%20Plan%2C%20Content%20Strategy%2C%20Persona(s)-1.pdf" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-file-lines"></i> Project Plan & Personas 
+                </a>
+                <a class="btn btn-pdf" href="assets/files/annotated-UX%20User%20Journey%20and%20Flow%20Diagram.pdf" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-diagram-project"></i> User Journey & Flow 
+                </a>
+                <a class="btn btn-pdf" href="assets/files/annotated-UX%20Wireframe.pdf" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-vector-square"></i> Annotated Wireframes 
+                </a>
+                <a class="btn" href="https://www.figma.com/design/qngHgeLrSV2078zN1ogtWB/CMPM130-Wireframe?node-id=0-1&t=2GGgwpuUPXPs77gq-1" target="_blank" rel="noopener">
+                  <i class="fa-brands fa-figma"></i> Open Figma
+                </a>
+              </div>
+              <div class="desc-box">
+                <h3>CMPM-130 Overview</h3>
+                <p>
+                  This tab compiles UX artifacts from <strong>CMPM‑130 (User Experience for Games)</strong> and complementary courses. You’ll find personas, content strategy, user journeys, flow diagrams, and annotated wireframes that explore:
+                </p>
+                <ul>
+                  <li>Onboarding clarity and player‑friendly navigation</li>
+                  <li>Accessibility‑first UI (readability, input comfort, pacing)</li>
+                  <li>Designing cozy, collaborative alternatives to competitive loops</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- The Right to Carry Mural -->
+        <article class="mac-window" data-win-id="ucsc-mural">
+          <div class="win-header">
+            <button class="dot red" data-action="close" aria-label="Close"></button>
+            <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
+            <button class="dot green" data-action="maximize" aria-label="Maximize"></button>
+            <div class="win-title">The Right to Carry — Merrill Moat Mural</div>
+          </div>
+          <div class="win-body">
+            <!-- Minimized -->
+            <div class="desc-short">
+              <img class="mural-thumb" src="assets/images/righttocarry.jpeg" alt="The Right to Carry mural" />
+              <p>Casket-shaped mural reflecting on gun violence and memory for the Merrill Moat community tradition.</p>
+            </div>
+            <!-- Maximized -->
+            <div class="desc-long">
+              <div class="media-row">
+                <div class="image-box">
+                  <div class="mural-frame">
+                    <img src="assets/images/righttocarry.jpeg" alt="The Right to Carry mural full view" />
+                  </div>
+                  <div class="video-caption">Merrill Moat — 2024</div>
+                </div>
+              </div>
+              <div class="desc-box">
+                <h3>Artist Statement</h3>
+                <p>“The Right to Carry,” is a mural that ventures beyond mere artistic expression to serve as a poignant commentary on the escalating crisis of gun violence in America. As a survivor of a school shooting, my journey through college has been significantly shaped by my personal quest for healing. This artwork emerges from that transformative experience, aiming to advocate for critical changes in gun legislation.</p>
+                <p>Set against the backdrop of a funeral procession, the mural captures a moment frozen in time—a somber scene that brings together individuals from diverse backgrounds, each affected by gun violence. At the forefront of the composition, the figures of a woman and a Black man are intentionally blurred. This artistic choice seeks to depersonalize the pain, suggesting that the grief and demand for change are universal, shared by many rather than isolated to individuals. These figures stand not just as mourners, but as symbols of the broader call for action—voices from communities that have endured too many losses.</p>
+                <p>Central to the scene is a casket, a stark emblem of the ultimate price paid by countless lives. It is not merely a representation of death, but a profound reminder of the irreversible losses that communities suffer due to legislative inaction. The casket's prominent placement in the mural is designed to confront viewers with the tangible consequences of gun violence, compelling a visceral response and fostering a reflective mindset.</p>
+                <p>Encircling the casket, vibrant flowers burst through the otherwise muted palette of the procession. These flowers—intensely colored and alive—contrast sharply with the greys and blacks that dominate the scene, symbolizing bursts of hope amidst overwhelming grief. They represent not only the memory of those lost, but also the potential for rebirth and positive change that could stem from reformed gun laws. This floral motif reinforces the mural’s message of resilience, suggesting that from the depths of despair can spring forth new growth and legislative progress.</p>
+                <p>The funeral procession depicted in the mural does more than mourn the deceased; it unites those left behind in a shared vision of a safer future. This collective aspect of the mural reflects Merrill College Community’s commitment to inclusivity and mutual understanding. It calls on viewers to recognize their part in a larger community, one that crosses cultural and social boundaries in the face of shared tragedies.</p>
+                <p>By presenting "The Right to Carry," I intend to channel personal trauma into a catalyst for social advocacy, transforming a narrative of individual suffering into a powerful collective demand for change. The mural invites viewers to engage with the harsh realities of gun violence and consider their role in advocating for and implementing legislative reforms. It is designed not just to move the audience emotionally but to motivate them to action, serving as a reminder that art can be a formidable force in societal transformation.</p>
+                <p>In summary, this mural is not merely a piece of art; it is a declaration of resilience, a communal expression of loss, and a hopeful plea for compassion and legislative change. Through the vivid imagery of the funeral and the symbolic use of color, "The Right to Carry" seeks to inspire reflection, provoke dialogue, and ignite a quest for a future where such tragedies are no longer a common reality.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2025 Kaylee Linette Morales</footer>
+  <div class="code-jumble-layer" aria-hidden="true"></div>
+  <script src="code-jumble.js"></script>
+  <script src="window-ui.js"></script>
+  <script src="site.js"></script>
+</body>
+</html>
