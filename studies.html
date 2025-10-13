@@ -8,115 +8,42 @@
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    /* Match portfolio formatting */
+    /* Match your Design page behavior */
     .mac-window .desc-long { display: none; }
     .mac-window.is-max .desc-short { display: none; }
     .mac-window.is-max .desc-long { display: block; }
-
-    .mac-window.is-max .win-header{
-      position: sticky; top: 0; z-index: 3;
-      background: #e8e6f1;
-      border-bottom: 1px solid rgba(0,0,0,.06);
-    }
-    .mac-window.is-max .win-body{
-      max-height: calc(100vh - 180px);
-      overflow: auto;
-      padding: 18px 18px 22px;
-      background:
-        radial-gradient(800px 300px at 0% -10%, rgba(159,140,255,.08), transparent 50%),
-        #fff;
-      scroll-behavior: smooth;
-    }
+    .mac-window.is-max .win-header{ position: sticky; top: 0; z-index: 3; background: #e8e6f1; border-bottom: 1px solid rgba(0,0,0,.06); }
+    .mac-window.is-max .win-body{ max-height: calc(100vh - 180px); overflow: auto; padding: 18px 18px 22px; background: radial-gradient(800px 300px at 0% -10%, rgba(159,140,255,.08), transparent 50%), #fff; scroll-behavior: smooth; }
     .mac-window.is-max .win-body::-webkit-scrollbar{ width: 10px; }
     .mac-window.is-max .win-body::-webkit-scrollbar-track{ background: #f1eefb; border-radius: 10px; }
-    .mac-window.is-max .win-body::-webkit-scrollbar-thumb{
-      background: #c7bdfc; border-radius: 10px; border: 2px solid #f1eefb;
-    }
+    .mac-window.is-max .win-body::-webkit-scrollbar-thumb{ background: #c7bdfc; border-radius: 10px; border: 2px solid #f1eefb; }
     .mac-window.is-max .win-body::-webkit-scrollbar-thumb:hover{ background: #b4a5ff; }
 
-    .media-row{
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 22px;
-      margin-bottom: 18px;
-      flex-wrap: wrap;
-    }
-    .slides-box, .image-box{ width: min(820px, 92vw); }
-    .media-frame{
-      position: relative; width: 100%;
-      border-radius: 12px; overflow: hidden;
-      border: 1px solid var(--border); box-shadow: var(--shadow);
-      background: #fff;
-    }
-    .media-frame::before{ content:""; display:block; padding-top:56.25%; } /* 16:9 */
-    .media-frame iframe, .media-frame img{
-      position:absolute; inset:0; width:100%; height:100%;
-      border:0; display:block; object-fit: cover;
-    }
-    .video-caption{
-      margin-top: 6px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;
-      color: rgba(0,0,0,0.6); text-align: center;
-    }
+    /* Utility blocks to mirror Design page look */
+    .media-row{ display:flex; flex-direction:column; align-items:center; gap:16px; }
+    .image-box, .slides-box{ width:min(820px, 92vw); }
+    .media-frame{ position:relative; width:100%; border-radius:12px; overflow:hidden; border:1px solid var(--border); box-shadow: var(--shadow); background:#fff; }
+    .media-frame::before{ content:""; display:block; padding-top:56.25%; }
+    .media-frame > *{ position:absolute; inset:0; width:100%; height:100%; border:0; object-fit:cover; }
+    .video-caption{ margin-top:6px; font-size:.85rem; text-transform:uppercase; letter-spacing:1px; color:rgba(0,0,0,.6); text-align:center; }
 
-    .action-col{
-      display: flex; flex-direction: column; gap: 12px; align-items: center; justify-content: center;
-      min-width: 220px;
-    }
-    .btn{
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 10px 14px; border-radius: 12px; font-weight: 700;
-      text-decoration: none; border: 1px solid var(--border);
-      background: #fff; color: var(--primary);
-      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-      box-shadow: var(--shadow);
-    }
-    .btn:hover{ transform: translateY(-1px); border-color: #ddd6fe; }
-    .btn-ext{ background: linear-gradient(180deg, #ffffff, #f7f6ff); color: var(--ink); }
-    .btn-deck{ background: #5b6ee1; color: #fff; border: none; }
+    .desc-box{ background:linear-gradient(180deg,#ffffff 0%,#fbfaff 100%); border:1px solid rgba(0,0,0,.06); border-radius:12px; padding:16px 18px; margin:0 0 18px; box-shadow:0 10px 22px rgba(43,16,84,.06); }
+    .desc-box h3{ margin:0 0 10px; font-size:1.06rem; }
+    .desc-box p, .desc-box ul{ margin:0 0 12px; line-height:1.78; color:var(--muted); }
 
-    .desc-box{
-      position: relative;
-      background: linear-gradient(180deg, #ffffff 0%, #fbfaff 100%);
-      border: 1px solid rgba(0,0,0,0.06);
-      border-radius: 12px;
-      padding: 16px 18px;
-      margin: 0 0 18px;
-      box-shadow: 0 10px 22px rgba(43, 16, 84, 0.06);
-    }
-    .desc-box h3{ margin: 0 0 10px; font-size: 1.06rem; color: var(--ink); }
-    .desc-box p{ margin: 0 0 12px; color: var(--muted); line-height: 1.78; }
+    .btn{ display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; font-weight:700; text-decoration:none; border:1px solid var(--border); background:#fff; transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; box-shadow:var(--shadow); }
+    .btn:hover{ transform:translateY(-1px); border-color:#ddd6fe; }
 
-    /* Center the cards nicely */
-    .grid{
-      display: grid; gap: 22px;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 720px));
-      justify-content: center;
-    }
-
-    /* Slides fallback (if embed is blocked) */
-    .slides-fallback{
-      display:grid; place-items:center; text-align:center;
-      border: 1px dashed var(--border); border-radius: 12px;
-      padding: 24px; height: 0; padding-top: 56.25%;
-      position: relative; overflow:hidden;
-      background: #faf9ff;
-    }
-    .slides-fallback > div{
-      position:absolute; inset:0; display:grid; place-items:center; padding: 16px;
-    }
+    /* Thumbs (optional images) */
+    .win-thumb{ display:block; width: clamp(220px, 60%, 380px); height:auto; object-fit:contain; margin:0 auto 10px; background:#fff; border:1px solid var(--border); border-radius:12px; box-shadow: var(--shadow); }
   </style>
 </head>
 <body data-page="studies">
-  <!-- Banner -->
   <header class="site-banner">
     <div class="banner-inner">
       <a class="brand" href="home.html">
         <div class="brand-badge">KM</div>
-        <div class="brand-title">
-          <span class="name">Kaylee Linette Morales</span>
-          <span class="tag">Game Designer</span>
-        </div>
+        <div class="brand-title"><span class="name">Kaylee Linette Morales</span><span class="tag">Game Designer</span></div>
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">☰</button>
       <nav class="nav">
@@ -130,127 +57,150 @@
   </header>
 
   <main class="section">
-    <h1 class="hero-title">Studies & Research</h1>
-    <p class="hero-sub">UCSC • B.S. Computer Science: Game Design</p>
+    <h1 class="hero-title">Studies</h1>
+    <p class="hero-sub">Research • Writing • Systems • Advocacy</p>
 
-    <div class="grid" style="margin-top: 22px;">
-      <!-- ===== (NEWER) Study 1: Time-Based Systems Slides ===== -->
-      <article class="mac-window" data-win-id="study-time">
-        <div class="win-header">
-          <button class="dot red" data-action="close" aria-label="Close"></button>
-          <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
-          <button class="dot green" data-action="maximize" aria-label="Maximize"></button>
-          <div class="win-title">System Analysis: Time-Based Puzzles — CMPM 176</div>
-        </div>
-        <div class="win-body">
-          <!-- Minimized -->
-          <div class="desc-short">
-            <div class="media-frame" style="margin-bottom:12px;">
-              <iframe
-                data-slides="https://docs.google.com/presentation/d/1HBdXfh3Ckwq3aEtR4FS3suNRUBb1oX-wW0ZPxTg_XlI/edit?usp=sharing"
-                title="System Analysis on Time-Based Puzzles (UCSC)">
-              </iframe>
+    <!-- ===== USC • M.S. Computer Science: Game Development ===== -->
+    <section style="margin-top:24px">
+      <h2 class="section-heading"><i class="fa-solid fa-graduation-cap"></i> USC • M.S. Computer Science: Game Development</h2>
+      <div class="grid">
+        <!-- Advocacy: Audio Visualizer Standardization -->
+        <article class="mac-window" data-win-id="usc-advocacy-av">
+          <div class="win-header">
+            <button class="dot red" data-action="close" aria-label="Close"></button>
+            <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
+            <button class="dot green" data-action="maximize" aria-label="Maximize"></button>
+            <div class="win-title">
+              Making Sound Visible — Standardizing Audio Visualizers in Shooters
             </div>
-            <p>
-              In a team project, I analyzed time-based systems (e.g., <em>Portal 2</em>, <em>Overcooked</em>, <em>Pikmin 3</em>) and pitched a new implementation—delivered as a slide deck.
-            </p>
           </div>
+          <div class="win-body">
+            <!-- Minimized -->
+            <div class="desc-short">
+              <p><strong>Advocacy statement:</strong> standardize visual audio cues in shooters to enable trauma-informed, accessible play for all players.</p>
+            </div>
 
-          <!-- Maximized -->
-          <div class="desc-long">
-            <div class="media-row">
-              <div class="slides-box">
-                <div class="media-frame">
-                  <iframe
-                    data-slides="https://docs.google.com/presentation/d/1HBdXfh3Ckwq3aEtR4FS3suNRUBb1oX-wW0ZPxTg_XlI/edit?usp=sharing"
-                    allowfullscreen
-                    title="System Analysis on Time-Based Puzzles (UCSC)">
-                  </iframe>
+            <!-- Maximized -->
+            <div class="desc-long">
+              <div class="desc-box">
+                <h3>Advocacy Statement</h3>
+                <p>As a game designer and a survivor of a school shooting, I carry a unique relationship with sound. Loud, sudden audio cues—gunfire, explosions, shouting—can trigger panic. Despite my love for shooters, I stepped away from many of them because these sounds overwhelmed me or brought back traumatic memories.</p>
+                <p><em>Fortnite’s</em> <strong>audio visualizer</strong> changed that. By translating nearby sounds into clear, on-screen visual indicators, it gives me agency over my sensory experience and lets me engage on my own terms. Originally designed for Deaf and hard-of-hearing players, it has become a lifeline for people like me—players with trauma, sound sensitivities, or cognitive differences.</p>
+                <p>I believe features like Fortnite’s visual sound indicators should be a <strong>standard</strong> across all shooting games—not as a niche setting, but as a core accessibility option. Just as subtitles and colorblind modes are expected, visual audio cues should be part of every player’s toolkit. This is inclusion in action: an act of empathy that tells players, <em>“You belong here, too.”</em></p>
+                <p>As I continue my studies at USC and build games with teams who care about impact, I’m committed to carrying this philosophy forward: design for excitement and expression, <em>and</em> for safety. The audio visualizer is more than a feature; it’s a symbol of what games can become when we make empathy part of design.</p>
+              </div>
+
+              <div class="desc-box" id="design-as-advocacy">
+                <h3>Design as Advocacy</h3>
+                <p>This experience fundamentally shaped my philosophy as a game designer. I believe that audio visualizers should become standard across all shooting games — not just as a feature for Deaf or hard-of-hearing players, but as an essential accessibility tool for trauma-informed play.</p>
+                <p>Accessibility isn’t limited to physical ability; it extends to emotional safety, mental health, and cognitive inclusion. Standardizing visual audio cues can help:</p>
+                <ul>
+                  <li><strong>Players with PTSD or sound-trigger sensitivities</strong></li>
+                  <li><strong>Neurodivergent players</strong> who struggle with overstimulation</li>
+                  <li><strong>Hearing-impaired players</strong> who rely on visual cues for awareness</li>
+                </ul>
+                <p>By offering visual alternatives for auditory feedback, developers invite more people to safely experience fast-paced, high-stakes gameplay without exclusion or distress.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== UCSC • B.S. Computer Science: Game Design ===== -->
+    <section style="margin-top:36px">
+      <h2 class="section-heading"><i class="fa-solid fa-school"></i> UCSC • B.S. Computer Science: Game Design</h2>
+      <div class="grid">
+        <!-- Study 1: Time-Based Systems Slides (UCSC) -->
+        <article class="mac-window" data-win-id="ucsc-time">
+          <div class="win-header">
+            <button class="dot red" data-action="close" aria-label="Close"></button>
+            <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
+            <button class="dot green" data-action="maximize" aria-label="Maximize"></button>
+            <div class="win-title">
+              System Analysis: Time-Based Puzzles — CMPM 176
+            </div>
+          </div>
+          <div class="win-body">
+            <!-- Minimized -->
+            <div class="desc-short">
+              <div class="media-frame" style="margin-bottom:12px;">
+                <iframe
+                  data-slides="https://docs.google.com/presentation/d/1HBdXfh3Ckwq3aEtR4FS3suNRUBb1oX-wW0ZPxTg_XlI/edit?usp=sharing"
+                  title="System Analysis on Time-Based Puzzles (UCSC)"></iframe>
+              </div>
+              <p><strong>Slides study:</strong> analysis of time-based mechanics (e.g., <em>Portal 2</em>, <em>Overcooked</em>, <em>Pikmin 3</em>) and a pitched implementation.</p>
+            </div>
+
+            <!-- Maximized -->
+            <div class="desc-long">
+              <div class="media-row">
+                <div class="slides-box">
+                  <div class="media-frame">
+                    <iframe
+                      data-slides="https://docs.google.com/presentation/d/1HBdXfh3Ckwq3aEtR4FS3suNRUBb1oX-wW0ZPxTg_XlI/edit?usp=sharing"
+                      allowfullscreen
+                      title="System Analysis on Time-Based Puzzles (UCSC)"></iframe>
+                  </div>
+                  <div class="video-caption">System Analysis — Slides (UCSC) • July 2024</div>
                 </div>
-                <div class="video-caption">System Analysis on Time-Based Puzzles — Slides (UCSC) • July 2024</div>
               </div>
-              <div class="action-col">
+              <div class="desc-box">
+                <h3>Overview</h3>
+                <p>For <strong>CMPM-176 (UCSC)</strong>, I explored time-based systems via verb/noun frameworks and playstyle assumptions, then proposed a new implementation inside an existing title to demonstrate design reasoning.</p>
               </div>
             </div>
+          </div>
+        </article>
 
-            <div class="desc-box">
-              <h3>Overview</h3>
-              <p>
-                For my <strong>CMPM 176: Game Systems</strong> class at UCSC, I conducted a deep analysis of time-based game systems with,
-                creating an extensive slide deck that explores this topic in detail. I began with an elevator pitch explaining the concept,
-                then delved into the distinctive traits of these systems, using frameworks like verb/noun pairings and playstyle assumptions.
-                I showcased examples of games that utilize time-based systems, highlighting titles like <em>Portal 2</em>, <em>Overcooked</em>,
-                and <em>Pikmin 3</em> for their unique interpretations. Finally, I pitched a new implementation of a time-based system in an
-                existing game, demonstrating my understanding and creativity in game design. 
-              </p>
+        <!-- Study 2: Outlast Trials Systems (UCSC) -->
+        <article class="mac-window" data-win-id="ucsc-outlast">
+          <div class="win-header">
+            <button class="dot red" data-action="close" aria-label="Close"></button>
+            <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
+            <button class="dot green" data-action="maximize" aria-label="Maximize"></button>
+            <div class="win-title">
+              Game Systems of “The Outlast Trials” — CMPM 176
             </div>
           </div>
-        </div>
-      </article>
+          <div class="win-body">
+            <!-- Minimized -->
+            <div class="desc-short">
+              <p><strong>Miro board:</strong> progression, environmental storytelling, and player dynamics analysis for <em>The Outlast Trials</em>.</p>
+              <a class="btn" href="https://miro.com/miroverse/game-systems-of-outlast-trials/?social=copy-link" target="_blank" rel="noopener">
+                <i class="fa-solid fa-up-right-from-square"></i> View on Miroverse
+              </a>
+            </div>
 
-      <!-- ===== (OLDER) Study 2: Outlast Trials Systems (Miro) ===== -->
-      <article class="mac-window" data-win-id="study-outlast">
-        <div class="win-header">
-          <button class="dot red" data-action="close" aria-label="Close"></button>
-          <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
-          <button class="dot green" data-action="maximize" aria-label="Maximize"></button>
-          <div class="win-title">Game Systems of “The Outlast Trials” — CMPM 176</div>
-        </div>
-        <div class="win-body">
-          <!-- Minimized -->
-          <div class="desc-short">
-            <p>
-              I explored game systems and analyzed <em>The Outlast Trials</em> to understand progression mechanics
-              and player dynamics using Miro. 
-            </p>
-            <a class="btn btn-ext"
-               href="https://miro.com/miroverse/game-systems-of-outlast-trials/?social=copy-link"
-               target="_blank" rel="noopener">
-              <i class="fa-solid fa-up-right-from-square"></i> View on Miroverse
-            </a>
-          </div>
-
-          <!-- Maximized -->
-          <div class="desc-long">
-            <div class="media-row">
-              <div class="image-box">
-                <div class="media-frame">
-                  <!-- Optional cover image if you have one -->
-                  <img src="assets/images/outlast.png" alt="Outlast Trials systems analysis board preview (Miro)" />
+            <!-- Maximized -->
+            <div class="desc-long">
+              <div class="media-row">
+                <div class="image-box">
+                  <div class="media-frame">
+                    <img src="assets/images/outlast.png" alt="Outlast Trials systems analysis board preview (Miro)" />
+                  </div>
+                  <div class="video-caption">Systems Analysis Board — Miro (UCSC) • June 2024</div>
                 </div>
-                <div class="video-caption">Systems Analysis Board — Miro (UCSC) • June 2024</div>
+                <div class="action-col">
+                  <a class="btn" href="https://miro.com/miroverse/game-systems-of-outlast-trials/?social=copy-link" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-up-right-from-square"></i> View on Miroverse
+                  </a>
+                </div>
               </div>
-              <div class="action-col">
-                <a class="btn btn-ext"
-                   href="https://miro.com/miroverse/game-systems-of-outlast-trials/?social=copy-link"
-                   target="_blank" rel="noopener">
-                  <i class="fa-solid fa-up-right-from-square"></i> View on Miroverse
-                </a>
+              <div class="desc-box">
+                <h3>Overview</h3>
+                <p>In <strong>CMPM-176 (UCSC)</strong>, I mapped how interacting systems create tension and flow in a horror setting, then communicated findings via a public Miroverse board.</p>
               </div>
-            </div>
-
-            <div class="desc-box">
-              <h3>Overview</h3>
-              <p>
-                In my <strong>CMPM 176</strong> class at UCSC, I had the opportunity to delve deeply into game systems, gaining a comprehensive
-                understanding of how different elements connect to create a cohesive experience. I worked extensively on various game systems,
-                exploring their interactions and the impact they have on gameplay. One of the highlights was my in-depth analysis of
-                <em>The Outlast Trials</em> on the Miro application where I examined its intricate systems, including progression mechanics,
-                environmental storytelling, and player dynamics. This hands-on experience not only enhanced my technical skills but also broadened
-                my perspective on game design, allowing me to appreciate the complexity and creativity involved in crafting immersive game worlds.
-              </p>
             </div>
           </div>
-        </div>
-      </article>
-    </div>
+        </article>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    © 2025 Kaylee Linette Morales
-  </footer>
+  <footer>© 2025 Kaylee Linette Morales</footer>
 
-  <!-- Ambient code layer (optional) -->
+  <!-- Optional ambient layer to match your site -->
   <div class="code-jumble-layer" aria-hidden="true"></div>
   <script src="code-jumble.js"></script>
 
@@ -276,21 +226,15 @@
         link.href = share;
         link.target = '_blank';
         link.rel = 'noopener';
-        link.className = 'btn btn-deck';
+        link.className = 'btn';
         link.innerHTML = '<i class="fa-solid fa-presentation-screen"></i> Open Slides';
 
         const fallback = document.createElement('div');
-        fallback.className = 'slides-fallback';
-        fallback.innerHTML = `
-          <div>
-            <p style="margin:0 0 10px;color:var(--muted);">
-              The slide deck can’t be embedded by Google on this site.
-            </p>
-            <p style="margin:0 0 14px;color:var(--muted);">
-              Click below to open it in a new tab.
-            </p>
-          </div>
-        `;
+        fallback.style.border = '1px dashed var(--border)';
+        fallback.style.borderRadius = '12px';
+        fallback.style.padding = '20px';
+        fallback.style.textAlign = 'center';
+        fallback.textContent = 'The slide deck can’t be embedded. Click to open it in a new tab.';
 
         const wrap = document.createElement('div');
         wrap.style.position = 'relative';
@@ -300,8 +244,8 @@
       }, 2000);
     });
   </script>
-  <script src="site.js" defer></script>
-  <!-- Window behavior (fullscreen on all pages, smooth FLIP, stable close) -->
+
   <script src="window-ui.js"></script>
+  <script src="site.js"></script>
 </body>
 </html>
