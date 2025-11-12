@@ -8,12 +8,68 @@
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    /* Match your Design page behavior */
+    /* Match your Design page behavior + fixes for header dots & minimized question box */
     .mac-window .desc-long { display: none; }
     .mac-window.is-max .desc-short { display: none; }
     .mac-window.is-max .desc-long { display: block; }
-    .mac-window.is-max .win-header{ position: sticky; top: 0; z-index: 3; background: #e8e6f1; border-bottom: 1px solid rgba(0,0,0,.06); }
-    .mac-window.is-max .win-body{ max-height: calc(100vh - 180px); overflow: auto; padding: 18px 18px 22px; background: radial-gradient(800px 300px at 0% -10%, rgba(159,140,255,.08), transparent 50%), #fff; scroll-behavior: smooth; }
+
+    /* ---------- Header / dot button fix (prevents squish) ---------- */
+    .win-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      min-height: 52px;
+      box-sizing: border-box;
+      background: linear-gradient(180deg, #f3f1fb, #efeaf8);
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+    .win-header .dots {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      flex-shrink: 0;
+      margin-right: 6px;
+    }
+    .win-header .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.06) inset;
+    }
+    .win-header .dot.red    { background: #ff5f57; }
+    .win-header .dot.yellow { background: #ffbd2e; }
+    .win-header .dot.green  { background: #28c840; }
+
+    .win-header .win-title {
+      font-weight: 700;
+      font-size: 15px;
+      color: #1b1333;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1 1 auto;
+    }
+
+    /* Make header sticky when maximized */
+    .mac-window.is-max .win-header{
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      background: #e8e6f1;
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+
+    /* ---------- Maximized body styles ---------- */
+    .mac-window.is-max .win-body{
+      max-height: calc(100vh - 180px);
+      overflow: auto;
+      padding: 18px 18px 22px;
+      background: radial-gradient(800px 300px at 0% -10%, rgba(159,140,255,.08), transparent 50%), #fff;
+      scroll-behavior: smooth;
+    }
     .mac-window.is-max .win-body::-webkit-scrollbar{ width: 10px; }
     .mac-window.is-max .win-body::-webkit-scrollbar-track{ background: #f1eefb; border-radius: 10px; }
     .mac-window.is-max .win-body::-webkit-scrollbar-thumb{ background: #c7bdfc; border-radius: 10px; border: 2px solid #f1eefb; }
@@ -36,6 +92,23 @@
 
     /* Thumbs (optional images) */
     .win-thumb{ display:block; width: clamp(220px, 60%, 380px); height:auto; object-fit:contain; margin:0 auto 10px; background:#fff; border:1px solid var(--border); border-radius:12px; box-shadow: var(--shadow); }
+
+    /* compact thumbnail tweaks for minimized card */
+    .mac-window .desc-short img.win-thumb {
+      width: 70%;
+      max-width: 340px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    /* Make minimized view readable on small screens */
+    @media (max-width:720px) {
+      .action-col .btn { min-width: 48%; }
+      .action-col { gap:8px; }
+      .mac-window .desc-short img.win-thumb { width: 90%; }
+      .win-header { padding: 8px 10px; gap:8px; min-height:48px; }
+      .win-header .dot { width:12px; height:12px; }
+    }
   </style>
 </head>
 <body data-page="studies">
@@ -67,17 +140,23 @@
         <!-- Advocacy: Audio Visualizer Standardization -->
         <article class="mac-window" data-win-id="usc-advocacy-av">
           <div class="win-header">
-            <button class="dot red" data-action="close" aria-label="Close"></button>
-            <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
-            <button class="dot green" data-action="maximize" aria-label="Maximize"></button>
+            <div class="dots" aria-hidden="true">
+              <span class="dot red" data-action="close" aria-label="Close"></span>
+              <span class="dot yellow" data-action="minimize" aria-label="Minimize"></span>
+              <span class="dot green" data-action="maximize" aria-label="Maximize"></span>
+            </div>
             <div class="win-title">
               Making Sound Visible — Standardizing Audio Visualizers in Shooters
             </div>
           </div>
           <div class="win-body">
-            <!-- Minimized -->
+            <!-- Minimized: question box -->
             <div class="desc-short">
-              <p><strong>Advocacy statement:</strong> standardize visual audio cues in shooters to enable trauma-informed, accessible play for all players.</p>
+              <div class="min-question-box" role="region" aria-label="Audio visualizer questions">
+                <!-- <p>How can visual audio cues make shooters safe for trauma-affected players?</p>
+                <p>What design choices let visualizers remain informative without distracting?</p> -->
+                <p>How do we standardize visual audio as an accessibility option industry-wide?</p>
+              </div>
             </div>
 
             <!-- Maximized -->
@@ -114,22 +193,23 @@
         <!-- Study 1: Time-Based Systems Slides (UCSC) -->
         <article class="mac-window" data-win-id="ucsc-time">
           <div class="win-header">
-            <button class="dot red" data-action="close" aria-label="Close"></button>
-            <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
-            <button class="dot green" data-action="maximize" aria-label="Maximize"></button>
+            <div class="dots" aria-hidden="true">
+              <span class="dot red" data-action="close" aria-label="Close"></span>
+              <span class="dot yellow" data-action="minimize" aria-label="Minimize"></span>
+              <span class="dot green" data-action="maximize" aria-label="Maximize"></span>
+            </div>
             <div class="win-title">
               System Analysis: Time-Based Puzzles — CMPM 176
             </div>
           </div>
           <div class="win-body">
-            <!-- Minimized -->
+            <!-- Minimized: question box -->
             <div class="desc-short">
-              <div class="media-frame" style="margin-bottom:12px;">
-                <iframe
-                  data-slides="https://docs.google.com/presentation/d/1HBdXfh3Ckwq3aEtR4FS3suNRUBb1oX-wW0ZPxTg_XlI/edit?usp=sharing"
-                  title="System Analysis on Time-Based Puzzles (UCSC)"></iframe>
+              <div class="min-question-box" role="region" aria-label="Time-based puzzles questions">
+                <p>How do time-based verbs shape player pacing and challenge curves?</p>
+              <!-- <p>Which affordances let players feel in control when clocks are involved?</p>
+                <p>How can we transplant time puzzles into new contexts while retaining flow?</p> -->
               </div>
-              <p><strong>Slides study:</strong> analysis of time-based mechanics (e.g., <em>Portal 2</em>, <em>Overcooked</em>, <em>Pikmin 3</em>) and a pitched implementation.</p>
             </div>
 
             <!-- Maximized -->
@@ -156,20 +236,23 @@
         <!-- Study 2: Outlast Trials Systems (UCSC) -->
         <article class="mac-window" data-win-id="ucsc-outlast">
           <div class="win-header">
-            <button class="dot red" data-action="close" aria-label="Close"></button>
-            <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
-            <button class="dot green" data-action="maximize" aria-label="Maximize"></button>
+            <div class="dots" aria-hidden="true">
+              <span class="dot red" data-action="close" aria-label="Close"></span>
+              <span class="dot yellow" data-action="minimize" aria-label="Minimize"></span>
+              <span class="dot green" data-action="maximize" aria-label="Maximize"></span>
+            </div>
             <div class="win-title">
               Game Systems of “The Outlast Trials” — CMPM 176
             </div>
           </div>
           <div class="win-body">
-            <!-- Minimized -->
+            <!-- Minimized: question box -->
             <div class="desc-short">
-              <p><strong>Miro board:</strong> progression, environmental storytelling, and player dynamics analysis for <em>The Outlast Trials</em>.</p>
-              <a class="btn" href="https://miro.com/miroverse/game-systems-of-outlast-trials/?social=copy-link" target="_blank" rel="noopener">
-                <i class="fa-solid fa-up-right-from-square"></i> View on Miroverse
-              </a>
+              <div class="min-question-box" role="region" aria-label="Outlast trials questions">
+              <!--  <p>How do progression loops and environmental storytelling produce dread and pacing?</p>
+                <p>What player dynamics shift when cooperative pressure is introduced?</p> -->
+                <p>Which systems amplify emergent horror?</p>
+              </div>
             </div>
 
             <!-- Maximized -->
