@@ -9,14 +9,14 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     /* ============================
-       Swap short/long views
+      Swap short/long views
        ============================ */
     .mac-window .desc-long { display: none; }
     .mac-window.is-max .desc-short { display: none; }
     .mac-window.is-max .desc-long { display: block; }
 
     /* ============================
-       Maximized window: scroll + sticky header chrome only
+      Maximized window: scroll + sticky header chrome only
        ============================ */
     .mac-window.is-max .win-header{
       position: sticky; top: 0; z-index: 3;
@@ -44,7 +44,7 @@
     .mac-window.is-max .win-body::-webkit-scrollbar-thumb:hover{ background: #b4a5ff; }
 
     /* ============================
-       Video (thumbnail mode) — for Markus
+      Video (thumbnail mode) — for Markus
        ============================ */
     .video-wrap{
       position: relative;
@@ -80,7 +80,7 @@
     .video-wrap:hover .icon{ transform: scale(1.05); }
 
     /* ============================
-       Maximized media row (media + buttons)
+      Maximized media row (media + buttons)
        ============================ */
     .media-row{
       display: flex;
@@ -160,7 +160,7 @@
     }
 
     /* ============================
-       Boxed sections
+      Boxed sections
        ============================ */
     .desc-box{
       position: relative;
@@ -246,7 +246,7 @@
                 </div>
               </div>
               <p>
-                Explore a fog-shrouded, distorted version of UCSC in this 2D puzzle horror game. Uncover cryptic clues and hidden memories to piece together the disturbing truth behind one man’s obsession. 
+                Explore a fog-shrouded, distorted version of UCSC in this 2D puzzle horror game. Uncover cryptic clues and hidden memories to piece together the disturbing truth behind one man’s obsession.
               </p>
               <a class="btn btn-steam" href="https://store.steampowered.com/app/3674920/Markuss_Miasma/" target="_blank" rel="noopener">
                 <i class="fa-brands fa-steam-symbol"></i> View on Steam
@@ -273,7 +273,7 @@
               <div class="desc-box">
                 <h3>Overview</h3>
                 <p>
-                  Welcome to UCSC—sort of. <em>Markus’s Miasma</em> drops players into a fog-drenched, uncanny version of UC Santa Cruz where familiar landmarks are warped and the silence carries weight. Navigate eerie footpaths and unsettling interiors as you uncover the story of Markus—a man whose past is bleeding into reality through puzzles, fragments, and memory. 
+                  Welcome to UCSC—sort of. <em>Markus’s Miasma</em> drops players into a fog-drenched, uncanny version of UC Santa Cruz where familiar landmarks are warped and the silence carries weight. Navigate eerie footpaths and unsettling interiors as you uncover the story of Markus—a man whose past is bleeding into reality through puzzles, fragments, and memory.
                 </p>
               </div>
 
@@ -296,6 +296,18 @@
                 <p>
                   Originated as a <strong>UCSC undergraduate capstone</strong>. Progressed from <strong>pre-production</strong> (vision, scope, prototypes) to <strong>production</strong> (feature/content) and <strong>post-production</strong> (polish, QA). Refined via structured playtests with classmates and faculty.
                 </p>
+              </div>
+
+              <!-- ✅ ADDED: Markus credits -->
+              <div class="desc-box">
+                <h3>Credits</h3>
+                <ul>
+                  <li><strong>Project Owner / Producer:</strong> Kaylee Morales</li>
+                  <li><strong>Tech Lead:</strong> Nat Chu</li>
+                  <li><strong>Tech Members:</strong> Isai Rincon, Nick Dilorenzo, Chrstina Taylor, Celeste Herrera</li>
+                  <li><strong>Art Lead:</strong> Samina Esteqlal</li>
+                  <li><strong>Art Member:</strong> Hasina Esteqlal</li>
+                </ul>
               </div>
 
               <div class="desc-box">
@@ -321,7 +333,7 @@
             <div class="desc-short">
               <img class="win-thumb" src="assets/images/railco.jpg" alt="Red Trees Rail Co cover" />
               <p>
-                Red Trees Rail Co is a VR Horror Train simulator set in a Redwood Forest. Work a tiny night train by yourself, transporting passengers from town to town. 
+                Red Trees Rail Co is a VR Horror Train simulator set in a Redwood Forest. Work a tiny night train by yourself, transporting passengers from town to town.
               </p>
               <a class="btn btn-steam" href="https://store.steampowered.com/app/2967460/RED_TREES_RAIL_CO/" target="_blank" rel="noopener">
                 <i class="fa-brands fa-steam-symbol"></i> View on Steam
@@ -376,9 +388,189 @@
                   <strong>2D artist, storyboarder, QA tester, generalist.</strong> Joined a <strong>UCSC capstone team</strong> as a sophomore to support a senior team delivering a polished VR experience.
                 </p>
               </div>
+
+              <!-- ✅ ADDED: Red Trees credits -->
+              <div class="desc-box">
+                <h3>Credits</h3>
+                <ul>
+                  <li><strong>Programmers:</strong> Charles Qi, Phil Meyer</li>
+                  <li><strong>Art / Social Media / General:</strong> Kaylee Morales</li>
+                </ul>
+              </div>
+
             </div>
           </div>
         </article>
+      </div>
+    </section>
+
+    <!-- ===== Game Jams ===== -->
+    <section style="margin-top:24px">
+      <h2 class="section-heading"><i class="fa-brands fa-itch-io"></i> Game Jams</h2>
+      <div class="grid">
+
+        <!-- Game Jam 1 — Things Left Unspoken -->
+        <article class="mac-window" data-win-id="jam-thingsleftunspoken">
+          <div class="win-header">
+            <button class="dot red" data-action="close" aria-label="Close"></button>
+            <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
+            <button class="dot green" data-action="maximize" aria-label="Maximize"></button>
+            <div class="win-title">Things Left Unspoken — thatgamejam #1</div>
+          </div>
+
+          <div class="win-body">
+            <!-- Minimized -->
+            <div class="desc-short">
+              <img class="win-thumb" src="assets/images/ThingsLeftUnspokenCoverArt.png" alt="Things Left Unspoken cover art" />
+              <p>
+                A point-and-click narrative game about a daughter trying to finally say what she’s been putting off during lunch with her mother.
+              </p>
+              <a class="btn btn-itch" href="https://d3adg00se.itch.io/thingsleftunspoken" target="_blank" rel="noopener">
+                <i class="fa-brands fa-itch-io"></i> Play
+              </a>
+            </div>
+
+            <!-- Maximized -->
+            <div class="desc-long">
+              <div class="media-row">
+                <div class="image-box">
+                  <div class="media-frame">
+                    <img src="assets/images/ThingsLeftUnspokenCoverArt.png" alt="Things Left Unspoken key art" />
+                  </div>
+                  <div class="video-caption">Things Left Unspoken — January 2026</div>
+                </div>
+
+                <div class="action-col">
+                  <a class="btn btn-itch" href="https://d3adg00se.itch.io/thingsleftunspoken" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-itch-io"></i> Play on itch.io
+                  </a>
+                  <a class="btn" href="https://itch.io/jam/thatgamejam01" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-link"></i> Jam page
+                  </a>
+                </div>
+              </div>
+
+              <div class="desc-box">
+                <h3>Overview</h3>
+                <p>
+                  <em>Things Left Unspoken</em> is a point and click narrative game about a daughter having lunch with her mother.
+                  You play as the daughter, who is trying to say something she has been putting off.
+                </p>
+                <p>
+                  As the mother talks, dialogue choices appear in real time. However, your brain will be riddled with intrusive thoughts
+                  (doubts, fears, etc.), that may bleed into the real world. As the conversation gets heavier, these panicked thoughts may
+                  overwhelm you.
+                </p>
+              </div>
+
+              <div class="desc-box">
+                <h3>My Role & Programming</h3>
+                <p>
+                  I was the <strong>main programmer</strong> responsible for bringing the core mechanic to life: we wanted the interaction to
+                  <strong>feel like the difficulty of speaking</strong>. This mechanic would show the hesitation, the emotional blockage, and the pressure of having too
+                  many responses in your head at once.
+                </p>
+                <p>
+                  The UI was designed so <strong>text can fill the screen</strong>, and you often have to <strong>wait for the mom to finish
+                  speaking before you can click</strong>. This was intentionally designed to simulate having a flood of responses in your mind, but not being able to say them yet.
+                </p>
+                <p>
+                  I closely read the design documents that our designer, <strong>KT</strong>, would share with us and translated them into
+                  real gameplay behavior. I turned narrative intentions into timing, input rules, and moment-to-moment tension.
+                </p>
+              </div>
+
+              <div class="desc-box">
+                <h3>Content Warning</h3>
+                <p>
+                  This game contains emotionally sensitive themes, including difficult family dynamics and intrusive thoughts.
+                </p>
+              </div>
+
+              <div class="desc-box features">
+                <h3>How It Works</h3>
+                <ul>
+                  <li><strong>Dialogue choices appear</strong> while the mother is speaking.</li>
+                  <li><strong>Some options</strong> move the narrative forward, others are more on the intrusive side.</li>
+                  <li><strong>As tension rises,</strong> choices become more chaotic.</li>
+                  <li><strong>Not choosing</strong> a response in time pushes the conversation in a specific direction.</li>
+                </ul>
+              </div>
+
+              <div class="desc-box">
+                <h3>Details</h3>
+                <ul>
+                  <li><strong>Controls:</strong> Left click to select a response.</li>
+                  <li><strong>Outcomes:</strong> There are three possible endings.</li>
+                  <li><strong>Playtime:</strong> ~5 minutes.</li>
+                  <li><strong>Themes:</strong> Mother-daughter relationships, intrusive thoughts, emotional pressure, and the difficulty of being honest with someone you love.</li>
+                </ul>
+              </div>
+
+              <div class="desc-box">
+                <h3>Known Bug</h3>
+                <p>
+                  Dialogue can be unselectable. If this happens, go to the pause menu and click <strong>Restart</strong>,
+                  or go to <strong>Main Menu</strong> and start from there.
+                </p>
+              </div>
+
+              <div class="desc-box">
+                <h3>Credits</h3>
+                <ul>
+                  <li><strong>KT LoPorto</strong> — Narrative / Designer / Voice Actor</li>
+                  <li><strong>Kaylee Morales</strong> — Programmer</li>
+                  <li><strong>Michelle Zhou</strong> — Art / UI / Programmer</li>
+                </ul>
+              </div>
+
+              <div class="desc-box">
+                <h3>Audio Assets</h3>
+                <ul>
+                  <li><a href="https://freesound.org/people/el_boss/sounds/645342/" target="_blank" rel="noopener">freesound.org/people/el_boss/sounds/645342/</a></li>
+                  <li><a href="https://freesound.org/people/Destructo20/sounds/780545/" target="_blank" rel="noopener">freesound.org/people/Destructo20/sounds/780545/</a></li>
+                  <li><a href="https://freesound.org/people/dynia87/sounds/381157/" target="_blank" rel="noopener">freesound.org/people/dynia87/sounds/381157/</a></li>
+                  <li><a href="https://freesound.org/people/3bagbrew/sounds/57742/" target="_blank" rel="noopener">freesound.org/people/3bagbrew/sounds/57742/</a></li>
+                </ul>
+              </div>
+
+              <div class="desc-box">
+                <h3>Jam Info</h3>
+                <p>
+                  Made for <strong>thatgamejam #1</strong> by thatgamecompany, inspired by the provided image.
+                </p>
+              </div>
+
+              <div class="desc-box">
+                <h3>Chinese Translation</h3>
+                <p>
+                  《未尽之言》是一款点击互动类的叙事游戏，讲述一位女儿与一位母亲共进午餐的故事。你将扮演女儿，尝试说出那些埋藏心底，迟迟未开口的话。
+                </p>
+                <p>
+                  <strong>内容警告：</strong>本游戏包含情感敏感的主题，包括复杂的家庭关系和侵入性思维。
+                </p>
+                <ul>
+                  <li><strong>控制:</strong> LMB / 鼠标左键</li>
+                  <li><strong>玩法机制：</strong>当母亲说话时，对话选项便会实时出现。</li>
+                  <li>有些选项能推动故事的发展，而另一些则更加具有侵入性。</li>
+                  <li>随着紧张局势的加剧，选择会变得愈发混乱。</li>
+                  <li>如果未能及时做出回应，对话将朝着特定的方向发展。</li>
+                  <li><strong>结局走向：</strong>共三种可能结局</li>
+                  <li><strong>游戏时长：</strong>约5分钟</li>
+                  <li><strong>核心主题：</strong>母女关系、侵入性思维、情感压力以及与至亲坦诚的困难。</li>
+                </ul>
+                <p><strong>制作团队：</strong></p>
+                <ul>
+                  <li><strong>KT LoPorto</strong> — 叙事 / 设计 / 配音</li>
+                  <li><strong>Kaylee Morales</strong> — 程序</li>
+                  <li><strong>Michelle Zhou</strong> — 美术 / UI / 程序</li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </article>
+
       </div>
     </section>
 
@@ -399,7 +591,7 @@
             <div class="desc-short">
               <img class="win-thumb" src="assets/images/batbomb.webp" alt="Bat Bomb prototype cover" />
               <p>
-                A vibrant 2D platformer developed in Unity, replacing WASD with a deliberate slingshot movement system. 
+                A vibrant 2D platformer developed in Unity, replacing WASD with a deliberate slingshot movement system.
               </p>
               <a class="btn btn-itch" href="https://calvinhunter03.itch.io/bombat-web" target="_blank" rel="noopener">
                 <i class="fa-brands fa-itch-io"></i> Play
@@ -428,7 +620,7 @@
               <div class="desc-box">
                 <h3>Overview</h3>
                 <p>
-                  <em>Bat Bomb</em> is a Unity platformer that rethinks movement by replacing continuous WASD input with a deliberate <strong>slingshot mechanic</strong>. Players line up shots and commit to each launch to traverse floating platforms with precision. 
+                  <em>Bat Bomb</em> is a Unity platformer that rethinks movement by replacing continuous WASD input with a deliberate <strong>slingshot mechanic</strong>. Players line up shots and commit to each launch to traverse floating platforms with precision.
                 </p>
               </div>
 
@@ -442,10 +634,18 @@
               </div>
 
               <div class="desc-box">
-                <h3>Team & My Role</h3>
+                <h3>My Role & Team</h3>
                 <p>
                   Built by a <strong>3-person team</strong> for a <strong>UCSC Prototype class</strong> focused on creative mechanics exploration. I served as <strong>Concept Refiner, Coder, and Documenter</strong>, shaping the slingshot design, implementing core interactions, and maintaining design/technical docs.
                 </p>
+              </div>
+
+              <!-- ✅ ADDED: Bat Bomb credits -->
+              <div class="desc-box">
+                <h3>Credits</h3>
+                <ul>
+                  <li><strong>Programmers:</strong> Calvin Hunter, Jake Sales, Kaylee Morales</li>
+                </ul>
               </div>
 
               <div class="desc-box">
@@ -497,7 +697,7 @@
               <div class="desc-box">
                 <h3>Overview</h3>
                 <p>
-                  <em>Puzzle Path</em> is a puzzle-platformer built in <strong>Phaser</strong> for a <strong>foundational game design class at UCSC</strong>. The project emphasizes readable level design, tight controls, and light narrative framing. 
+                  <em>Puzzle Path</em> is a puzzle-platformer built in <strong>Phaser</strong> for a <strong>foundational game design class at UCSC</strong>. The project emphasizes readable level design, tight controls, and light narrative framing.
                 </p>
               </div>
 
@@ -511,11 +711,20 @@
               </div>
 
               <div class="desc-box">
-                <h3>Team & My Role</h3>
+                <h3>My Role & Team</h3>
                 <p>
                   Built by a <strong>4-person team</strong>. My contributions focused on <strong>map and platform concept design</strong> and <strong>coding</strong> core interactions and level logic in Phaser.
                 </p>
               </div>
+
+              <!-- ✅ ADDED: Puzzle Path credits -->
+              <div class="desc-box">
+                <h3>Credits</h3>
+                <ul>
+                  <li><strong>Programmers:</strong> Hasina Esteqlal, Samina Esteqlal, Kaylee Morales, Celeste Herrera</li>
+                </ul>
+              </div>
+
             </div>
           </div>
         </article>
@@ -591,6 +800,6 @@
   <!-- Window behavior (fullscreen on all pages, smooth FLIP, stable close) -->
   <script src="window-ui.js"></script>
   <!-- Shared site utilities (mobile nav, etc.) -->
-<script src="site.js"></script>
+  <script src="site.js"></script>
 </body>
 </html>

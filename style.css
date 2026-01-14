@@ -1,7 +1,7 @@
 /* ==============================
-   Fonts
+  Fonts
    ============================== */
-   @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap');
 
    /* ==============================
       Theme
@@ -730,3 +730,48 @@ body[data-page="portfolio"] .section-heading {
 
 /* Add this */
 .banner-inner { position: relative; }
+
+/* ============================
+   Mac window controls — fixed size everywhere (Design/Studies/Published)
+   ============================ */
+
+/* Lock header geometry */
+.mac-window .win-header{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  height: 38px;          /* fixed header height */
+  padding: 10px 12px;    /* consistent spacing */
+  box-sizing: border-box;
+}
+
+/* Lock dot geometry (no stretching/shrinking) */
+.mac-window .win-header .dot{
+  width: 12px !important;
+  height: 12px !important;
+  min-width: 12px !important;
+  min-height: 12px !important;
+
+  padding: 0 !important;       /* override global button padding */
+  margin: 0 !important;
+  border: 0 !important;
+
+  border-radius: 999px;
+  flex: 0 0 12px;              /* never shrink or grow */
+  line-height: 0 !important;   /* prevent text metrics from affecting size */
+  font-size: 0 !important;     /* prevent font sizing from affecting layout */
+  box-sizing: border-box;
+
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* Title should truncate instead of pushing dots */
+.mac-window .win-header .win-title{
+  flex: 1 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
