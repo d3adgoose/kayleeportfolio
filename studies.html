@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Studies — Kaylee Linette Morales</title>
+  <title>Work — Kaylee Linette Morales</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    /* Match your Design page behavior + fixes for header dots & minimized question box */
+    /* ---------- Window show/hide behavior ---------- */
     .mac-window .desc-long { display: none; }
     .mac-window.is-max .desc-short { display: none; }
     .mac-window.is-max .desc-long { display: block; }
 
-    /* ---------- Header / dot button fix (prevents squish) ---------- */
+    /* ---------- Header / dot button fix ---------- */
     .win-header {
       display: flex;
       align-items: center;
@@ -53,7 +53,7 @@
       flex: 1 1 auto;
     }
 
-    /* Make header sticky when maximized */
+    /* ---------- Sticky header when maximized ---------- */
     .mac-window.is-max .win-header{
       position: sticky;
       top: 0;
@@ -71,29 +71,131 @@
       scroll-behavior: smooth;
     }
     .mac-window.is-max .win-body::-webkit-scrollbar{ width: 10px; }
-    .mac-window.is-max .win-body::-webkit-scrollbar-track{ background: #f1eefb; border-radius: 10px; }
-    .mac-window.is-max .win-body::-webkit-scrollbar-thumb{ background: #c7bdfc; border-radius: 10px; border: 2px solid #f1eefb; }
-    .mac-window.is-max .win-body::-webkit-scrollbar-thumb:hover{ background: #b4a5ff; }
+    .mac-window.is-max .win-body::-webkit-scrollbar-track{
+      background: #f1eefb;
+      border-radius: 10px;
+    }
+    .mac-window.is-max .win-body::-webkit-scrollbar-thumb{
+      background: #c7bdfc;
+      border-radius: 10px;
+      border: 2px solid #f1eefb;
+    }
+    .mac-window.is-max .win-body::-webkit-scrollbar-thumb:hover{
+      background: #b4a5ff;
+    }
 
-    /* Utility blocks to mirror Design page look */
-    .media-row{ display:flex; flex-direction:column; align-items:center; gap:16px; }
-    .image-box, .slides-box{ width:min(820px, 92vw); }
-    .media-frame{ position:relative; width:100%; border-radius:12px; overflow:hidden; border:1px solid var(--border); box-shadow: var(--shadow); background:#fff; }
-    .media-frame::before{ content:""; display:block; padding-top:56.25%; }
-    .media-frame > *{ position:absolute; inset:0; width:100%; height:100%; border:0; object-fit:cover; }
-    .video-caption{ margin-top:6px; font-size:.85rem; text-transform:uppercase; letter-spacing:1px; color:rgba(0,0,0,.6); text-align:center; }
+    /* ---------- Shared media/layout ---------- */
+    .media-row{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:16px;
+    }
+    .image-box,
+    .slides-box{
+      width:min(820px, 92vw);
+    }
+    .media-frame{
+      position:relative;
+      width:100%;
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      box-shadow: var(--shadow);
+      background:#fff;
+    }
+    .media-frame::before{
+      content:"";
+      display:block;
+      padding-top:56.25%;
+    }
+    .media-frame > *{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+      object-fit:cover;
+    }
+    .video-caption{
+      margin-top:6px;
+      font-size:.85rem;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      color:rgba(0,0,0,.6);
+      text-align:center;
+    }
 
-    .desc-box{ background:linear-gradient(180deg,#ffffff 0%,#fbfaff 100%); border:1px solid rgba(0,0,0,.06); border-radius:12px; padding:16px 18px; margin:0 0 18px; box-shadow:0 10px 22px rgba(43,16,84,.06); }
-    .desc-box h3{ margin:0 0 10px; font-size:1.06rem; }
-    .desc-box p, .desc-box ul{ margin:0 0 12px; line-height:1.78; color:var(--muted); }
+    .desc-box{
+      background:linear-gradient(180deg,#ffffff 0%,#fbfaff 100%);
+      border:1px solid rgba(0,0,0,.06);
+      border-radius:12px;
+      padding:16px 18px;
+      margin:0 0 18px;
+      box-shadow:0 10px 22px rgba(43,16,84,.06);
+    }
+    .desc-box h3{
+      margin:0 0 10px;
+      font-size:1.06rem;
+      color: var(--ink);
+    }
+    .desc-box p,
+    .desc-box ul{
+      margin:0 0 12px;
+      line-height:1.78;
+      color:var(--muted);
+    }
 
-    .btn{ display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; font-weight:700; text-decoration:none; border:1px solid var(--border); background:#fff; transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; box-shadow:var(--shadow); }
-    .btn:hover{ transform:translateY(-1px); border-color:#ddd6fe; }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      font-size:14px;
+      line-height:1;
+      border-radius:12px;
+      text-decoration:none;
+      border:1px solid var(--border);
+      background:#fff;
+      box-shadow:var(--shadow);
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      min-height:44px;
+      white-space:nowrap;
+      font-weight:700;
+    }
+    .btn:hover{
+      transform:translateY(-1px);
+      border-color:#ddd6fe;
+    }
+    .btn.btn-pdf{
+      padding:10px 12px;
+      font-weight:600;
+    }
 
-    /* Thumbs (optional images) */
-    .win-thumb{ display:block; width: clamp(220px, 60%, 380px); height:auto; object-fit:contain; margin:0 auto 10px; background:#fff; border:1px solid var(--border); border-radius:12px; box-shadow: var(--shadow); }
+    .action-col{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:12px;
+    }
+    .action-col .btn{
+      min-width:180px;
+      justify-content:center;
+    }
 
-    /* compact thumbnail tweaks for minimized card */
+    /* ---------- Thumbnails ---------- */
+    .win-thumb{
+      display:block;
+      width: clamp(220px, 60%, 380px);
+      height:auto;
+      object-fit:contain;
+      margin:0 auto 10px;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:12px;
+      box-shadow: var(--shadow);
+    }
+
     .mac-window .desc-short img.win-thumb {
       width: 70%;
       max-width: 340px;
@@ -101,7 +203,74 @@
       margin-bottom: 10px;
     }
 
-    /* Make minimized view readable on small screens */
+    /* ---------- Sushi Rat sizing ---------- */
+    .usc-srr .win-thumb {
+      display: block;
+      width: 80%;
+      max-width: 380px;
+      height: auto;
+      object-fit: contain;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      margin: 0 auto 10px;
+    }
+    .usc-srr .media-row {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:16px;
+    }
+    .usc-srr .image-box {
+      width: min(400px, 85vw);
+      margin: 0 auto;
+    }
+    .usc-srr .media-frame.cover::before {
+      content: "";
+      display: block;
+      padding-top: 40%;
+    }
+    .usc-srr .media-frame img {
+      width:100%;
+      height:auto;
+      object-fit:contain;
+      border-radius:10px;
+      background:#fff;
+      border:1px solid var(--border);
+    }
+
+    /* ---------- Mural sizing ---------- */
+    .mural-thumb{
+      display:block;
+      width: clamp(220px, 60%, 360px);
+      height:auto;
+      object-fit:contain;
+      margin:0 auto 10px;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:12px;
+      box-shadow: var(--shadow);
+    }
+    .mural-frame{
+      position:relative;
+      width:min(520px, 80vw);
+      margin:0 auto 10px;
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      box-shadow: var(--shadow);
+      background:#fff;
+    }
+    .mural-frame img{
+      display:block;
+      width:100%;
+      height:auto;
+      object-fit:contain;
+      max-height: clamp(260px, 42vh, 560px);
+    }
+
+    /* ---------- Mobile ---------- */
     @media (max-width:720px) {
       .action-col .btn { min-width: 48%; }
       .action-col { gap:8px; }
@@ -111,33 +280,133 @@
     }
   </style>
 </head>
-<body data-page="studies">
+<body data-page="work">
   <header class="site-banner">
     <div class="banner-inner">
       <a class="brand" href="home.html">
         <div class="brand-badge">KM</div>
-        <div class="brand-title"><span class="name">Kaylee Linette Morales</span><span class="tag">Game Designer</span></div>
+        <div class="brand-title">
+          <span class="name">Kaylee Linette Morales</span>
+          <span class="tag">Producer &amp; Game Designer</span>
+        </div>
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">☰</button>
       <nav class="nav">
         <a href="home.html">Home</a>
-        <a href="published.html">Published</a>
-        <a href="design.html">Design</a>
-        <a class="active" href="studies.html">Studies</a>
+        <a href="published.html">Games</a>
+        <a class="active" href="studies.html">Projects</a>
         <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
   <main class="section">
-    <h1 class="hero-title">Studies</h1>
-    <p class="hero-sub">Research • Writing • Systems • Advocacy</p>
+    <h1 class="hero-title">Projects</h1>
+    <p class="hero-sub">Mods • Systems • UX • Research • Advocacy</p>
 
-    <!-- ===== USC • M.S. Computer Science: Game Development ===== -->
+    <!-- ===== USC ===== -->
     <section style="margin-top:24px">
       <h2 class="section-heading"><i class="fa-solid fa-graduation-cap"></i> USC • M.S. Computer Science: Game Development</h2>
       <div class="grid">
-        <!-- Advocacy: Audio Visualizer Standardization -->
+
+        <!-- Sushi Rat Revolution -->
+        <article class="mac-window usc-srr" data-win-id="usc-sushi">
+          <div class="win-header">
+            <div class="dots" aria-hidden="true">
+              <span class="dot red" data-action="close" aria-label="Close"></span>
+              <span class="dot yellow" data-action="minimize" aria-label="Minimize"></span>
+              <span class="dot green" data-action="maximize" aria-label="Maximize"></span>
+            </div>
+            <div class="win-title">Board Game — Sushi Rat Revolution (Up the River mod)</div>
+          </div>
+
+          <div class="win-body">
+            <div class="desc-short">
+              <img class="win-thumb" src="assets/images/srr-cover.png" alt="Sushi Rat Revolution cover art" />
+              <div class="min-question-box" role="region" aria-label="Sushi Rat overview questions">
+                <p>How I modded <em>Up the River</em> to add a rotating conveyor and new tension loops?</p>
+              </div>
+            </div>
+
+            <div class="desc-long">
+              <div class="media-row">
+                <div class="image-box">
+                  <div class="media-frame">
+                    <img src="assets/images/srr-cover.png" alt="Sushi Rat Revolution poster" />
+                  </div>
+                  <div class="video-caption">USC • CTIN-488 — 2025</div>
+                </div>
+                <div class="action-col">
+                  <a class="btn btn-pdf" href="assets/files/Team4-Rules.pdf" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-book"></i> Rules
+                  </a>
+                  <a class="btn btn-pdf" href="assets/files/Team4-PlaytestReport-Wk5.pdf" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-clipboard-check"></i> Playtest Report Week 1
+                  </a>
+                  <a class="btn btn-pdf" href="assets/files/Team4-Playtests-Wk6.pdf" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-clipboard-list"></i> Playtests Week 2
+                  </a>
+                  <a class="btn btn-pdf" href="assets/files/Team4-DesignPhotoJournal-Wk5.pdf" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-pen"></i> Design Journal Week 1
+                  </a>
+                  <a class="btn btn-pdf" href="assets/files/Team4-DesignPhotoJournal-Wk6.pdf" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-pen"></i> Design Journal Week 2
+                  </a>
+                  <a class="btn btn-pdf" href="assets/files/Sushi-Rat-Revolution-Cards.pdf" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-clone"></i> Card Designs
+                  </a>
+                  <a class="btn btn-pdf" href="assets/files/Shing-Team4-UtR-Presentation.pdf" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-file-powerpoint"></i> Presentation Deck
+                  </a>
+                </div>
+              </div>
+
+              <div class="desc-box">
+                <h3>Overview — Modding <em>Up the River</em></h3>
+                <p>
+                  <strong>Sushi Rat Revolution</strong> began as a targeted mod of <em>Up the River</em> built under a structured
+                  <strong>two-week work cycle</strong>. Across Week 1 and Week 2, our team introduced a rotating conveyor mechanic,
+                  redefined how rats interact with the river, and layered in set-collection goals to reshape push-your-luck decisions.
+                  The short timeline forced us to treat each week as its own micro-sprint: Week 1 focused on proving the core mechanic,
+                  and Week 2 focused on smoothing pacing and clarifying player choices.
+                </p>
+                <ul>
+                  <li><strong>Week 1:</strong> Defined the conveyor, paper-prototyped new states, clarified rat movement, and identified broken loops.</li>
+                  <li><strong>Week 2:</strong> Smoothed pacing, tightened rules text, aligned iconography with player cues, and recalibrated set-collection rewards.</li>
+                  <li>Kept all changes compatible with the original components so the mod could function as a drop-in rules patch.</li>
+                  <li>Documented the final rule diffs so a producer, QA team, or instructor can quickly understand what changed and why.</li>
+                </ul>
+              </div>
+
+              <div class="desc-box">
+                <h3>Mod Design &amp; Process</h3>
+                <p>
+                  We approached the project like a small production team:
+                  <strong>identify a friction point → propose a minimal rule change → prototype → playtest → iterate.</strong>
+                  Because the class schedule locked us to a two-week cycle, every change had to either sharpen tension,
+                  clarify feedback, or improve player flow.
+                </p>
+                <ul>
+                  <li>Reframed the conveyor as the core risk engine that determines urgency each turn.</li>
+                  <li>Balanced set-collection so rewards build over time but don’t stall the race pacing.</li>
+                  <li>Resolved early flow issues where players hesitated or stalled by simplifying turn structure and reducing ambiguous edge cases.</li>
+                  <li>Designed icons and card layouts to be easily reskinned in a future art or digital pass.</li>
+                </ul>
+              </div>
+
+              <div class="desc-box">
+                <h3>Production Notes</h3>
+                <ul>
+                  <li>Rule changes are isolated so the base <em>Up the River</em> experience stays intact for players who prefer the original.</li>
+                  <li>Card and icon assets are built as modular layers for fast updates or localized variants.</li>
+                  <li>Playtest reports and journals are structured to support QA, usability review, and future digital prototyping.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Audio Visualizer Advocacy -->
         <article class="mac-window" data-win-id="usc-advocacy-av">
           <div class="win-header">
             <div class="dots" aria-hidden="true">
@@ -145,52 +414,168 @@
               <span class="dot yellow" data-action="minimize" aria-label="Minimize"></span>
               <span class="dot green" data-action="maximize" aria-label="Maximize"></span>
             </div>
-            <div class="win-title">
-              Making Sound Visible — Standardizing Audio Visualizers in Shooters
-            </div>
+            <div class="win-title">Making Sound Visible — Standardizing Audio Visualizers in Shooters</div>
           </div>
+
           <div class="win-body">
-            <!-- Minimized: question box -->
             <div class="desc-short">
               <div class="min-question-box" role="region" aria-label="Audio visualizer questions">
-                <!-- <p>How can visual audio cues make shooters safe for trauma-affected players?</p>
-                <p>What design choices let visualizers remain informative without distracting?</p> -->
                 <p>How do we standardize visual audio as an accessibility option industry-wide?</p>
               </div>
             </div>
 
-            <!-- Maximized -->
             <div class="desc-long">
               <div class="desc-box">
                 <h3>Advocacy Statement</h3>
-                <p>As a game designer and a survivor of a school shooting, I carry a unique relationship with sound. Loud, sudden audio cues—gunfire, explosions, shouting—can trigger panic. Despite my love for shooters, I stepped away from many of them because these sounds overwhelmed me or brought back traumatic memories.</p>
-                <p><em>Fortnite’s</em> <strong>audio visualizer</strong> changed that. By translating nearby sounds into clear, on-screen visual indicators, it gives me agency over my sensory experience and lets me engage on my own terms. Originally designed for Deaf and hard-of-hearing players, it has become a lifeline for people like me—players with trauma, sound sensitivities, or cognitive differences.</p>
-                <p>I believe features like Fortnite’s visual sound indicators should be a <strong>standard</strong> across all shooting games—not as a niche setting, but as a core accessibility option. Just as subtitles and colorblind modes are expected, visual audio cues should be part of every player’s toolkit. This is inclusion in action: an act of empathy that tells players, <em>“You belong here, too.”</em></p>
-                <p>As I continue my studies at USC and build games with teams who care about impact, I’m committed to carrying this philosophy forward: design for excitement and expression, <em>and</em> for safety. The audio visualizer is more than a feature; it’s a symbol of what games can become when we make empathy part of design.</p>
+                <p>
+                  As a game designer and a survivor of a school shooting, I carry a unique relationship with sound.
+                  Loud, sudden audio cues can trigger panic. Despite my love for shooters, I stepped away from many
+                  of them because these sounds overwhelmed me or brought back traumatic memories.
+                </p>
+                <p>
+                  <em>Fortnite’s</em> <strong>audio visualizer</strong> changed that. By translating nearby sounds into clear,
+                  on-screen visual indicators, it gives me agency over my sensory experience and lets me engage on my own terms.
+                  Originally designed for Deaf and hard-of-hearing players, it has also become a lifeline for players with trauma,
+                  sound sensitivities, or cognitive differences.
+                </p>
+                <p>
+                  I believe features like visual sound indicators should become a <strong>standard</strong> across all shooting games.
+                  Just as subtitles and colorblind modes are expected, visual audio cues should be part of every player’s toolkit.
+                </p>
               </div>
 
               <div class="desc-box" id="design-as-advocacy">
                 <h3>Design as Advocacy</h3>
-                <p>This experience fundamentally shaped my philosophy as a game designer. I believe that audio visualizers should become standard across all shooting games — not just as a feature for Deaf or hard-of-hearing players, but as an essential accessibility tool for trauma-informed play.</p>
-                <p>Accessibility isn’t limited to physical ability; it extends to emotional safety, mental health, and cognitive inclusion. Standardizing visual audio cues can help:</p>
+                <p>
+                  Accessibility isn’t limited to physical ability. It extends to emotional safety, mental health,
+                  and cognitive inclusion. Standardizing visual audio cues can help:
+                </p>
                 <ul>
                   <li><strong>Players with PTSD or sound-trigger sensitivities</strong></li>
                   <li><strong>Neurodivergent players</strong> who struggle with overstimulation</li>
                   <li><strong>Hearing-impaired players</strong> who rely on visual cues for awareness</li>
                 </ul>
-                <p>By offering visual alternatives for auditory feedback, developers invite more people to safely experience fast-paced, high-stakes gameplay without exclusion or distress.</p>
+                <p>
+                  By offering visual alternatives for auditory feedback, developers invite more people to safely
+                  experience fast-paced gameplay without exclusion or distress.
+                </p>
               </div>
             </div>
           </div>
         </article>
+
       </div>
     </section>
 
-    <!-- ===== UCSC • B.S. Computer Science: Game Design ===== -->
+    <!-- ===== UCSC ===== -->
     <section style="margin-top:36px">
       <h2 class="section-heading"><i class="fa-solid fa-school"></i> UCSC • B.S. Computer Science: Game Design</h2>
       <div class="grid">
-        <!-- Study 1: Time-Based Systems Slides (UCSC) -->
+        <!-- Merrill Moat Mural -->
+        <article class="mac-window" data-win-id="ucsc-mural">
+          <div class="win-header">
+            <div class="dots" aria-hidden="true">
+              <span class="dot red" data-action="close" aria-label="Close"></span>
+              <span class="dot yellow" data-action="minimize" aria-label="Minimize"></span>
+              <span class="dot green" data-action="maximize" aria-label="Maximize"></span>
+            </div>
+            <div class="win-title">The Right to Carry — Merrill Moat Mural</div>
+          </div>
+
+          <div class="win-body">
+            <div class="desc-short">
+              <img class="mural-thumb" src="assets/images/righttocarry.jpeg" alt="The Right to Carry mural" />
+              <div class="min-question-box" role="region" aria-label="Mural overview questions">
+                <p>How I used public art to open a campus-wide conversation about gun violence?</p>
+              </div>
+            </div>
+
+            <div class="desc-long">
+              <div class="media-row">
+                <div class="image-box">
+                  <div class="mural-frame">
+                    <img src="assets/images/righttocarry.jpeg" alt="The Right to Carry mural full view" />
+                  </div>
+                  <div class="video-caption">Merrill Moat — 2024</div>
+                </div>
+              </div>
+
+              <div class="desc-box">
+                <h3>Artist Statement — Art as Conversation</h3>
+                <p>
+                  “The Right to Carry” is a mural that moves beyond artistic expression to serve as commentary on the crisis
+                  of gun violence in America. As a survivor of a school shooting, my college experience has been shaped by my own
+                  search for healing. This artwork emerged from that experience and aims to advocate for change.
+                </p>
+                <p>
+                  Set against a funeral procession, the mural brings together individuals from different backgrounds, each affected
+                  by gun violence. A casket anchors the composition as a reminder of the irreversible losses communities suffer.
+                  Bright flowers contrast with the muted palette to symbolize hope, resilience, and the possibility of change.
+                </p>
+                <p>
+                  The piece is meant to do more than mourn. It invites reflection, dialogue, and a communal call for action.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Wireframes -->
+        <article class="mac-window" data-win-id="ucsc-wireframes">
+          <div class="win-header">
+            <div class="dots" aria-hidden="true">
+              <span class="dot red" data-action="close" aria-label="Close"></span>
+              <span class="dot yellow" data-action="minimize" aria-label="Minimize"></span>
+              <span class="dot green" data-action="maximize" aria-label="Maximize"></span>
+            </div>
+            <div class="win-title">Wireframes — UI &amp; UX</div>
+          </div>
+
+          <div class="win-body">
+            <div class="desc-short">
+              <div class="min-question-box" role="region" aria-label="Mods and UX overview questions">
+                <p>How I reimagined a Mario Kart mod to introduce Stardew-style farming?</p>
+              </div>
+            </div>
+
+            <div class="desc-long">
+              <div class="action-col">
+                <a class="btn btn-pdf" href="assets/files/annotated-UX%20Project%20Plan%2C%20Content%20Strategy%2C%20Persona(s)-1.pdf" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-file-lines"></i> Project Plan &amp; Personas
+                </a>
+                <a class="btn btn-pdf" href="assets/files/annotated-UX%20User%20Journey%20and%20Flow%20Diagram.pdf" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-diagram-project"></i> User Journey &amp; Flow
+                </a>
+                <a class="btn btn-pdf" href="assets/files/annotated-UX%20Wireframe.pdf" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-vector-square"></i> Annotated Wireframes
+                </a>
+                <a class="btn" href="https://www.figma.com/design/qngHgeLrSV2078zN1ogtWB/CMPM130-Wireframe?node-id=0-1&t=2GGgwpuUPXPs77gq-1" target="_blank" rel="noopener">
+                  <i class="fa-brands fa-figma"></i> Open Figma
+                </a>
+              </div>
+
+              <div class="desc-box">
+                <h3>Mod UX Vision — Mario Kart meets Stardew Valley</h3>
+                <p>
+                  This project explores how a live-action racing game could adopt cozy, persistent systems from farming and sim games.
+                  I prototyped mod flows for in-race pop-up festivals, player-run farm kiosks that affect race buffs,
+                  and a safe mod marketplace UI that signals provenance, compatibility, and update history.
+                </p>
+              </div>
+
+              <div class="desc-box">
+                <h3>Design Highlights</h3>
+                <ul>
+                  <li>Mod discovery UI with clear trust signals like ratings, signed authors, and changelogs.</li>
+                  <li>Farming tools and vendor flows that surface rewards without interrupting race pacing.</li>
+                  <li>Onboarding for creators through templates, previewable changes, and rollback support.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Time-Based Systems -->
         <article class="mac-window" data-win-id="ucsc-time">
           <div class="win-header">
             <div class="dots" aria-hidden="true">
@@ -198,21 +583,16 @@
               <span class="dot yellow" data-action="minimize" aria-label="Minimize"></span>
               <span class="dot green" data-action="maximize" aria-label="Maximize"></span>
             </div>
-            <div class="win-title">
-              System Analysis: Time-Based Puzzles — CMPM 176
-            </div>
+            <div class="win-title">System Analysis: Time-Based Puzzles — CMPM 176</div>
           </div>
+
           <div class="win-body">
-            <!-- Minimized: question box -->
             <div class="desc-short">
               <div class="min-question-box" role="region" aria-label="Time-based puzzles questions">
                 <p>How do time-based verbs shape player pacing and challenge curves?</p>
-              <!-- <p>Which affordances let players feel in control when clocks are involved?</p>
-                <p>How can we transplant time puzzles into new contexts while retaining flow?</p> -->
               </div>
             </div>
 
-            <!-- Maximized -->
             <div class="desc-long">
               <div class="media-row">
                 <div class="slides-box">
@@ -225,15 +605,20 @@
                   <div class="video-caption">System Analysis — Slides (UCSC) • July 2024</div>
                 </div>
               </div>
+
               <div class="desc-box">
                 <h3>Overview</h3>
-                <p>For <strong>CMPM-176 (UCSC)</strong>, I explored time-based systems via verb/noun frameworks and playstyle assumptions, then proposed a new implementation inside an existing title to demonstrate design reasoning.</p>
+                <p>
+                  For <strong>CMPM-176 (UCSC)</strong>, I explored time-based systems through verb and noun frameworks,
+                  player pacing, and playstyle assumptions, then proposed a new implementation inside an existing title
+                  to demonstrate design reasoning.
+                </p>
               </div>
             </div>
           </div>
         </article>
 
-        <!-- Study 2: Outlast Trials Systems (UCSC) -->
+        <!-- Outlast Trials -->
         <article class="mac-window" data-win-id="ucsc-outlast">
           <div class="win-header">
             <div class="dots" aria-hidden="true">
@@ -241,21 +626,16 @@
               <span class="dot yellow" data-action="minimize" aria-label="Minimize"></span>
               <span class="dot green" data-action="maximize" aria-label="Maximize"></span>
             </div>
-            <div class="win-title">
-              Game Systems of “The Outlast Trials” — CMPM 176
-            </div>
+            <div class="win-title">Game Systems of “The Outlast Trials” — CMPM 176</div>
           </div>
+
           <div class="win-body">
-            <!-- Minimized: question box -->
             <div class="desc-short">
               <div class="min-question-box" role="region" aria-label="Outlast trials questions">
-              <!--  <p>How do progression loops and environmental storytelling produce dread and pacing?</p>
-                <p>What player dynamics shift when cooperative pressure is introduced?</p> -->
                 <p>Which systems amplify emergent horror?</p>
               </div>
             </div>
 
-            <!-- Maximized -->
             <div class="desc-long">
               <div class="media-row">
                 <div class="image-box">
@@ -270,24 +650,27 @@
                   </a>
                 </div>
               </div>
+
               <div class="desc-box">
                 <h3>Overview</h3>
-                <p>In <strong>CMPM-176 (UCSC)</strong>, I mapped how interacting systems create tension and flow in a horror setting, then communicated findings via a public Miroverse board.</p>
+                <p>
+                  In <strong>CMPM-176 (UCSC)</strong>, I mapped how interacting systems create tension and flow in a horror setting,
+                  then communicated those findings through a public Miroverse board.
+                </p>
               </div>
             </div>
           </div>
         </article>
+
       </div>
     </section>
   </main>
 
   <footer>© 2025-2026 Kaylee Linette Morales</footer>
 
-  <!-- Optional ambient layer to match your site -->
   <div class="code-jumble-layer" aria-hidden="true"></div>
   <script src="code-jumble.js"></script>
 
-  <!-- Slides embed helper: convert share URL to /embed; if blocked, show fallback -->
   <script>
     document.querySelectorAll('iframe[data-slides]').forEach((frame) => {
       const share = frame.getAttribute('data-slides') || '';
