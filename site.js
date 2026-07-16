@@ -1,5 +1,50 @@
 // site.js — single, conflict-free mobile nav
 document.addEventListener('DOMContentLoaded', () => {
+    const projectRoles = {
+      'indev-linebyline': 'Lead Producer',
+      'indev-nudge': 'Usability & Playtesting Lead',
+      'steam-markus': 'Lead Producer & Project Manager',
+      'steam-2': '2D Artist · Storyboarder · QA',
+      'jam-pulsepole': 'Game Designer & Programmer',
+      'jam-skyisthelimit': 'Game Designer',
+      'jam-alienated': 'Game Designer',
+      'jam-thingsleftunspoken': 'Main Programmer',
+      'proto-batbomb': 'Concept Designer · Programmer',
+      'proto-puzzlepath': 'Level Designer · Programmer',
+      'usc-sushi': 'Game & Systems Designer'
+    };
+
+    document.querySelectorAll('.mac-window[data-win-id]').forEach((windowCard) => {
+      let role = projectRoles[windowCard.dataset.winId];
+      const title = windowCard.querySelector('.win-title')?.textContent || '';
+
+      // Pulse & Pole previously shared an identifier with Sky Is the Limit.
+      if (title.includes('Pulse & Pole')) role = 'Game Designer & Programmer';
+      if (!role) return;
+
+      const makePill = () => {
+        const pill = document.createElement('div');
+        pill.className = 'role-pill';
+        pill.innerHTML = `<span>My role</span><strong>${role}</strong>`;
+        return pill;
+      };
+
+      const shortPanel = windowCard.querySelector('.desc-short');
+      if (shortPanel && !shortPanel.querySelector('.role-pill')) {
+        const actions = document.createElement('div');
+        actions.className = 'card-actions';
+        const existingButtons = [...shortPanel.querySelectorAll(':scope > .btn')];
+        actions.appendChild(makePill());
+        existingButtons.forEach((button) => actions.appendChild(button));
+        shortPanel.appendChild(actions);
+      }
+
+      const longPanel = windowCard.querySelector('.desc-long');
+      if (longPanel && !longPanel.querySelector(':scope > .role-pill')) {
+        longPanel.prepend(makePill());
+      }
+    });
+
     // Give every project thumbnail one consistent frame while preserving
     // the complete, uncropped artwork in the foreground.
     document.querySelectorAll('.desc-short img.win-thumb').forEach((image) => {
