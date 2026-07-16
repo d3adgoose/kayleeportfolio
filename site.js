@@ -2,7 +2,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const projectRoles = {
       'indev-linebyline': 'Lead Producer',
-      'indev-nudge': 'Usability & Playtesting Lead',
+      'indev-nudge': 'Usability Team Member',
+      'ucsc-mural': 'Creative Director & Mural Artist',
       'steam-markus': 'Lead Producer & Project Manager',
       'steam-2': '2D Artist · Storyboarder · QA',
       'jam-pulsepole': 'Game Designer & Programmer',
