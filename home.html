@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Kaylee Linette Morales | Producer/Game Designer</title>
+  <title>Kaylee Linette Morales | Producer &amp; Game Designer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body>
+<body data-page="home">
   <!-- Banner -->
   <header class="site-banner">
     <div class="banner-inner">
@@ -16,7 +16,7 @@
         <div class="brand-badge">KM</div>
         <div class="brand-title">
           <span class="name">Kaylee Linette Morales</span>
-          <span class="tag">Produer/Game Designer</span>
+          <span class="tag">Producer &amp; Game Designer</span>
         </div>
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">☰</button>
@@ -32,40 +32,53 @@
 
   <!-- Main (centered) -->
   <main class="section hero hero--centered">
+    <aside class="window-controls-tip" aria-labelledby="window-controls-tip-title">
+      <div class="tip-copy">
+        <strong id="window-controls-tip-title">psst... the dots work!</strong>
+      </div>
+      <ul class="tip-actions" aria-label="Window button guide">
+        <li><span class="tip-dot tip-dot--red" aria-hidden="true"></span><span>exit</span></li>
+        <li><span class="tip-dot tip-dot--yellow" aria-hidden="true"></span><span>shrink</span></li>
+        <li><span class="tip-dot tip-dot--green" aria-hidden="true"></span><span>expand</span></li>
+      </ul>
+      <span class="tip-arrow" aria-hidden="true">↙</span>
+    </aside>
+
     <!-- Bigger, centered Mac window -->
     <article class="mac-window mac-window--home">
       <div class="win-header macbook-header">
-        <button class="dot red" data-action="close" aria-label="Close"></button>
-        <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
-        <button class="dot green" data-action="maximize" aria-label="Maximize"></button>
-        <div class="win-title">About Me</div>
-      </div>
+        <div class="window-dots">
+          <button class="dot red" data-action="close" aria-label="Close"></button>
+          <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
+          <button class="dot green" data-action="maximize" aria-label="Maximize"></button>
+        </div>
 
-      <!-- Tabs -->
-      <div class="tabs">
-        <button class="tab active" type="button">
-          <span class="tab-favicon"></span>
-          <span>About Me</span>
-        </button>
+        <!-- Browser-style tabs share the same bar as the Mac controls. -->
+        <div class="tabs" aria-label="Portfolio links">
+          <button class="tab active" type="button">
+            <span class="tab-favicon"></span>
+            <span>About Me</span>
+          </button>
 
-        <a class="tab" href="assets/files/Kaylee_Morales_Resume.pdf" target="_blank" rel="noopener">
-          <span class="tab-favicon"></span>
-          <span>Resume</span>
-        </a>
+          <a class="tab" href="assets/files/Kaylee_Morales_Resume.pdf" target="_blank" rel="noopener">
+            <span class="tab-favicon"></span>
+            <span>Resume</span>
+          </a>
 
-        <a class="tab" href="https://www.linkedin.com/in/kaylee-morales-linette/" target="_blank" rel="noopener">
-          <span class="tab-favicon">
-            <i class="fab fa-linkedin"></i>
-          </span>
-          <span>LinkedIn</span>
-        </a>
+          <a class="tab" href="https://www.linkedin.com/in/kaylee-morales-linette/" target="_blank" rel="noopener">
+            <span class="tab-favicon">
+              <i class="fab fa-linkedin"></i>
+            </span>
+            <span>LinkedIn</span>
+          </a>
 
-        <a class="tab" href="https://d3adg00se.itch.io/" target="_blank" rel="noopener">
-          <span class="tab-favicon">
-            <i class="fa-brands fa-itch-io"></i>
-          </span>
-          <span>Itch</span>
-        </a>
+          <a class="tab" href="https://d3adg00se.itch.io/" target="_blank" rel="noopener">
+            <span class="tab-favicon">
+              <i class="fa-brands fa-itch-io"></i>
+            </span>
+            <span>Itch</span>
+          </a>
+        </div>
       </div>
 
       <div class="win-body">
@@ -84,7 +97,7 @@
 
             <p>
               I earned my B.S. in Computer Science: Game Design from the University of California, Santa Cruz.
-              Drawing from experience in product management, Scrum, software development, 2D pixel art, and UI/UX.
+              Drawing from experience in product management, Scrum, software development, and UI/UX.
               I build experiences that resonate widely and invite more players to feel seen in play.
             </p>
           </div>
@@ -100,6 +113,8 @@
   <footer>© 2026 Kaylee Linette Morales</footer>
 
   <!-- Scripts -->
+  <div class="code-jumble-layer" aria-hidden="true"></div>
+  <script src="code-jumble.js"></script>
   <script src="window-ui.js"></script>
   <script src="site.js"></script>
 </body>

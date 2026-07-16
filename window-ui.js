@@ -115,14 +115,15 @@
       const sy = firstRect.height / Math.max(1, last.height);
 
       const dist = Math.hypot(dx, dy);
-      const duration = Math.min(700, Math.max(320, dist * 0.55));
+      const maxDuration = target.mode === 'box' ? 360 : 500;
+      const duration = Math.min(maxDuration, Math.max(280, dist * 0.38));
 
       const anim = win.animate(
         [
           { transform: `translate(${dx}px, ${dy}px) scale(${sx}, ${sy})` },
           { transform: 'translate(0,0) scale(1,1)' }
         ],
-        { duration, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'both' }
+        { duration, easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)', fill: 'both' }
       );
       anim.addEventListener('finish', () => { win.style.transform = ''; });
       return anim;
@@ -132,15 +133,25 @@
     // per-window: { mode: 'normal'|'maximized', placeholder }
     const state = new WeakMap();
 
-    // Ensure popup headers use button dots
-    (function ensurePhotoPopupButtons(){
-      document.querySelectorAll('.photo-popup .mini-header').forEach(head => {
+    // Make every window control a real, keyboard-accessible button.
+    (function ensureWindowControlButtons(){
+      document.querySelectorAll('.mac-window .win-header, .photo-popup .mini-header').forEach(head => {
+        head.querySelectorAll('.dots[aria-hidden="true"]').forEach(group => group.removeAttribute('aria-hidden'));
         head.querySelectorAll('.dot').forEach((d, i) => {
-          if (d.tagName.toLowerCase() === 'button' && d.dataset.action) return;
+          const action = d.dataset.action || (i === 0 ? 'close' : i === 1 ? 'minimize' : 'maximize');
+          if (d.tagName.toLowerCase() === 'button') {
+            d.dataset.action = action;
+            if (!d.getAttribute('aria-label')) {
+              d.setAttribute('aria-label', action[0].toUpperCase() + action.slice(1));
+            }
+            d.title = d.getAttribute('aria-label');
+            return;
+          }
           const b = document.createElement('button');
           b.className = d.className + ' dot';
-          b.dataset.action = i === 0 ? 'close' : i === 1 ? 'minimize' : 'maximize';
+          b.dataset.action = action;
           b.setAttribute('aria-label', b.dataset.action[0].toUpperCase() + b.dataset.action.slice(1));
+          b.title = b.getAttribute('aria-label');
           d.replaceWith(b);
         });
       });
@@ -148,6 +159,8 @@
 
     document.querySelectorAll(WIN_SEL).forEach(win => {
       if (!state.get(win)) state.set(win, { mode: 'normal', placeholder: null });
+      const body = win.querySelector('.win-body');
+      body?.addEventListener('scroll', () => win.classList.add('has-scrolled'), { passive: true });
     });
 
     /* ------------ Single delegated handler ------------ */
@@ -178,6 +191,7 @@
         st.mode = 'maximized';
         state.set(win, st);
         win.classList.add('is-max');     // <-- drives your long/short content swap
+        win.classList.remove('is-scrollable', 'has-scrolled');
 
         // Create placeholder (for perfect minimize)
         if (!st.placeholder) {
@@ -189,7 +203,12 @@
 
         lockScroll(true);
         const first = lift(win);
-        flipAnimate(win, first, fullscreenTarget());
+        flipAnimate(win, first, fullscreenTarget()).addEventListener('finish', () => {
+          const body = win.querySelector('.win-body');
+          if (body && body.scrollHeight > body.clientHeight + 16) {
+            win.classList.add('is-scrollable');
+          }
+        });
         return;
       }
 
@@ -202,22 +221,15 @@
         const first = lift(win);
         flipAnimate(win, first, { mode: 'box', left: r.left, top: r.top, width: r.width, height: r.height })
           .addEventListener('finish', () => {
-            // Swap positions without snap
+            // Switch back to the compact content at the animation endpoint,
+            // then restore normal flow directly at the placeholder position.
+            win.classList.remove('is-max', 'is-scrollable', 'has-scrolled');
             ph.replaceWith(win);
-            win.style.position = 'fixed';
-            win.style.left = px(r.left);
-            win.style.top  = px(r.top);
-            win.style.width  = px(r.width);
-            win.style.height = px(r.height);
-
-            requestAnimationFrame(() => {
-              drop(win);
-              lockScroll(false);
-              st.mode = 'normal';
-              st.placeholder = null;
-              state.set(win, st);
-              win.classList.remove('is-max');   // <-- back to minimized content
-            });
+            drop(win);
+            lockScroll(false);
+            st.mode = 'normal';
+            st.placeholder = null;
+            state.set(win, st);
           });
         return;
       }
