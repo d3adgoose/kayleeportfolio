@@ -1132,7 +1132,7 @@ body[data-page="home"] footer{
   .mac-window.is-scrollable::after{ animation: none; }
 }
 
-/* Show complete game and project artwork instead of cropping thumbnails. */
+/* Default cards keep their original edge-to-edge landscape treatment. */
 body[data-page="games"] .desc-short .win-thumb,
 body[data-page="work"] .desc-short .win-thumb{
   display: block;
@@ -1142,7 +1142,7 @@ body[data-page="work"] .desc-short .win-thumb{
   aspect-ratio: 1.95 / 1;
   margin: 0 auto 16px;
   padding: 8px;
-  object-fit: contain !important;
+  object-fit: cover !important;
   object-position: center;
   background: linear-gradient(135deg, #faf9ff, #f3effc);
 }
@@ -1156,7 +1156,7 @@ body[data-page="work"] .win-thumb-frame{
   overflow: hidden;
   display: grid;
   place-items: center;
-  background: #f8f7fb;
+  background: #fff;
   border: 1px solid var(--border);
   border-radius: 12px;
   box-shadow: var(--shadow);
@@ -1178,9 +1178,38 @@ body[data-page="work"] .win-thumb-frame > img.win-thumb{
   box-shadow: none;
 }
 
-/* Keep the Sky Is the Limit logo in view while retaining edge-to-edge art. */
+/* Special artwork can opt into showing its full composition. */
+body[data-page="games"] .win-thumb-frame--fit > img.win-thumb,
+body[data-page="work"] .win-thumb-frame--fit > img.win-thumb{
+  object-fit: cover !important;
+}
+
+/* Guaranteed fitted treatment for the portrait Sushi Rat poster. */
+body[data-page="work"] .win-thumb-frame:has(> img[src*="srr-cover"]){
+  width: min(100%, 420px);
+  aspect-ratio: 4 / 5;
+}
+
+body[data-page="work"] .win-thumb-frame > img[src*="srr-cover"]{
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  border-radius: 0;
+}
+
+/* Sky Is the Limit is nearly square, so give it a fitted frame of its own. */
+body[data-page="games"] .win-thumb-frame:has(> img[src*="skyisthelimit"]){
+  width: min(100%, 440px);
+  aspect-ratio: 1322 / 1196;
+}
+
 body[data-page="games"] .win-thumb-frame > img[src*="skyisthelimit"]{
-  object-position: center 68%;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  border-radius: 0;
 }
 
 @media (max-width: 760px){

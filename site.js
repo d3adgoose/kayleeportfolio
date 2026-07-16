@@ -9,6 +9,16 @@ document.addEventListener('DOMContentLoaded', () => {
       frame.className = 'win-thumb-frame';
       image.parentNode.insertBefore(frame, image);
       frame.appendChild(image);
+
+      const chooseFit = () => {
+        if (!image.naturalWidth || !image.naturalHeight) return;
+        const imageRatio = image.naturalWidth / image.naturalHeight;
+        const frameRatio = 16 / 9;
+        frame.classList.toggle('win-thumb-frame--fit', Math.abs(imageRatio - frameRatio) > .48);
+      };
+
+      if (image.complete) chooseFit();
+      else image.addEventListener('load', chooseFit, { once: true });
     });
 
     // Make long Games and Projects pages clearly scrollable on first view.
