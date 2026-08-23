@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Games — Kaylee Linette Morales</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css?v=20260715-12" />
+  <link rel="stylesheet" href="style.css?v=20260823-10" />
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -235,6 +235,24 @@
       </aside>
     </div>
     <p class="hero-sub">Showcase</p>
+      <section class="games-role-sort" aria-labelledby="games-role-title">
+        <div class="games-sort-copy">
+          <p class="role-filter-kicker">My main direction</p>
+          <h2 id="games-role-title">Production first, with Game Design close beside it.</h2>
+          <p class="role-focus-copy">Explore everything or sort my games by the role I held.</p>
+          <p class="role-sort-status" data-role-status aria-live="polite"></p>
+        </div>
+        <div class="role-filter" data-role-filter aria-label="Sort games by role">
+          <button type="button" data-role="all">All work</button>
+          <span class="games-filter-label games-filter-label--focus">My main focuses</span>
+          <button class="role-priority" type="button" data-role="production">Production <small>Primary</small></button>
+          <button class="role-secondary" type="button" data-role="game-design">Game Design <small>Core focus</small></button>
+          <span class="games-filter-label">Other roles I’ve worked in</span>
+          <button type="button" data-role="programming">Programming</button>
+          <button type="button" data-role="usability">Usability</button>
+          <button type="button" data-role="art-ux">Art / UX</button>
+        </div>
+      </section>
     <!-- ===== In Development ===== -->
     <section style="margin-top:24px">
       <h2 class="section-heading"><i class="fa-solid fa-computer"></i> In Development</h2>
@@ -260,6 +278,15 @@
 
     <!-- Maximized -->
     <div class="desc-long">
+
+      <div class="media-row media-row--solo">
+        <div class="image-box">
+          <div class="media-frame line-by-line-media-frame">
+            <img src="assets/images/LineByLine.png" alt="Line By Line cover art" />
+          </div>
+          <div class="video-caption">Line By Line — In Development</div>
+        </div>
+      </div>
 
       <div class="desc-box">
         <h3>Overview</h3>
@@ -323,7 +350,7 @@
     <button class="dot red" data-action="close"></button>
     <button class="dot yellow" data-action="minimize"></button>
     <button class="dot green" data-action="maximize"></button>
-    <div class="win-title">nudge — In Development</div>
+    <div class="win-title">nudge — Steam</div>
   </div>
 
   <div class="win-body">
@@ -341,6 +368,23 @@
 
     <!-- Maximized -->
     <div class="desc-long">
+
+      <div class="media-row nudge-media-row">
+        <div class="image-box">
+          <div class="media-frame nudge-media-frame">
+            <img src="assets/images/nudge.png" alt="nudge cover art" />
+          </div>
+          <div class="video-caption">nudge — Steam</div>
+        </div>
+        <div class="action-col">
+          <a class="btn btn-steam" href="https://store.steampowered.com/app/4516490/nudge/" target="_blank" rel="noopener">
+            <i class="fa-brands fa-steam-symbol"></i> View on Steam
+          </a>
+          <a class="btn btn-ig" href="https://www.instagram.com/nudge.game/" target="_blank" rel="noopener" aria-label="Instagram: nudge">
+            <i class="fa-brands fa-instagram"></i> Instagram
+          </a>
+        </div>
+      </div>
 
       <div class="desc-box">
         <h3>Overview</h3>
@@ -569,7 +613,7 @@
       <h2 class="section-heading"><i class="fa-brands fa-itch-io"></i> Game Jams</h2>
       <div class="grid">
         <!-- Game Jam 4 — Pulse & Pole -->
-<article class="mac-window" data-win-id="jam-skyisthelimit">
+<article class="mac-window" data-win-id="jam-pulsepole">
   <div class="win-header">
     <button class="dot red" data-action="close" aria-label="Close"></button>
     <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
@@ -582,13 +626,13 @@
     <div class="desc-short">
       <img class="win-thumb" src="assets/images/pulsepole.png" alt="Pulse & Pole cover art" />
       <p>
-        A rhythm-based combat game where you control two magnetic forces: one positive and one negative. 
-        Defeat an enemy by matching your inputs to the beat of the music. 
+        A rhythm-based combat game where you control two magnetic forces: one positive and one negative.
+        Defeat an enemy by matching your inputs to the beat of the music.
       </p>
       <a class="btn btn-itch" href="https://d3adg00se.itch.io/pulse-pole" target="_blank" rel="noopener">
         <i class="fa-brands fa-itch-io"></i> Play
       </a>
-      
+
     </div>
 
     <!-- Maximized -->
@@ -631,11 +675,11 @@
       <div class="desc-box">
         <h3>Overview</h3>
         <p>
-          <em>Pulse & Pole</em> is a rhythm-based combat game where you control two magnetic forces: one positive and one negative. 
+          <em>Pulse & Pole</em> is a rhythm-based combat game where you control two magnetic forces: one positive and one negative.
           Positioned on opposite sides of the screen, your goal is to defeat an enemy standing between them by matching your inputs to the beat of the music.
         </p>
         <p>
-          As the song plays, the enemy shifts between positive and negative polarity in sync with the rhythm. You must react quickly and choose the opposite 
+          As the song plays, the enemy shifts between positive and negative polarity in sync with the rhythm. You must react quickly and choose the opposite
           polarity at the right moment to attack. As the song progresses, staying on beat becomes increasingly challenging, testing both your timing and reflexes.
         </p>
       </div>
@@ -675,7 +719,7 @@
           On the programming side, I worked in
           <strong>Unreal Engine 5 using Blueprints</strong>. I implemented the
           initial polarity system, player input handling, lives systems, fail states, game over functionality,
-          UI elements, and overall gameplay flow. 
+          UI elements, and overall gameplay flow.
         </p>
 
         <p>
@@ -826,7 +870,7 @@
     </div>
   </div>
 </article>
-        
+
         <!-- Game Jam 2 — Alienated -->
         <article class="mac-window" data-win-id="jam-alienated">
           <div class="win-header">
@@ -1090,6 +1134,116 @@
       </div>
     </section>
 
+    <!-- ===== Board Games ===== -->
+    <section class="board-games-section" style="margin-top:36px">
+      <h2 class="section-heading"><i class="fa-solid fa-dice"></i> Board Games</h2>
+      <div class="grid">
+<article class="mac-window usc-srr" data-win-id="usc-sushi">
+          <div class="win-header">
+            <div class="dots" aria-hidden="true">
+              <span class="dot red" data-action="close" aria-label="Close"></span>
+              <span class="dot yellow" data-action="minimize" aria-label="Minimize"></span>
+              <span class="dot green" data-action="maximize" aria-label="Maximize"></span>
+            </div>
+            <div class="win-title">Board Game — Sushi Rat Revolution (Up the River mod)</div>
+          </div>
+
+          <div class="win-body">
+            <!-- Minimized (single boxed question card, no links) -->
+            <div class="desc-short">
+              <div class="win-thumb-frame win-thumb-frame--fit sushi-rat-frame">
+                <img class="win-thumb" src="assets/images/srr-cover.png" alt="Sushi Rat Revolution cover art" />
+              </div>
+              <div class="min-question-box" role="region" aria-label="Sushi Rat overview questions">
+                <p>How I modded <em>Up the River</em> to add a rotating conveyor and new tension loops?</p>
+              <!--- <p>Which rule changes made push-your-luck decisions feel tighter, faster, and clearer?</p>
+                <p>Can a compact mod create emergent player drama while staying production-friendly?</p> -->
+              </div>
+            </div>
+
+            <!-- Maximized -->
+            <div class="desc-long">
+              <div class="media-row">
+                <div class="image-box">
+                  <div class="media-frame sushi-rat-frame">
+                    <img src="assets/images/srr-cover.png" alt="Sushi Rat Revolution poster" />
+                  </div>
+                  <div class="video-caption">USC • CTIN-488 — 2025</div>
+                </div>
+                <div class="action-col">
+                  <a class="btn btn-pdf" href="assets/files/Team4-Rules.pdf" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-book"></i> Rules
+                  </a>
+                  <a class="btn btn-pdf" href="assets/files/Team4-PlaytestReport-Wk5.pdf" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-clipboard-check"></i> Playtest Report Week 1
+                  </a>
+                  <a class="btn btn-pdf" href="assets/files/Team4-Playtests-Wk6.pdf" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-clipboard-list"></i> Playtests Week 2
+                  </a>
+                  <a class="btn btn-pdf" href="assets/files/Team4-DesignPhotoJournal-Wk5.pdf" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-pen"></i> Design Journal Week 1
+                  </a>
+                  <a class="btn btn-pdf" href="assets/files/Team4-DesignPhotoJournal-Wk6.pdf" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-pen"></i> Design Journal Week 2
+                  </a>
+                  <a class="btn btn-pdf" href="assets/files/Sushi-Rat-Revolution-Cards.pdf" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-clone"></i> Card Designs
+                  </a>
+                  <a class="btn btn-pdf" href="assets/files/Shing-Team4-UtR-Presentation.pdf" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-file-powerpoint"></i> Presentation Deck
+                  </a>
+                </div>
+              </div>
+
+              <div class="desc-box">
+                <h3>Overview — Modding <em>Up the River</em></h3>
+                <p>
+                  <strong>Sushi Rat Revolution</strong> began as a targeted mod of <em>Up the River</em> built under a
+                  structured <strong>two-week work cycle</strong>. Across Week 1 and Week 2, our team introduced a rotating
+                  conveyor mechanic, redefined how rats interact with the river, and layered in set-collection goals to
+                  reshape push-your-luck decisions. The short timeline forced us to treat each week as its own micro-sprint:
+                  Week 1 focused on proving the core mechanic, and Week 2 focused on smoothing pacing and clarifying player
+                  choices. My role centered on translating the mod’s design goals into clear, production-friendly rule
+                  updates and tuning the conveyor until it consistently behaved as the game’s main tension engine.
+                </p>
+                <ul>
+                  <li><strong>Week 1 :</strong> Defined the conveyor, paper-prototyped new states, clarified rat movement, and identified broken loops.</li>
+                  <li><strong>Week 2 :</strong> Smoothed pacing, tightened rules text, aligned iconography with player cues, and recalibrated set-collection rewards.</li>
+                  <li>Kept all changes compatible with the original components so the mod could function as a “drop-in” rules patch.</li>
+                  <li>Documented the final rule diffs so a producer, QA team, or instructor can quickly understand what changed and why.</li>
+                </ul>
+              </div>
+
+              <div class="desc-box">
+                <h3>Mod Design & Process</h3>
+                <p>
+                  We approached the project like a small production team:
+                  <strong>identify a friction point → propose a minimal rule change → prototype → playtest → iterate.</strong>
+                  Because the class schedule locked us to a two-week cycle, every change had to either sharpen tension,
+                  clarify feedback, or improve player flow. Anything that created complexity without new drama was cut.
+                </p>
+                <ul>
+                  <li>Reframed the conveyor as the core “risk engine” that determines urgency each turn.</li>
+                  <li>Balanced set-collection so rewards build over time but don’t stall the race pacing.</li>
+                  <li>Resolved early flow issues where players hesitated or stalled by simplifying turn structure and reducing ambiguous edge cases.</li>
+                  <li>Designed icons and card layouts to be easily reskinned in a future art or digital pass.</li>
+                  <li>Tracked changes between Week 1 and Week 2 in the design journals so instructors and future teammates can see the iteration trail.</li>
+                </ul>
+              </div>
+
+              <div class="desc-box">
+                <h3>Production Notes</h3>
+                <ul>
+                  <li>Rule changes are isolated so the base <em>Up the River</em> experience stays intact for players who prefer the original.</li>
+                  <li>Card and icon assets are built as modular layers for fast updates or regional/localized variants.</li>
+                  <li>Playtest report and journals are structured to support QA, usability review, and future digital prototyping.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
     <!-- ===== Prototypes ===== -->
     <section style="margin-top:36px">
       <h2 class="section-heading"><i class="fa-solid fa-flask"></i> Prototypes</h2>
@@ -1254,7 +1408,7 @@
 
   <!-- Ambient code layer (optional) -->
   <div class="code-jumble-layer" aria-hidden="true"></div>
-  <script src="code-jumble.js?v=20260715-3"></script>
+  <script src="code-jumble.js?v=20260823-2"></script>
 
   <!-- Page helper: click-to-play thumbnail only (minimized) -->
   <script>

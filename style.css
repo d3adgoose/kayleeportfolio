@@ -1503,5 +1503,1086 @@ body:has(.mac-window.is-max) .page-scroll-hint{
 }
 
 @media (prefers-reduced-motion: reduce){
-  .code-jumble-piece{ display: none; }
+  .code-jumble-piece{ animation: none; will-change: auto; }
+}
+
+/* Shared role explorer — homepage and Games */
+.role-filter-kicker{
+  margin: 0 0 3px !important;
+  color: var(--primary);
+  font-size: .72rem !important;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.role-explorer{
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.role-explorer h2,
+.games-role-sort h2{
+  margin: 0 0 11px;
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.role-filter{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.role-filter button{
+  min-height: 38px;
+  padding: 8px 12px;
+  color: #4d3d68;
+  background: #fff;
+  border: 1px solid rgba(111,58,255,.2);
+  border-radius: 999px;
+  box-shadow: 0 3px 10px rgba(76,43,130,.07);
+  font: inherit;
+  font-size: .78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .12s ease, background .12s ease, color .12s ease;
+}
+
+.role-filter button:hover{ transform: translateY(-1px); }
+.role-filter button.active{
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), #8d65ff);
+  border-color: transparent;
+  box-shadow: 0 5px 14px rgba(111,58,255,.24);
+}
+.role-filter button:focus-visible{
+  outline: 3px solid rgba(111,58,255,.28);
+  outline-offset: 2px;
+}
+
+.role-preview{ margin-top: 11px; }
+.role-preview > p{
+  margin: 0 0 6px !important;
+  color: #786d8e;
+  font-size: .76rem !important;
+  font-weight: 700;
+}
+.role-preview > div{ display: flex; flex-wrap: wrap; gap: 7px; }
+.role-preview a{
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 9px;
+  color: var(--primary);
+  background: #f7f3ff;
+  border-radius: 8px;
+  font-size: .76rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.games-role-sort{
+  display: grid;
+  grid-template-columns: minmax(180px, .55fr) minmax(300px, 1.45fr);
+  gap: 14px 24px;
+  align-items: center;
+  margin: 20px 0 28px;
+  padding: 17px 19px;
+  background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(245,240,255,.95));
+  border: 1px solid rgba(111,58,255,.16);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+.games-role-sort h2{ margin-bottom: 0; }
+.role-sort-status{
+  grid-column: 1 / -1;
+  margin: 0;
+  color: #706482;
+  font-size: .78rem;
+  font-weight: 700;
+}
+.mac-window[hidden],
+body[data-page="games"] main.section > section[hidden]{ display: none !important; }
+
+/* Handwritten-style tab reminder attached to the homepage window. */
+.mac-window--home{ position: relative; }
+.tab-sticky-note{
+  position: absolute;
+  right: 24px;
+  top: -78px;
+  z-index: 4;
+  width: 190px;
+  padding: 12px 15px 14px;
+  color: #49385f;
+  background: linear-gradient(145deg, #fff2a9, #ffe78a);
+  border: 1px solid rgba(132,100,23,.14);
+  border-radius: 4px 4px 12px 4px;
+  box-shadow: 0 9px 22px rgba(70,45,92,.15);
+  transform: rotate(1.5deg);
+  font-family: "Caveat", cursive;
+  line-height: 1.05;
+}
+.tab-sticky-note::after{
+  content: "";
+  position: absolute;
+  right: 30px;
+  bottom: -13px;
+  border: 7px solid transparent;
+  border-top-color: #ffe78a;
+}
+.tab-sticky-note > span{ color: var(--primary); }
+.tab-sticky-note strong{ display: block; font-size: 1.2rem; }
+.tab-sticky-note small{ display: block; margin-top: 4px; font-family: inherit; font-size: .9rem; }
+
+@media (max-width: 900px){
+  .games-role-sort{ grid-template-columns: 1fr; }
+  .tab-sticky-note{
+    position: relative;
+    inset: auto;
+    width: min(230px, calc(100% - 28px));
+    margin: 0 16px 10px auto;
+    transform: rotate(1deg);
+  }
+  .tab-sticky-note::after{ display: none; }
+}
+
+/* Compact role picker on the Games page. */
+body[data-page="games"] .games-role-sort{
+  grid-template-columns: minmax(205px, .55fr) minmax(0, 1.45fr);
+  gap: 18px 28px;
+  align-items: center;
+  padding: 18px 20px;
+  border-radius: 3px 4px 12px 3px;
+  box-shadow: 4px 9px 0 rgba(74,41,110,.04), 0 15px 30px rgba(70,45,92,.11);
+  transform: rotate(-.15deg);
+}
+body[data-page="games"] .games-role-sort::before{
+  width: 66px;
+}
+body[data-page="games"] .games-sort-copy h2{
+  margin: 2px 0 4px;
+  font-size: 1.15rem;
+}
+body[data-page="games"] .games-sort-copy .role-focus-copy{
+  max-width: 310px;
+  margin: 0;
+  font-size: .82rem;
+  line-height: 1.4;
+}
+body[data-page="games"] .games-sort-copy .role-sort-status{
+  margin: 8px 0 0;
+  font-size: .72rem;
+}
+body[data-page="games"] .games-role-sort .role-filter{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  align-content: center;
+}
+body[data-page="games"] .games-role-sort .role-filter button{
+  min-height: 38px;
+  padding: 8px 14px;
+  background: rgba(255,255,255,.72);
+  box-shadow: 0 3px 8px rgba(72,47,102,.08);
+}
+body[data-page="games"] .games-role-sort .role-filter button.active{
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), #8d65ff);
+  box-shadow: 0 5px 12px rgba(111,58,255,.22);
+}
+body[data-page="games"] .games-filter-label{
+  flex: 0 0 100%;
+  margin: 3px 0 -2px;
+  color: #786d8e;
+  font-size: .64rem;
+  font-weight: 800;
+  letter-spacing: .065em;
+  text-transform: uppercase;
+}
+body[data-page="games"] .games-filter-label--focus{
+  margin-top: 0;
+  color: var(--primary);
+}
+body[data-page="games"] .games-role-sort .role-priority:not(.active){
+  color: #4d2d8c;
+  background: #eee5ff;
+  border: 2px solid rgba(111,58,255,.42);
+  box-shadow: 0 4px 10px rgba(83,43,167,.12);
+}
+body[data-page="games"] .games-role-sort .role-secondary:not(.active){
+  background: rgba(255,255,255,.86);
+  border: 2px solid rgba(111,58,255,.36);
+}
+body[data-page="games"] .games-role-sort .role-filter button small{
+  padding: 2px 6px;
+  border-radius: 999px;
+  font-size: .54rem;
+}
+body[data-page="games"] .games-role-sort .role-priority:not(.active) small{
+  color: #5e36aa;
+  background: rgba(111,58,255,.11);
+}
+@media (max-width: 760px){
+  body[data-page="games"] .games-role-sort{
+    grid-template-columns: 1fr;
+    gap: 14px;
+    transform: none;
+  }
+}
+
+/* Keep the full Sushi Rat poster visible in both window states. */
+body[data-page="games"] .usc-srr .sushi-rat-frame{
+  position: relative;
+  width: min(100%, 420px);
+  aspect-ratio: 4 / 5;
+  margin-inline: auto;
+  overflow: hidden;
+  background: #fff;
+}
+body[data-page="games"] .usc-srr .sushi-rat-frame::before{
+  display: none;
+}
+body[data-page="games"] .usc-srr .sushi-rat-frame > img,
+body[data-page="games"] .usc-srr .sushi-rat-frame > img.win-thumb{
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  background: #fff !important;
+  border-radius: 11px;
+}
+
+/* Window controls stay visible and usable while a card is maximized. */
+.mac-window .win-header > .dots{
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 8px;
+  min-width: 52px;
+}
+.mac-window.is-max .win-header{
+  overflow: visible;
+}
+.mac-window.is-max .win-header .dot{
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+@media (max-width: 760px), (pointer: coarse){
+  .mac-window .win-header > .dots{
+    gap: 3px;
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 560px){
+  .games-role-sort{ padding: 15px; }
+  .role-filter{ gap: 6px; }
+  .role-filter button{ flex: 1 1 calc(50% - 6px); }
+}
+/* Whimsical paper treatment for the portfolio sorters. */
+.role-explorer,
+.games-role-sort{
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 12px 12px, rgba(112,78,21,.045) 1px, transparent 1.5px) 0 0 / 18px 18px,
+    linear-gradient(145deg, #fff7bd, #ffe996);
+  border: 1px solid rgba(132,100,23,.16);
+  border-radius: 5px 5px 14px 6px;
+  box-shadow: 0 10px 24px rgba(70,45,92,.14);
+}
+
+.role-explorer::before,
+.games-role-sort::before{
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  z-index: 2;
+  width: 58px;
+  height: 18px;
+  background: rgba(220,209,255,.76);
+  box-shadow: 0 2px 5px rgba(70,45,92,.08);
+  transform: translateX(-50%) rotate(-1.5deg);
+}
+
+.role-explorer{
+  margin: 3px 4px 22px;
+  padding: 16px 18px 14px;
+  border-top: 1px solid rgba(132,100,23,.16);
+  transform: rotate(-.25deg);
+}
+
+.role-explorer h2,
+.games-role-sort h2{
+  font-family: "Caveat", cursive;
+  font-size: 1.28rem;
+}
+
+.role-explorer .role-filter button,
+.games-role-sort .role-filter button{
+  background: rgba(255,255,255,.72);
+}
+
+.role-explorer .role-filter button.active,
+.games-role-sort .role-filter button.active{
+  background: linear-gradient(135deg, var(--primary), #8d65ff);
+}
+
+.games-role-sort{
+  transform: rotate(.18deg);
+}
+
+/* The tab note now sits outside the window so the window cannot clip it. */
+.tab-sticky-note{
+  position: relative;
+  inset: auto;
+  z-index: 4;
+  display: block;
+  width: 210px;
+  margin: -70px 18px 10px auto;
+  transform: rotate(1.6deg);
+}
+
+.tab-sticky-note::before{
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 54px;
+  height: 17px;
+  background: rgba(220,209,255,.78);
+  transform: translateX(-50%) rotate(-2deg);
+}
+
+.tab-sticky-note::after{
+  right: 32px;
+  bottom: -13px;
+}
+
+@media (max-width: 900px){
+  .tab-sticky-note{
+    width: min(230px, calc(100% - 28px));
+    margin: 4px 14px 12px auto;
+  }
+  .tab-sticky-note::after{ display: block; }
+}
+
+@media (max-width: 560px){
+  .role-explorer{ margin-inline: 0; padding: 16px 13px 13px; }
+}
+/* Production-led role hierarchy. */
+.role-focus-copy{
+  max-width: 720px;
+  margin: -3px 0 12px !important;
+  color: #625773;
+  font-size: .84rem !important;
+  line-height: 1.5 !important;
+}
+.role-filter-divider{
+  flex: 0 0 100%;
+  margin-top: 4px;
+  color: #786d8e;
+  font-size: .69rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.role-filter button.role-priority{
+  color: #fff;
+  background: linear-gradient(135deg, #5e2fd0, #8055ee);
+  border-color: transparent;
+  box-shadow: 0 6px 16px rgba(79,38,166,.25);
+}
+.role-filter button.role-secondary{
+  border-width: 2px;
+  border-color: rgba(111,58,255,.38);
+}
+.role-filter button.role-priority.active,
+.role-filter button.role-secondary.active{
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), #8d65ff);
+}
+.tab-sticky-note > span{ display: none; }
+/* Final aesthetic pass: paper notes, clear choices, visible code. */
+.code-jumble-layer{
+  z-index: 0;
+  opacity: .78;
+}
+body::before{ z-index: 0; }
+body > .section,
+body > footer{
+  position: relative;
+  z-index: 1;
+}
+
+/* A taped note, without a speech-bubble tail. */
+.tab-sticky-note{
+  width: 230px;
+  padding: 17px 18px 16px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.18), transparent 38%),
+    #ffed9f;
+  border: 1px solid rgba(151,111,23,.18);
+  border-radius: 2px 3px 7px 2px;
+  box-shadow: 3px 8px 0 rgba(74,41,110,.045), 0 14px 28px rgba(70,45,92,.13);
+  transform: rotate(1.2deg);
+}
+.tab-sticky-note::after{ display: none !important; }
+.tab-sticky-note strong{
+  font-size: 1.25rem;
+  line-height: 1.05;
+}
+.tab-sticky-note small{
+  margin-top: 7px;
+  color: #675375;
+  line-height: 1.18;
+}
+
+/* A lighter, more editorial portfolio note. */
+.role-explorer{
+  display: grid;
+  grid-template-columns: minmax(250px, .78fr) minmax(420px, 1.22fr);
+  grid-template-rows: auto auto 1fr;
+  column-gap: 28px;
+  row-gap: 4px;
+  padding: 22px 24px 20px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.3), transparent 42%),
+    radial-gradient(circle at 12px 12px, rgba(112,78,21,.028) 1px, transparent 1.4px) 0 0 / 20px 20px,
+    #fff5c7;
+  transform: rotate(-.1deg);
+}
+.role-explorer .role-filter-kicker,
+.role-explorer h2,
+.role-explorer .role-focus-copy{ grid-column: 1; }
+.role-explorer .role-filter{
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-content: start;
+}
+.role-explorer .role-preview{
+  grid-column: 2;
+  grid-row: 3;
+  align-self: end;
+}
+.role-explorer h2{
+  margin-bottom: 6px;
+  font-size: 1.38rem;
+  line-height: 1.05;
+}
+.role-explorer .role-focus-copy{ margin: 0 !important; }
+
+.role-filter button{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.role-filter button small{
+  padding: 2px 6px;
+  color: #746785;
+  background: rgba(111,58,255,.08);
+  border-radius: 999px;
+  font-size: .58rem;
+  font-weight: 800;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+
+/* Only the selected filter is filled purple. */
+.role-filter button.role-priority:not(.active),
+.role-filter button.role-secondary:not(.active){
+  color: #4d3d68;
+  background: rgba(255,255,255,.82);
+  border: 1px solid rgba(111,58,255,.24);
+  box-shadow: 0 3px 10px rgba(76,43,130,.07);
+}
+.role-filter button.active small{
+  color: #fff;
+  background: rgba(255,255,255,.2);
+}
+.role-filter-divider{
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(111,58,255,.2);
+}
+
+.games-role-sort{
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.3), transparent 42%),
+    #fff5c7;
+  transform: rotate(.08deg);
+}
+
+@media (max-width: 860px){
+  .role-explorer{
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 8px;
+  }
+  .role-explorer .role-filter-kicker,
+  .role-explorer h2,
+  .role-explorer .role-focus-copy,
+  .role-explorer .role-filter,
+  .role-explorer .role-preview{
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .role-explorer .role-filter{ margin-top: 5px; }
+}
+
+@media (max-width: 560px){
+  .role-filter button small{ display: none; }
+  .tab-sticky-note{ width: min(240px, calc(100% - 28px)); }
+}
+/* Compact homepage role toolbar and Board Games card. */
+body[data-page="home"] .section.hero--centered{
+  position: relative;
+}
+
+body[data-page="home"] .tab-sticky-note{
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  width: 210px;
+  margin: 0;
+  padding: 13px 15px 12px;
+}
+body[data-page="home"] .tab-sticky-note strong{ font-size: 1.08rem; }
+body[data-page="home"] .tab-sticky-note small{ font-size: .8rem; }
+
+body[data-page="home"] .role-explorer{
+  grid-template-columns: minmax(210px, .62fr) minmax(0, 1.38fr);
+  grid-template-rows: auto auto;
+  gap: 3px 20px;
+  margin-bottom: 14px;
+  padding: 13px 16px 12px;
+}
+body[data-page="home"] .role-explorer .role-filter-kicker{
+  margin: 0 !important;
+  font-size: .63rem !important;
+}
+body[data-page="home"] .role-explorer h2{
+  margin: 1px 0 0;
+  font-size: 1.05rem;
+  line-height: 1.08;
+}
+body[data-page="home"] .role-explorer .role-focus-copy,
+body[data-page="home"] .role-explorer .role-preview{
+  display: none;
+}
+body[data-page="home"] .role-explorer .role-filter{
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  gap: 5px;
+}
+body[data-page="home"] .role-explorer .role-filter-divider{
+  flex: 0 0 auto;
+  margin: 0 2px;
+  padding: 0 7px 0 0;
+  border: 0;
+  font-size: .58rem;
+}
+body[data-page="home"] .role-filter button{
+  min-height: 32px;
+  padding: 6px 9px;
+  font-size: .69rem;
+}
+body[data-page="home"] .role-filter button small{
+  display: none;
+}
+
+body[data-page="games"] .board-games-section .grid{
+  grid-template-columns: minmax(0, 1fr);
+}
+body[data-page="games"] .board-games-section .mac-window{
+  max-width: none;
+}
+body[data-page="games"] .board-games-section .win-thumb-frame:has(> img[src*="srr-cover"]){
+  width: min(100%, 420px);
+  aspect-ratio: 4 / 5;
+}
+body[data-page="games"] .board-games-section .win-thumb-frame > img[src*="srr-cover"]{
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+@media (max-width: 900px){
+  body[data-page="home"] .tab-sticky-note{
+    position: relative;
+    inset: auto;
+    width: min(220px, calc(100% - 28px));
+    margin: 0 14px 9px auto;
+  }
+}
+
+@media (max-width: 760px){
+  body[data-page="home"] .role-explorer{
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    padding: 13px;
+  }
+  body[data-page="home"] .role-explorer .role-filter{
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: 6px;
+  }
+  body[data-page="home"] .role-explorer .role-filter-divider{
+    flex-basis: 100%;
+    margin-top: 3px;
+  }
+}
+/* Photo-edge note and restored homepage description. */
+body[data-page="home"] .about-photo{
+  position: relative;
+  overflow: visible;
+}
+body[data-page="home"] .about-photo .tab-sticky-note{
+  position: absolute;
+  left: -46px;
+  right: auto;
+  top: auto;
+  bottom: -15px;
+  z-index: 3;
+  width: 190px;
+  margin: 0;
+  padding: 12px 14px 11px;
+  transform: rotate(-2deg);
+}
+body[data-page="home"] .about-photo .tab-sticky-note strong{
+  font-size: 1rem;
+}
+body[data-page="home"] .about-photo .tab-sticky-note small{
+  font-size: .73rem;
+  line-height: 1.15;
+}
+
+body[data-page="home"] .role-explorer{
+  grid-template-columns: minmax(260px, .7fr) minmax(0, 1.3fr);
+  grid-template-rows: auto auto auto;
+  padding-block: 13px;
+}
+body[data-page="home"] .role-explorer .role-focus-copy{
+  display: block;
+  grid-column: 1;
+  grid-row: 3;
+  margin: 3px 0 0 !important;
+  font-size: .7rem !important;
+  line-height: 1.35 !important;
+}
+body[data-page="home"] .role-explorer .role-filter{
+  grid-row: 1 / span 3;
+}
+
+@media (max-width: 900px){
+  body[data-page="home"] .about-photo .tab-sticky-note{
+    left: 50%;
+    bottom: -18px;
+    transform: translateX(-50%) rotate(-1.5deg);
+  }
+  body[data-page="home"] .about-grid{ margin-bottom: 26px; }
+}
+
+@media (max-width: 760px){
+  body[data-page="home"] .role-explorer{
+    grid-template-columns: 1fr;
+  }
+  body[data-page="home"] .role-explorer .role-focus-copy,
+  body[data-page="home"] .role-explorer .role-filter{
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+/* Final note placement and Line By Line-sized Board Game card. */
+body[data-page="home"] .tab-sticky-note{
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  left: auto;
+  bottom: auto;
+  width: 210px;
+  margin: 0;
+  padding: 13px 15px 12px;
+  transform: rotate(1.2deg);
+}
+
+body[data-page="home"] .about-grid{
+  align-items: start;
+}
+body[data-page="home"] .about-photo .role-explorer{
+  position: relative;
+  display: block;
+  width: min(330px, 100%);
+  margin: 13px auto 2px;
+  padding: 14px 15px 13px;
+  transform: rotate(.65deg);
+  text-align: left;
+}
+body[data-page="home"] .about-photo .role-explorer::before{
+  width: 48px;
+  height: 15px;
+  top: -8px;
+}
+body[data-page="home"] .about-photo .role-explorer .role-filter-kicker{
+  margin: 0 0 2px !important;
+  font-size: .6rem !important;
+}
+body[data-page="home"] .about-photo .role-explorer h2{
+  margin: 0 0 5px;
+  font-size: 1.08rem;
+}
+body[data-page="home"] .about-photo .role-explorer .role-focus-copy{
+  display: block;
+  margin: 0 0 9px !important;
+  font-size: .67rem !important;
+  line-height: 1.35 !important;
+}
+body[data-page="home"] .about-photo .role-explorer .role-filter{
+  display: flex;
+  gap: 5px;
+  margin: 0;
+}
+body[data-page="home"] .about-photo .role-explorer .role-filter-divider{
+  flex-basis: 100%;
+  margin: 3px 0 0;
+  padding: 5px 0 0;
+  border-top: 1px dashed rgba(111,58,255,.2);
+  font-size: .55rem;
+}
+body[data-page="home"] .about-photo .role-explorer .role-preview{
+  display: none;
+}
+body[data-page="home"] .about-photo .role-filter button{
+  min-height: 30px;
+  padding: 5px 8px;
+  font-size: .65rem;
+}
+body[data-page="home"] .about-photo .role-filter button small{
+  display: none;
+}
+
+/* Sushi Rat uses the same card footprint as Line By Line. */
+body[data-page="games"] .board-games-section .grid{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+body[data-page="games"] .board-games-section .mac-window{
+  max-width: none;
+}
+body[data-page="games"] .board-games-section .win-thumb-frame:has(> img[src*="srr-cover"]){
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+body[data-page="games"] .board-games-section .win-thumb-frame > img[src*="srr-cover"]{
+  width: 100% !important;
+  height: 100% !important;
+  padding: 8px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  background: linear-gradient(135deg, #fff, #faf7ff) !important;
+}
+
+@media (max-width: 900px){
+  body[data-page="home"] .tab-sticky-note{
+    position: relative;
+    inset: auto;
+    width: min(220px, calc(100% - 28px));
+    margin: 0 14px 9px auto;
+  }
+  body[data-page="home"] .about-photo .role-explorer{
+    width: min(360px, 100%);
+  }
+}
+
+@media (max-width: 760px){
+  body[data-page="games"] .board-games-section .grid{
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* Clearance for the restored upper-right tab note. */
+body[data-page="home"] .mac-window--home{
+  margin-top: 44px;
+}
+@media (max-width: 900px){
+  body[data-page="home"] .mac-window--home{ margin-top: 0; }
+}
+/* Natural About layout and matching role sticky note. */
+body[data-page="home"] .about-grid{
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
+  gap: 30px;
+  align-items: start;
+}
+body[data-page="home"] .about-copy p{
+  max-width: 680px;
+  font-size: .91rem;
+  line-height: 1.62;
+}
+body[data-page="home"] .about-photo img{
+  width: min(320px, 100%);
+}
+
+body[data-page="home"] .about-photo .role-explorer{
+  width: min(295px, 96%);
+  margin-top: 15px;
+  padding: 14px 15px 13px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.18), transparent 38%),
+    #ffed9f;
+  border: 1px solid rgba(151,111,23,.18);
+  border-radius: 2px 3px 7px 2px;
+  box-shadow: 3px 8px 0 rgba(74,41,110,.045), 0 14px 28px rgba(70,45,92,.13);
+  transform: rotate(.9deg);
+}
+body[data-page="home"] .about-photo .role-explorer h2{
+  font-size: 1.03rem;
+  line-height: 1.08;
+}
+body[data-page="home"] .about-photo .role-explorer .role-focus-copy{
+  color: #675375;
+}
+body[data-page="home"] .about-photo .role-explorer .role-filter button{
+  background: rgba(255,255,255,.72);
+}
+body[data-page="home"] .about-photo .role-explorer .role-filter button.active{
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), #8d65ff);
+}
+
+@media (max-width: 900px){
+  body[data-page="home"] .about-grid{
+    grid-template-columns: 1fr;
+  }
+}
+/* Unified yellow notes and cleaner About Me composition. */
+.window-controls-tip,
+.tab-sticky-note,
+.role-explorer,
+.games-role-sort{
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.18), transparent 38%),
+    #ffed9f;
+  border-color: rgba(151,111,23,.18);
+}
+
+body[data-page="home"] .about-grid{
+  grid-template-columns: minmax(0, 1.2fr) minmax(285px, .8fr);
+  gap: 34px;
+}
+body[data-page="home"] .about-copy{
+  padding: 2px 0 4px;
+}
+body[data-page="home"] .about-section-title{
+  margin: 17px 0 5px;
+  color: #4e3e67;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .075em;
+  text-transform: uppercase;
+}
+body[data-page="home"] .about-copy .hero-sub + .about-section-title{
+  margin-top: 15px;
+}
+body[data-page="home"] .about-copy p{
+  margin: 0 0 11px;
+  max-width: 650px;
+  font-size: .9rem;
+  line-height: 1.58;
+}
+
+body[data-page="home"] .about-photo{
+  position: relative;
+  padding-bottom: 62px;
+}
+body[data-page="home"] .about-photo .role-explorer{
+  position: absolute;
+  left: -26px;
+  right: auto;
+  bottom: 0;
+  width: min(285px, 100%);
+  margin: 0;
+  padding: 13px 15px 12px;
+  border-radius: 2px 3px 7px 2px;
+  transform: rotate(.8deg);
+}
+body[data-page="home"] .about-photo .role-explorer h2{
+  margin-bottom: 5px;
+  font-size: 1.02rem;
+}
+body[data-page="home"] .about-photo .role-explorer .role-focus-copy{
+  margin: 0 !important;
+  font-size: .68rem !important;
+  line-height: 1.34 !important;
+}
+
+@media (max-width: 900px){
+  body[data-page="home"] .about-grid{ grid-template-columns: 1fr; }
+  body[data-page="home"] .about-photo{
+    padding-bottom: 0;
+  }
+  body[data-page="home"] .about-photo .role-explorer{
+    position: relative;
+    inset: auto;
+    width: min(300px, 100%);
+    margin: 14px auto 0;
+  }
+}
+
+/* Final Sushi Rat framing and maximized-window control safeguards. */
+body[data-page="games"] .board-games-section .usc-srr .sushi-rat-frame{
+  position: relative;
+  width: min(100%, 420px);
+  aspect-ratio: 4 / 5;
+  margin-inline: auto;
+  overflow: hidden;
+  background: #fff;
+}
+body[data-page="games"] .board-games-section .usc-srr .sushi-rat-frame::before{
+  display: none;
+}
+body[data-page="games"] .board-games-section .usc-srr .sushi-rat-frame > img,
+body[data-page="games"] .board-games-section .usc-srr .sushi-rat-frame > img.win-thumb{
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  background: #fff !important;
+  border-radius: 11px;
+}
+.mac-window.is-max .win-header > .dots{
+  position: relative;
+  z-index: 5;
+  display: flex !important;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 8px;
+  min-width: 52px;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.mac-window.is-max .win-header > .dots .dot{
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Sushi Rat thumbnail: compact fitted treatment, like Sky Is the Limit. */
+body[data-page="games"] .board-games-section .usc-srr .desc-short .sushi-rat-frame{
+  width: 100%;
+  max-width: none;
+  aspect-ratio: 4 / 5;
+  background: transparent;
+}
+body[data-page="games"] .board-games-section .usc-srr .desc-short .sushi-rat-frame > img.win-thumb{
+  padding: 0 !important;
+  object-fit: contain !important;
+  background: transparent !important;
+}
+body[data-page="games"] .board-games-section .usc-srr .desc-long .sushi-rat-frame{
+  width: min(100%, 420px);
+  aspect-ratio: 4 / 5;
+}
+body[data-page="games"] .nudge-actions{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 0 16px;
+}
+body[data-page="games"] .nudge-media-frame{
+  aspect-ratio: 460 / 215;
+  background: #fff;
+}
+body[data-page="games"] .nudge-media-frame::before{
+  display: none;
+}
+body[data-page="games"] .nudge-media-frame img{
+  object-fit: cover;
+  object-position: center;
+}
+body[data-page="games"] .line-by-line-media-frame{
+  aspect-ratio: 16 / 9;
+}
+body[data-page="games"] .line-by-line-media-frame::before{
+  display: none;
+}
+body[data-page="games"] .line-by-line-media-frame img{
+  object-fit: cover;
+  object-position: center;
+}
+body[data-page="games"] .media-row--solo .image-box{
+  width: min(620px, 90vw);
+}
+
+/* Keep a fullscreen game window above the persistent site navigation. */
+body:has(.mac-window.is-max) > .section{
+  z-index: 3000;
+}
+body:has(.mac-window.is-max) .mac-window.is-max{
+  z-index: 3100 !important;
+}
+body:has(.mac-window.is-max) .mac-window.is-max .win-header{
+  position: sticky;
+  top: 0;
+  z-index: 12;
+}
+
+/* Two selected projects with their school and date kept close to the work. */
+body[data-page="work"] .projects-pair{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+}
+body[data-page="work"] .projects-pair > .mac-window{
+  width: 100%;
+  max-width: none;
+}
+body[data-page="work"] .project-context{
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 14px;
+  padding: 6px 11px;
+  color: #3c2863;
+  background: linear-gradient(135deg, #f0e9ff, #faf8ff);
+  border: 1px solid rgba(111,58,255,.2);
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(76,43,130,.08);
+  font-size: .73rem;
+  line-height: 1.2;
+}
+body[data-page="work"] .project-context span{
+  color: #786d8e;
+  font-size: .63rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+body[data-page="work"] .project-context strong{
+  overflow-wrap: anywhere;
+}
+body[data-page="work"] .desc-short > .project-context{
+  margin-top: 10px;
+}
+body[data-page="work"] .desc-short > .project-context--usc{
+  margin-top: 12px;
+}
+@media (max-width: 900px){
+  body[data-page="work"] .projects-pair{
+    grid-template-columns: 1fr;
+  }
 }

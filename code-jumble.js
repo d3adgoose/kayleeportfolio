@@ -1,6 +1,6 @@
 (() => {
   const layer = document.querySelector('.code-jumble-layer');
-  if (!layer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!layer) return;
 
   const tokens = ['</>', '{ }', '01', '( )', '[ ]', '=>', '++', '//', '#', '*', 'C#', 'if', 'for', 'UI', 'git', '∿', '〰', '~~~'];
   const colors = [

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Work — Kaylee Linette Morales</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css?v=20260715-12" />
+  <link rel="stylesheet" href="style.css?v=20260823-11" />
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -203,42 +203,6 @@
       margin-bottom: 10px;
     }
 
-    /* ---------- Sushi Rat sizing ---------- */
-    .usc-srr .win-thumb {
-      display: block;
-      width: 80%;
-      max-width: 380px;
-      height: auto;
-      object-fit: contain;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      margin: 0 auto 10px;
-    }
-    .usc-srr .media-row {
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:16px;
-    }
-    .usc-srr .image-box {
-      width: min(400px, 85vw);
-      margin: 0 auto;
-    }
-    .usc-srr .media-frame.cover::before {
-      content: "";
-      display: block;
-      padding-top: 40%;
-    }
-    .usc-srr .media-frame img {
-      width:100%;
-      height:auto;
-      object-fit:contain;
-      border-radius:10px;
-      background:#fff;
-      border:1px solid var(--border);
-    }
 
     /* ---------- Mural sizing ---------- */
     .mural-thumb{
@@ -314,109 +278,13 @@
         </ul>
       </aside>
     </div>
-    <p class="hero-sub">Mods • Systems • UX • Research • Advocacy</p>
+    <p class="hero-sub">Research • Advocacy</p>
 
-    <!-- ===== USC ===== -->
-    <section style="margin-top:24px">
-      <h2 class="section-heading"><i class="fa-solid fa-graduation-cap"></i> USC • M.S. Computer Science: Game Development</h2>
-      <div class="grid">
+    <!-- ===== Selected Projects ===== -->
+    <section class="featured-projects" style="margin-top:24px">
+      <h2 class="section-heading"><i class="fa-solid fa-folder-open"></i> Selected Projects</h2>
+      <div class="grid projects-pair">
 
-        <!-- Sushi Rat Revolution -->
-        <article class="mac-window usc-srr" data-win-id="usc-sushi">
-          <div class="win-header">
-            <div class="dots" aria-hidden="true">
-              <span class="dot red" data-action="close" aria-label="Close"></span>
-              <span class="dot yellow" data-action="minimize" aria-label="Minimize"></span>
-              <span class="dot green" data-action="maximize" aria-label="Maximize"></span>
-            </div>
-            <div class="win-title">Board Game — Sushi Rat Revolution (Up the River mod)</div>
-          </div>
-
-          <div class="win-body">
-            <div class="desc-short">
-              <img class="win-thumb" src="assets/images/srr-cover.png" alt="Sushi Rat Revolution cover art" />
-              <div class="min-question-box" role="region" aria-label="Sushi Rat overview questions">
-                <p>How I modded <em>Up the River</em> to add a rotating conveyor and new tension loops?</p>
-              </div>
-            </div>
-
-            <div class="desc-long">
-              <div class="media-row">
-                <div class="image-box">
-                  <div class="media-frame">
-                    <img src="assets/images/srr-cover.png" alt="Sushi Rat Revolution poster" />
-                  </div>
-                  <div class="video-caption">USC • CTIN-488 — 2025</div>
-                </div>
-                <div class="action-col">
-                  <a class="btn btn-pdf" href="assets/files/Team4-Rules.pdf" target="_blank" rel="noopener">
-                    <i class="fa-solid fa-book"></i> Rules
-                  </a>
-                  <a class="btn btn-pdf" href="assets/files/Team4-PlaytestReport-Wk5.pdf" target="_blank" rel="noopener">
-                    <i class="fa-solid fa-clipboard-check"></i> Playtest Report Week 1
-                  </a>
-                  <a class="btn btn-pdf" href="assets/files/Team4-Playtests-Wk6.pdf" target="_blank" rel="noopener">
-                    <i class="fa-solid fa-clipboard-list"></i> Playtests Week 2
-                  </a>
-                  <a class="btn btn-pdf" href="assets/files/Team4-DesignPhotoJournal-Wk5.pdf" target="_blank" rel="noopener">
-                    <i class="fa-solid fa-pen"></i> Design Journal Week 1
-                  </a>
-                  <a class="btn btn-pdf" href="assets/files/Team4-DesignPhotoJournal-Wk6.pdf" target="_blank" rel="noopener">
-                    <i class="fa-solid fa-pen"></i> Design Journal Week 2
-                  </a>
-                  <a class="btn btn-pdf" href="assets/files/Sushi-Rat-Revolution-Cards.pdf" target="_blank" rel="noopener">
-                    <i class="fa-solid fa-clone"></i> Card Designs
-                  </a>
-                  <a class="btn btn-pdf" href="assets/files/Shing-Team4-UtR-Presentation.pdf" target="_blank" rel="noopener">
-                    <i class="fa-solid fa-file-powerpoint"></i> Presentation Deck
-                  </a>
-                </div>
-              </div>
-
-              <div class="desc-box">
-                <h3>Overview — Modding <em>Up the River</em></h3>
-                <p>
-                  <strong>Sushi Rat Revolution</strong> began as a targeted mod of <em>Up the River</em> built under a structured
-                  <strong>two-week work cycle</strong>. Across Week 1 and Week 2, our team introduced a rotating conveyor mechanic,
-                  redefined how rats interact with the river, and layered in set-collection goals to reshape push-your-luck decisions.
-                  The short timeline forced us to treat each week as its own micro-sprint: Week 1 focused on proving the core mechanic,
-                  and Week 2 focused on smoothing pacing and clarifying player choices.
-                </p>
-                <ul>
-                  <li><strong>Week 1:</strong> Defined the conveyor, paper-prototyped new states, clarified rat movement, and identified broken loops.</li>
-                  <li><strong>Week 2:</strong> Smoothed pacing, tightened rules text, aligned iconography with player cues, and recalibrated set-collection rewards.</li>
-                  <li>Kept all changes compatible with the original components so the mod could function as a drop-in rules patch.</li>
-                  <li>Documented the final rule diffs so a producer, QA team, or instructor can quickly understand what changed and why.</li>
-                </ul>
-              </div>
-
-              <div class="desc-box">
-                <h3>Mod Design &amp; Process</h3>
-                <p>
-                  We approached the project like a small production team:
-                  <strong>identify a friction point → propose a minimal rule change → prototype → playtest → iterate.</strong>
-                  Because the class schedule locked us to a two-week cycle, every change had to either sharpen tension,
-                  clarify feedback, or improve player flow.
-                </p>
-                <ul>
-                  <li>Reframed the conveyor as the core risk engine that determines urgency each turn.</li>
-                  <li>Balanced set-collection so rewards build over time but don’t stall the race pacing.</li>
-                  <li>Resolved early flow issues where players hesitated or stalled by simplifying turn structure and reducing ambiguous edge cases.</li>
-                  <li>Designed icons and card layouts to be easily reskinned in a future art or digital pass.</li>
-                </ul>
-              </div>
-
-              <div class="desc-box">
-                <h3>Production Notes</h3>
-                <ul>
-                  <li>Rule changes are isolated so the base <em>Up the River</em> experience stays intact for players who prefer the original.</li>
-                  <li>Card and icon assets are built as modular layers for fast updates or localized variants.</li>
-                  <li>Playtest reports and journals are structured to support QA, usability review, and future digital prototyping.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </article>
 
         <!-- Audio Visualizer Advocacy -->
         <article class="mac-window" data-win-id="usc-advocacy-av">
@@ -434,9 +302,11 @@
               <div class="min-question-box" role="region" aria-label="Audio visualizer questions">
                 <p>How do we standardize visual audio as an accessibility option industry-wide?</p>
               </div>
+              <div class="project-context project-context--usc"><strong>USC • M.S. Computer Science: Game Development • 2026</strong></div>
             </div>
 
             <div class="desc-long">
+              <div class="project-context"><strong>USC • M.S. Computer Science: Game Development • 2026</strong></div>
               <div class="desc-box">
                 <h3>Advocacy Statement</h3>
                 <p>
@@ -476,13 +346,6 @@
           </div>
         </article>
 
-      </div>
-    </section>
-
-    <!-- ===== UCSC ===== -->
-    <section style="margin-top:36px">
-      <h2 class="section-heading"><i class="fa-solid fa-school"></i> UCSC • B.S. Computer Science: Game Design</h2>
-      <div class="grid">
         <!-- Merrill Moat Mural -->
         <article class="mac-window" data-win-id="ucsc-mural">
           <div class="win-header">
@@ -496,6 +359,7 @@
 
           <div class="win-body">
             <div class="desc-short">
+              <div class="project-context"><strong>UCSC • B.S. Computer Science: Game Design • 2025</strong></div>
               <img class="mural-thumb" src="assets/images/righttocarry.jpeg" alt="The Right to Carry mural" />
               <div class="min-question-box" role="region" aria-label="Mural overview questions">
                 <p>How I used public art to open a campus-wide conversation about gun violence?</p>
@@ -503,6 +367,7 @@
             </div>
 
             <div class="desc-long">
+              <div class="project-context"><strong>UCSC • B.S. Computer Science: Game Design • 2025</strong></div>
               <div class="media-row">
                 <div class="image-box">
                   <div class="mural-frame">
@@ -540,7 +405,7 @@
           </div>
         </article>
 
-        <!-- Wireframes -->
+        <!-- HIDDEN PROJECT: Wireframes — kept here for possible future use.
         <article class="mac-window" data-win-id="ucsc-wireframes">
           <div class="win-header">
             <div class="dots" aria-hidden="true">
@@ -594,8 +459,9 @@
             </div>
           </div>
         </article>
+        END HIDDEN PROJECT: Wireframes -->
 
-        <!-- Time-Based Systems -->
+        <!-- HIDDEN PROJECT: Time-Based Systems — kept here for possible future use.
         <article class="mac-window" data-win-id="ucsc-time">
           <div class="win-header">
             <div class="dots" aria-hidden="true">
@@ -637,8 +503,9 @@
             </div>
           </div>
         </article>
+        END HIDDEN PROJECT: Time-Based Systems -->
 
-        <!-- Outlast Trials -->
+        <!-- HIDDEN PROJECT: Outlast Trials — kept here for possible future use.
         <article class="mac-window" data-win-id="ucsc-outlast">
           <div class="win-header">
             <div class="dots" aria-hidden="true">
@@ -681,6 +548,7 @@
             </div>
           </div>
         </article>
+        END HIDDEN PROJECT: Outlast Trials -->
 
       </div>
     </section>
@@ -689,7 +557,7 @@
   <footer>© 2026 Kaylee Linette Morales</footer>
 
   <div class="code-jumble-layer" aria-hidden="true"></div>
-  <script src="code-jumble.js?v=20260715-3"></script>
+<script src="code-jumble.js?v=20260823-2"></script>
 
   <script>
     document.querySelectorAll('iframe[data-slides]').forEach((frame) => {
@@ -732,6 +600,6 @@
   </script>
 
   <script src="window-ui.js?v=20260715-3"></script>
-  <script src="site.js?v=20260715-7"></script>
+<script src="site.js?v=20260823-8"></script>
 </body>
 </html>
