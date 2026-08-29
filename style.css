@@ -22,7 +22,7 @@
       Base
       ============================== */
    * { box-sizing: border-box; }
-   html, body { margin: 0; padding: 0; max-width: 100%; overflow-x: hidden; }
+   html, body { margin: 0; padding: 0; max-width: 100%; overflow-x: clip; }
    body{
      position: relative;
      isolation: isolate;
@@ -53,7 +53,7 @@
       Banner / Header
       ============================== */
    .site-banner{
-     position: sticky;
+     position: sticky !important;
      top: 0;
      z-index: 1000;
      background:
@@ -71,6 +71,98 @@
      display: flex;
      align-items: center;
      gap: 18px;
+     position: relative;
+   }
+
+   .header-window-tip{
+     position: absolute;
+     left: 50%;
+     top: calc(100% - 40px);
+     z-index: 2;
+     display: grid;
+     grid-template-columns: repeat(3, auto);
+     align-items: center;
+     justify-content: center;
+     gap: 4px 13px;
+     width: 252px;
+     padding: 17px 17px 14px;
+     color: #5f4d70;
+     background: linear-gradient(135deg, rgba(255,255,255,.2), transparent 42%), #ffed9f;
+     border: 1px solid rgba(151,111,23,.2);
+     border-radius: 2px 3px 10px 3px;
+     box-shadow: 4px 12px 22px rgba(43,16,84,.2), 0 3px 0 rgba(99,62,140,.06);
+     font-family: "Caveat", cursive;
+     font-size: .82rem;
+     line-height: 1;
+     transform: translateX(-50%) rotate(-1.8deg);
+     transform-origin: 50% 0;
+     animation: header-note-sway 4.8s ease-in-out infinite;
+     transition: opacity .16s ease, visibility .16s ease;
+   }
+
+   .header-window-tip::before{
+     content: "";
+     position: absolute;
+     top: -8px;
+     left: 50%;
+     width: 58px;
+     height: 16px;
+     background: rgba(222,211,255,.75);
+     box-shadow: 0 2px 3px rgba(55,35,88,.08);
+     transform: translateX(-50%) rotate(1.5deg);
+   }
+
+   .header-window-tip::after{
+     content: "";
+     position: absolute;
+     right: -1px;
+     bottom: -1px;
+     width: 18px;
+     height: 18px;
+     background: linear-gradient(135deg, rgba(220,194,92,.32) 0 49%, #fff6c6 50% 100%);
+     border-radius: 8px 0 8px 0;
+   }
+
+   .header-window-tip strong{
+     grid-column: 1 / -1;
+     margin-bottom: 5px;
+     color: #694b8c;
+     font-size: 1.08rem;
+     font-weight: 600;
+     text-align: center;
+   }
+
+   .header-window-tip span{
+     display: inline-flex;
+     align-items: center;
+     gap: 3px;
+     white-space: nowrap;
+   }
+
+   body.has-maximized-window .header-window-tip{
+     opacity: 0;
+     visibility: hidden;
+   }
+
+   @keyframes header-note-sway{
+     0%, 100%{ transform: translateX(-50%) rotate(-1.8deg); }
+     50%{ transform: translateX(-50%) rotate(.8deg); }
+   }
+
+   @media (max-width: 900px){
+     .banner-inner{ flex-wrap: wrap; }
+     .header-window-tip{
+       left: 50%;
+       top: calc(100% - 32px);
+       width: min(244px, calc(100vw - 28px));
+       margin: 0;
+       padding: 15px 14px 12px;
+       font-size: .78rem;
+     }
+   }
+
+   @media (prefers-reduced-motion: reduce){
+     .header-window-tip{ animation: none; }
    }
    
    .brand{

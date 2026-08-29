@@ -1,5 +1,19 @@
 // site.js — single, conflict-free mobile nav
 document.addEventListener('DOMContentLoaded', () => {
+    const siteHeader = document.querySelector('.site-banner .banner-inner');
+    if (siteHeader && !document.body.matches('[data-page="home"]')) {
+      const headerTip = document.createElement('aside');
+      headerTip.className = 'header-window-tip';
+      headerTip.setAttribute('aria-label', 'Window button reminder');
+      headerTip.innerHTML = `
+        <strong>psst... the dots work!</strong>
+        <span><i class="tip-dot tip-dot--red"></i> exit</span>
+        <span><i class="tip-dot tip-dot--yellow"></i> shrink</span>
+        <span><i class="tip-dot tip-dot--green"></i> expand</span>`;
+      const navToggle = siteHeader.querySelector('.nav-toggle');
+      siteHeader.insertBefore(headerTip, navToggle || siteHeader.querySelector('.nav'));
+    }
+
     const projectRoles = {
       'indev-linebyline': 'Lead Producer',
       'indev-nudge': 'Usability Team Member',

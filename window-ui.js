@@ -191,6 +191,7 @@
         st.mode = 'maximized';
         state.set(win, st);
         win.classList.add('is-max');     // <-- drives your long/short content swap
+        document.body.classList.add('has-maximized-window');
         win.classList.remove('is-scrollable', 'has-scrolled');
 
         // Create placeholder (for perfect minimize)
@@ -227,6 +228,7 @@
             ph.replaceWith(win);
             drop(win);
             lockScroll(false);
+            document.body.classList.remove('has-maximized-window');
             st.mode = 'normal';
             st.placeholder = null;
             state.set(win, st);
