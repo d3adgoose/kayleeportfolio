@@ -1010,7 +1010,12 @@
           <div class="win-body">
             <!-- Minimized -->
             <div class="desc-short">
-              <img class="win-thumb" src="assets/images/ThingsLeftUnspokenCoverArt.png" alt="Things Left Unspoken cover art" />
+              <div class="video-wrap" data-video="9drYm9PhBvE" role="button" tabindex="0" aria-label="Play Things Left Unspoken video">
+                <img src="assets/images/ThingsLeftUnspokenCoverArt.png" alt="Things Left Unspoken video poster" />
+                <div class="play-btn" aria-hidden="true">
+                  <div class="icon"><i class="fa-solid fa-play"></i></div>
+                </div>
+              </div>
               <p>
                 A point-and-click narrative game about a daughter trying to finally say what she’s been putting off during lunch with her mother.
               </p>
@@ -1022,11 +1027,14 @@
             <!-- Maximized -->
             <div class="desc-long">
               <div class="media-row">
-                <div class="image-box">
-                  <div class="media-frame">
-                    <img src="assets/images/ThingsLeftUnspokenCoverArt.png" alt="Things Left Unspoken key art" />
+                <div class="video-box">
+                  <div class="video-wrap" data-video="9drYm9PhBvE" role="button" tabindex="0" aria-label="Play Things Left Unspoken video">
+                    <img src="assets/images/ThingsLeftUnspokenCoverArt.png" alt="Things Left Unspoken video poster" />
+                    <div class="play-btn" aria-hidden="true">
+                      <div class="icon"><i class="fa-solid fa-play"></i></div>
+                    </div>
                   </div>
-                  <div class="video-caption">Things Left Unspoken — January 2026</div>
+                  <div class="video-caption">Things Left Unspoken — Video</div>
                 </div>
 
                 <div class="action-col">
@@ -1325,6 +1333,17 @@
     // Pause Pulse & Pole gameplay whenever the card changes window state.
     (function pauseHiddenPulseVideo(){
       const card = document.querySelector('[data-win-id="jam-pulsepole"]');
+      if (!card) return;
+      new MutationObserver(() => {
+        card.querySelectorAll('iframe').forEach((frame) => {
+          frame.contentWindow?.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        });
+      }).observe(card, { attributes: true, attributeFilter: ['class'] });
+    })();
+
+    // Pause Things Left Unspoken whenever its window changes state.
+    (function pauseHiddenThingsVideo(){
+      const card = document.querySelector('[data-win-id="jam-thingsleftunspoken"]');
       if (!card) return;
       new MutationObserver(() => {
         card.querySelectorAll('iframe').forEach((frame) => {
