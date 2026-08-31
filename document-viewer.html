@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio document</title>
+  <style>
+    *{box-sizing:border-box} body{margin:0;background:#eeeaf5;color:#292136;font:14px system-ui,sans-serif}
+    header{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 16px;background:#faf8ff;border-bottom:1px solid #dcd3ed}
+    h1{font-size:14px;margin:0;flex:1} select,a{font:inherit;color:#521f90} select{padding:4px;border:1px solid #dcd3ed;border-radius:6px;background:white}
+    #status{padding:10px 16px;margin:0;color:#635970} #pages{width:100%;max-width:1100px;margin:auto;padding:10px}
+    .page{margin:0 0 16px;background:white;box-shadow:0 3px 12px #30203b18} canvas{display:block;width:100%;height:auto}
+    details{padding:8px 12px;font-size:12px} summary{cursor:pointer;color:#521f90} .page-text{white-space:pre-wrap;line-height:1.6}
+    :focus-visible{outline:3px solid #8956df;outline-offset:2px}
+  </style>
+</head>
+<body>
+  <header><h1 id="title">Portfolio document</h1><label>Zoom <select id="zoom"><option value="100">Fit width</option><option value="150">150%</option><option value="200">200%</option></select></label><a id="download" hidden download>Download PDF</a></header>
+  <p id="status" role="status">Loading document…</p>
+  <main id="pages" aria-label="Document pages"></main>
+  <script type="module" src="document-viewer.js?v=4"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 156" fill="none">
+  <defs>
+    <linearGradient id="ribbon" x1="20" y1="20" x2="103" y2="144" gradientUnits="userSpaceOnUse"><stop stop-color="#7946b0"/><stop offset=".45" stop-color="#521f90"/><stop offset="1" stop-color="#35115f"/></linearGradient>
+    <linearGradient id="gold" x1="35" y1="25" x2="88" y2="89" gradientUnits="userSpaceOnUse"><stop stop-color="#fff4c6"/><stop offset=".5" stop-color="#edce80"/><stop offset="1" stop-color="#c39b43"/></linearGradient>
+  </defs>
+  <path d="M34 79 13 151 36 132 46 154 64 88Z" fill="url(#ribbon)"/>
+  <path d="m59 88 17 66 11-22 22 19-22-72Z" fill="url(#ribbon)"/>
+  <path d="m39 91-13 44M81 91l14 44" stroke="#b797dc" stroke-opacity=".35" stroke-width="2"/>
+  <polygon points="60.00,3.00 64.21,8.21 69.36,3.92 72.48,9.85 78.37,6.65 80.27,13.08 86.67,11.09 87.28,17.76 93.94,17.06 93.24,23.72 99.91,24.33 97.92,30.73 104.35,32.63 101.15,38.52 107.08,41.64 102.79,46.79 108.00,51.00 102.79,55.21 107.08,60.36 101.15,63.48 104.35,69.37 97.92,71.27 99.91,77.67 93.24,78.28 93.94,84.94 87.28,84.24 86.67,90.91 80.27,88.92 78.37,95.35 72.48,92.15 69.36,98.08 64.21,93.79 60.00,99.00 55.79,93.79 50.64,98.08 47.52,92.15 41.63,95.35 39.73,88.92 33.33,90.91 32.72,84.24 26.06,84.94 26.76,78.28 20.09,77.67 22.08,71.27 15.65,69.37 18.85,63.48 12.92,60.36 17.21,55.21 12.00,51.00 17.21,46.79 12.92,41.64 18.85,38.52 15.65,32.63 22.08,30.73 20.09,24.33 26.76,23.72 26.06,17.06 32.72,17.76 33.33,11.09 39.73,13.08 41.63,6.65 47.52,9.85 50.64,3.92 55.79,8.21" fill="url(#ribbon)" stroke="#431675" stroke-width="1"/>
+  <circle cx="60" cy="51" r="37" stroke="#9b71c6" stroke-width="2" stroke-dasharray="2 3"/>
+  <circle cx="60" cy="51" r="31" fill="url(#gold)" stroke="#d4ab57" stroke-width="2"/>
+  <circle cx="60" cy="51" r="27" stroke="#fff4ce" stroke-width="1.5"/>
+  <path d="M50 37h20v10c0 8-5 13-10 13S50 55 50 47V37Z" fill="#521f90"/>
+  <path d="M50 40h-6v5c0 6 5 9 10 9M70 40h6v5c0 6-5 9-10 9" stroke="#521f90" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M60 59v8m-8 2h16" stroke="#521f90" stroke-width="4" stroke-linecap="round"/>
+</svg>

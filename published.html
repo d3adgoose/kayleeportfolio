@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Games — Kaylee Linette Morales</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css?v=20260831-4" />
+  <link rel="stylesheet" href="style.css?v=20260831-20" />
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -52,7 +52,7 @@
       aspect-ratio: 16 / 9;
       border-radius: 12px;
       overflow: hidden;
-      border: 1px solid var(--border);
+      border: 0;
       box-shadow: var(--shadow);
       background: #000;
       margin-bottom: 12px;
@@ -62,8 +62,9 @@
       display: block; width: 100%; height: 100%; object-fit: cover;
     }
     .video-wrap iframe{
-      position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block;
+      position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; margin: 0; padding: 0; border: 0; display: block;
     }
+    .video-wrap.ratio::before{ content: none; }
     .video-wrap .play-btn{
       position: absolute; inset: 0;
       display: grid; place-items: center;
@@ -347,8 +348,7 @@
     <!-- Minimized -->
     <div class="desc-short">
       <div class="video-wrap steam-video-wrap" data-steam-video
-        data-webm="https://video.fastly.steamstatic.com/store_trailers/4516490/1273207431/41f2d1aa74dcc1ebb3c9c0e8f663ba0ee170568f/1786528044/microtrailer.webm"
-        data-mp4="https://video.fastly.steamstatic.com/store_trailers/4516490/1273207431/41f2d1aa74dcc1ebb3c9c0e8f663ba0ee170568f/1786528044/microtrailer.mp4"
+        data-hls="https://video.akamai.steamstatic.com/store_trailers/4516490/1273207431/41f2d1aa74dcc1ebb3c9c0e8f663ba0ee170568f/1786528044/hls_264_master.m3u8"
         role="button" tabindex="0" aria-label="Play the nudge official trailer">
         <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/257347206/ba9c14ba58f334a5082556604894a84d4405a747/movie_600x337.jpg" alt="nudge official trailer thumbnail" />
         <div class="play-btn" aria-hidden="true"><div class="icon"><i class="fa-solid fa-play"></i></div></div>
@@ -368,8 +368,7 @@
       <div class="media-row nudge-media-row">
         <div class="video-box">
           <div class="video-wrap steam-video-wrap" data-steam-video
-            data-webm="https://video.fastly.steamstatic.com/store_trailers/4516490/1273207431/41f2d1aa74dcc1ebb3c9c0e8f663ba0ee170568f/1786528044/microtrailer.webm"
-            data-mp4="https://video.fastly.steamstatic.com/store_trailers/4516490/1273207431/41f2d1aa74dcc1ebb3c9c0e8f663ba0ee170568f/1786528044/microtrailer.mp4"
+            data-hls="https://video.akamai.steamstatic.com/store_trailers/4516490/1273207431/41f2d1aa74dcc1ebb3c9c0e8f663ba0ee170568f/1786528044/hls_264_master.m3u8"
             role="button" tabindex="0" aria-label="Play the nudge official trailer">
             <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/257347206/ba9c14ba58f334a5082556604894a84d4405a747/movie_600x337.jpg" alt="nudge official trailer thumbnail" />
             <div class="play-btn" aria-hidden="true"><div class="icon"><i class="fa-solid fa-play"></i></div></div>
@@ -562,8 +561,7 @@
             <!-- Minimized -->
             <div class="desc-short">
               <div class="video-wrap steam-video-wrap" data-steam-video
-                data-webm="https://video.fastly.steamstatic.com/store_trailers/2967460/705987/71f7c226d091930f812110e6200fdcbd92685f16/1750953931/microtrailer.webm"
-                data-mp4="https://video.fastly.steamstatic.com/store_trailers/2967460/705987/71f7c226d091930f812110e6200fdcbd92685f16/1750953931/microtrailer.mp4"
+                data-hls="https://video.akamai.steamstatic.com/store_trailers/2967460/705987/71f7c226d091930f812110e6200fdcbd92685f16/1750953931/hls_264_master.m3u8"
                 role="button" tabindex="0" aria-label="Play the Red Trees Rail Co Steam trailer">
                 <img src="assets/images/railco.jpg" alt="Red Trees Rail Co trailer poster" />
                 <div class="play-btn" aria-hidden="true"><div class="icon"><i class="fa-solid fa-play"></i></div></div>
@@ -581,8 +579,7 @@
               <div class="media-row">
                 <div class="video-box">
                   <div class="video-wrap steam-video-wrap" data-steam-video
-                    data-webm="https://video.fastly.steamstatic.com/store_trailers/2967460/705987/71f7c226d091930f812110e6200fdcbd92685f16/1750953931/microtrailer.webm"
-                    data-mp4="https://video.fastly.steamstatic.com/store_trailers/2967460/705987/71f7c226d091930f812110e6200fdcbd92685f16/1750953931/microtrailer.mp4"
+                    data-hls="https://video.akamai.steamstatic.com/store_trailers/2967460/705987/71f7c226d091930f812110e6200fdcbd92685f16/1750953931/hls_264_master.m3u8"
                     role="button" tabindex="0" aria-label="Play the Red Trees Rail Co Steam trailer">
                     <img src="assets/images/railco.jpg" alt="Red Trees Rail Co trailer poster" />
                     <div class="play-btn" aria-hidden="true"><div class="icon"><i class="fa-solid fa-play"></i></div></div>
@@ -660,11 +657,14 @@
   <div class="win-body">
     <!-- Minimized -->
     <div class="desc-short">
+      <div class="alienated-award-media">
       <div class="video-wrap" data-video="6wwPf11FYcI" role="button" tabindex="0" aria-label="Play Pulse & Pole gameplay video">
         <img src="assets/images/pulsepole-video-poster.png" alt="Pulse & Pole gameplay video poster" />
         <div class="play-btn" aria-hidden="true">
           <div class="icon"><i class="fa-solid fa-play"></i></div>
         </div>
+      </div>
+      <p class="alienated-award award--light">Best Communication with PSCP <span>Individual award<br>Kaylee Morales<br>PSCP Ratchet Up 2026</span></p>
       </div>
       <p>
         A rhythm-based combat game where you control two magnetic forces: one positive and one negative.
@@ -693,19 +693,7 @@
           <a class="btn btn-itch" href="https://d3adg00se.itch.io/pulse-pole" target="_blank" rel="noopener">
             <i class="fa-brands fa-itch-io"></i> Play on itch.io
           </a>
-          <a class="btn"
-            href="assets/files/Pulse&PoleDevLog.pdf"
-            target="_blank"
-            rel="noopener">
-            <i class="fa-solid fa-book"></i> Development Log
-          </a>
-
-          <a class="btn"
-            href="assets/files/Pulse&PoleRatchetUpGDD.pdf"
-            target="_blank"
-            rel="noopener">
-            <i class="fa-solid fa-file-lines"></i> Game Design Document
-          </a>
+          <p class="alienated-award award--light">Best Communication with PSCP <span>Individual award<br>Kaylee Morales<br>PSCP Ratchet Up 2026</span></p>
         </div>
       </div>
 
@@ -731,6 +719,22 @@
           <li><strong>Beat-Synced Enemy:</strong> The enemy changes polarity in time with the music.</li>
           <li><strong>Increasing Challenge:</strong> The rhythm becomes harder to keep up with as the song continues.</li>
         </ul>
+      </div>
+
+      <div class="game-documents">
+      <div class="desc-box">
+        <h3>Game Design Document</h3>
+        <p class="document-hint">Scroll inside the preview to explore the document.</p>
+        <iframe class="game-document-preview" src="document-viewer.html?doc=design" title="Pulse &amp; Pole Game Design Document" loading="lazy"></iframe>
+        <a class="btn document-open" href="document-viewer.html?doc=design" target="_blank" rel="noopener" aria-label="Open Game Design Document in a new tab">Open in new tab ↗</a>
+      </div>
+
+      <div class="desc-box">
+        <h3>Development Log</h3>
+        <p class="document-hint">Scroll inside the preview to follow the development process.</p>
+        <iframe class="game-document-preview" src="document-viewer.html?doc=log" title="Pulse &amp; Pole Development Log" loading="lazy"></iframe>
+        <a class="btn document-open" href="document-viewer.html?doc=log" target="_blank" rel="noopener" aria-label="Open Development Log in a new tab">Open in new tab ↗</a>
+      </div>
       </div>
 
       <div class="desc-box">
@@ -920,7 +924,13 @@
           <div class="win-body">
             <!-- Minimized -->
             <div class="desc-short">
-              <img class="win-thumb" src="assets/images/alienatedCover.png" alt="Alienated cover art" />
+              <div class="alienated-award-media">
+              <div class="video-wrap steam-video-wrap" data-local-video="assets/videos/alienated-trailer.mp4" role="button" tabindex="0" aria-label="Play Alienated video">
+                <img src="assets/images/alienatedCover.png" alt="Alienated cover art" />
+                <div class="play-btn" aria-hidden="true"><div class="icon"><i class="fa-solid fa-play"></i></div></div>
+              </div>
+              <p class="alienated-award">Award of Excellence in Visual Design <span>Global Game Jam 2026 · USC site</span></p>
+              </div>
               <p>
                 A cutesy pixel puzzle game about a small alien trying to fit into an ancient society that doesn’t quite understand them.
                 Communicate with emotional masks and learn what belonging means one symbol at a time.
@@ -934,8 +944,11 @@
             <div class="desc-long">
               <div class="media-row">
                 <div class="image-box">
-                  <div class="media-frame">
+                  <div class="alienated-award-media">
+                  <div class="video-wrap steam-video-wrap" data-local-video="assets/videos/alienated-trailer.mp4" role="button" tabindex="0" aria-label="Play Alienated video">
                     <img src="assets/images/alienatedCover.png" alt="Alienated key art" />
+                    <div class="play-btn" aria-hidden="true"><div class="icon"><i class="fa-solid fa-play"></i></div></div>
+                  </div>
                   </div>
                   <div class="video-caption">Alienated — Global Game Jam 2026</div>
                 </div>
@@ -944,6 +957,7 @@
                   <a class="btn btn-itch" href="https://miyuo.itch.io/alienated" target="_blank" rel="noopener">
                     <i class="fa-brands fa-itch-io"></i> Play on itch.io
                   </a>
+                  <p class="alienated-award">Award of Excellence in Visual Design <span>Global Game Jam 2026 · USC site</span></p>
                 </div>
               </div>
 
@@ -968,6 +982,21 @@
                   <li>As the game progresses, social situations become more complex and emotionally loaded.</li>
                   <li><strong>Symbols are read left → right.</strong> Placement matters, and changing the order can drastically change how a message is understood.</li>
                 </ul>
+              </div>
+
+              <div class="game-documents">
+                <div class="desc-box">
+                  <h3>Global Game Jam 2026</h3>
+                  <p class="document-hint">Scroll inside the preview to explore the document.</p>
+                  <iframe class="game-document-preview" src="document-viewer.html?doc=alienated" title="Alienated Global Game Jam 2026 document" loading="lazy"></iframe>
+                  <a class="btn document-open" href="document-viewer.html?doc=alienated" target="_blank" rel="noopener" aria-label="Open Alienated Global Game Jam document in a new tab">Open in new tab ↗</a>
+                </div>
+                <div class="desc-box">
+                  <h3>Symbol Cheat Sheet</h3>
+                  <p class="document-hint">Scroll inside the preview to explore the symbols.</p>
+                  <iframe class="game-document-preview" src="document-viewer.html?doc=alienated-symbols" title="Alienated Symbol Cheat Sheet" loading="lazy"></iframe>
+                  <a class="btn document-open" href="document-viewer.html?doc=alienated-symbols" target="_blank" rel="noopener" aria-label="Open Alienated Symbol Cheat Sheet in a new tab">Open in new tab ↗</a>
+                </div>
               </div>
 
               <div class="desc-box">
@@ -1076,6 +1105,20 @@
                 </p>
               </div>
 
+              <div class="game-documents">
+                <div class="desc-box">
+                  <h3>Code Architecture</h3>
+                  <p class="document-hint">Scroll inside the preview to explore the document.</p>
+                  <iframe class="game-document-preview" src="document-viewer.html?doc=unspoken-code" title="Things Left Unspoken Code Architecture" loading="lazy"></iframe>
+                  <a class="btn document-open" href="document-viewer.html?doc=unspoken-code" target="_blank" rel="noopener" aria-label="Open Things Left Unspoken Code Architecture in a new tab">Open in new tab ↗</a>
+                </div>
+                <div class="desc-box">
+                  <h3>Game Design Document</h3>
+                  <p class="document-hint">Scroll inside the preview to explore the document.</p>
+                  <iframe class="game-document-preview" src="document-viewer.html?doc=unspoken-gdd" title="Things Left Unspoken Game Design Document" loading="lazy"></iframe>
+                  <a class="btn document-open" href="document-viewer.html?doc=unspoken-gdd" target="_blank" rel="noopener" aria-label="Open Things Left Unspoken Game Design Document in a new tab">Open in new tab ↗</a>
+                </div>
+              </div>
               <div class="desc-box">
                 <h3>My Role & Programming</h3>
                 <p>
@@ -1146,31 +1189,6 @@
                 </p>
               </div>
 
-              <div class="desc-box">
-                <h3>Chinese Translation</h3>
-                <p>
-                  《未尽之言》是一款点击互动类的叙事游戏，讲述一位女儿与一位母亲共进午餐的故事。你将扮演女儿，尝试说出那些埋藏心底，迟迟未开口的话。
-                </p>
-                <p>
-                  <strong>内容警告：</strong>本游戏包含情感敏感的主题，包括复杂的家庭关系和侵入性思维。
-                </p>
-                <ul>
-                  <li><strong>控制:</strong> LMB / 鼠标左键</li>
-                  <li><strong>玩法机制：</strong>当母亲说话时，对话选项便会实时出现。</li>
-                  <li>有些选项能推动故事的发展，而另一些则更加具有侵入性。</li>
-                  <li>随着紧张局势的加剧，选择会变得愈发混乱。</li>
-                  <li>如果未能及时做出回应，对话将朝着特定的方向发展。</li>
-                  <li><strong>结局走向：</strong>共三种可能结局</li>
-                  <li><strong>游戏时长：</strong>约5分钟</li>
-                  <li><strong>核心主题：</strong>母女关系、侵入性思维、情感压力以及与至亲坦诚的困难。</li>
-                </ul>
-                <p><strong>制作团队：</strong></p>
-                <ul>
-                  <li><strong>KT LoPorto</strong> — 叙事 / 设计 / 配音</li>
-                  <li><strong>Kaylee Morales</strong> — 程序</li>
-                  <li><strong>Michelle Zhou</strong> — 美术 / UI / 程序</li>
-                </ul>
-              </div>
 
             </div>
           </div>
@@ -1196,8 +1214,11 @@
           <div class="win-body">
             <!-- Minimized (single boxed question card, no links) -->
             <div class="desc-short">
+              <div class="alienated-award-media">
               <div class="win-thumb-frame win-thumb-frame--fit sushi-rat-frame">
                 <img class="win-thumb" src="assets/images/srr-cover.png" alt="Sushi Rat Revolution cover art" />
+              </div>
+              <p class="alienated-award award--medium">Best Playtests <span>CTIN-488 · 2025</span></p>
               </div>
               <div class="min-question-box" role="region" aria-label="Sushi Rat overview questions">
                 <p>How I modded <em>Up the River</em> to add a rotating conveyor and new tension loops?</p>
@@ -1216,27 +1237,7 @@
                   <div class="video-caption">USC • CTIN-488 — 2025</div>
                 </div>
                 <div class="action-col">
-                  <a class="btn btn-pdf" href="assets/files/Team4-Rules.pdf" target="_blank" rel="noopener">
-                    <i class="fa-solid fa-book"></i> Rules
-                  </a>
-                  <a class="btn btn-pdf" href="assets/files/Team4-PlaytestReport-Wk5.pdf" target="_blank" rel="noopener">
-                    <i class="fa-solid fa-clipboard-check"></i> Playtest Report Week 1
-                  </a>
-                  <a class="btn btn-pdf" href="assets/files/Team4-Playtests-Wk6.pdf" target="_blank" rel="noopener">
-                    <i class="fa-solid fa-clipboard-list"></i> Playtests Week 2
-                  </a>
-                  <a class="btn btn-pdf" href="assets/files/Team4-DesignPhotoJournal-Wk5.pdf" target="_blank" rel="noopener">
-                    <i class="fa-solid fa-pen"></i> Design Journal Week 1
-                  </a>
-                  <a class="btn btn-pdf" href="assets/files/Team4-DesignPhotoJournal-Wk6.pdf" target="_blank" rel="noopener">
-                    <i class="fa-solid fa-pen"></i> Design Journal Week 2
-                  </a>
-                  <a class="btn btn-pdf" href="assets/files/Sushi-Rat-Revolution-Cards.pdf" target="_blank" rel="noopener">
-                    <i class="fa-solid fa-clone"></i> Card Designs
-                  </a>
-                  <a class="btn btn-pdf" href="assets/files/Shing-Team4-UtR-Presentation.pdf" target="_blank" rel="noopener">
-                    <i class="fa-solid fa-file-powerpoint"></i> Presentation Deck
-                  </a>
+                  <p class="alienated-award award--medium">Best Playtests <span>CTIN-488 · 2025</span></p>
                 </div>
               </div>
 
@@ -1258,6 +1259,29 @@
                   <li>Documented the final rule diffs so a producer, QA team, or instructor can quickly understand what changed and why.</li>
                 </ul>
               </div>
+
+              <section class="desc-box sushi-documents" aria-label="Sushi Rat project documents">
+                <h3>Project Documents</h3>
+                <p class="document-hint">Choose a document, then scroll inside the preview.</p>
+                <div class="sushi-document-browser">
+                <div class="sushi-document-choices" role="group" aria-label="Choose a document">
+                  <span class="sushi-document-group">The game</span>
+                  <button class="btn" type="button" data-sushi-document="rules" aria-pressed="true">Rules</button>
+                  <button class="btn" type="button" data-sushi-document="cards" aria-pressed="false">Card Designs</button>
+                  <button class="btn" type="button" data-sushi-document="presentation" aria-pressed="false">Presentation Deck</button>
+                  <span class="sushi-document-group">Playtesting</span>
+                  <button class="btn" type="button" data-sushi-document="playtest-1" aria-label="Playtest Report Week 1" aria-pressed="false">Week 1</button>
+                  <button class="btn" type="button" data-sushi-document="playtest-2" aria-label="Playtests Week 2" aria-pressed="false">Week 2</button>
+                  <span class="sushi-document-group">Design journals</span>
+                  <button class="btn" type="button" data-sushi-document="journal-1" aria-label="Design Journal Week 1" aria-pressed="false">Week 1</button>
+                  <button class="btn" type="button" data-sushi-document="journal-2" aria-label="Design Journal Week 2" aria-pressed="false">Week 2</button>
+                </div>
+                <div class="sushi-document-stage">
+                <iframe id="sushi-document-preview" class="game-document-preview" src="document-viewer.html?doc=sushi-rules" title="Sushi Rat Revolution — Rules" loading="lazy"></iframe>
+                <a id="sushi-document-open" class="btn document-open" href="document-viewer.html?doc=sushi-rules" target="_blank" rel="noopener">Open Rules in new tab ↗</a>
+                </div>
+                </div>
+              </section>
 
               <div class="desc-box">
                 <h3>Mod Design & Process</h3>
@@ -1300,16 +1324,119 @@
   <script src="code-jumble.js?v=20260823-2"></script>
 
   <!-- Page helper: click-to-play thumbnail only (minimized) -->
+  <script src="assets/vendor/hls/dist/hls.min.js"></script>
   <script>
+    document.querySelectorAll('[data-sushi-document]').forEach(button => {
+      button.addEventListener('click', () => {
+        if (button.getAttribute('aria-pressed') === 'true') return;
+        document.querySelectorAll('[data-sushi-document]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+        const url = 'document-viewer.html?doc=sushi-' + button.dataset.sushiDocument;
+        const label = button.getAttribute('aria-label') || button.textContent;
+        const preview = document.getElementById('sushi-document-preview');
+        preview.title = 'Sushi Rat Revolution — ' + label;
+        preview.src = url;
+        const link = document.getElementById('sushi-document-open');
+        link.href = url;
+        link.textContent = 'Open ' + label + ' in new tab ↗';
+      });
+    });
+    // Apply the initial volume once, then leave visitors' volume choices alone.
+    let youtubeReady;
+    let playbackGeneration = 0;
+    const youtubePlayers = new Set();
+    document.addEventListener('portfolio:pause-media', () => {
+      playbackGeneration++;
+      youtubePlayers.forEach(player => { player.pauseVideo?.(); });
+      document.querySelectorAll('.award-video-playing').forEach(card => card.classList.remove('award-video-playing'));
+    });
+    const loadYouTubeAPI = () => {
+      if (window.YT?.Player) return Promise.resolve();
+      if (!youtubeReady) youtubeReady = new Promise((resolve, reject) => {
+        const previousReady = window.onYouTubeIframeAPIReady;
+        window.onYouTubeIframeAPIReady = () => {
+          previousReady?.();
+          resolve();
+        };
+        const script = document.createElement('script');
+        script.src = 'https://www.youtube.com/iframe_api';
+        script.onerror = () => { youtubeReady = null; reject(new Error('YouTube could not load')); };
+        document.head.append(script);
+      });
+      return youtubeReady;
+    };
+    const playYouTubeTrailer = async (wrap, id) => {
+      if (!wrap || wrap.dataset.loaded === '1') return;
+      const generation = playbackGeneration;
+      wrap.dataset.loaded = '1';
+      const placeholder = document.createElement('div');
+      placeholder.textContent = 'Loading video…';
+      wrap.replaceChildren(placeholder);
+      try {
+        await loadYouTubeAPI();
+        if (!placeholder.isConnected) return;
+        const player = new YT.Player(placeholder, {
+          width: '100%',
+          height: '100%',
+          host: 'https://www.youtube-nocookie.com',
+          videoId: id,
+          playerVars: { autoplay: 0, playsinline: 1, rel: 0, origin: location.origin },
+          events: {
+            onStateChange: ({ data }) => {
+              const card = wrap.closest('.mac-window');
+              if (data === YT.PlayerState.PLAYING) card?.classList.add('award-video-playing');
+              if ([YT.PlayerState.PAUSED, YT.PlayerState.ENDED, YT.PlayerState.CUED].includes(data)) card?.classList.remove('award-video-playing');
+            },
+            onReady: ({ target }) => {
+              target.setVolume(50);
+              target.unMute();
+              // If the visitor has since closed/minimized it, do not start hidden audio.
+              if (generation === playbackGeneration && wrap.getClientRects().length) target.playVideo();
+            }
+          }
+        });
+        youtubePlayers.add(player);
+        wrap.removeAttribute('role');
+        wrap.removeAttribute('tabindex');
+      } catch {
+        if (!placeholder.isConnected) return;
+        placeholder.textContent = 'Video could not load. Click to retry.';
+        wrap.dataset.loaded = '0';
+      }
+    };
     const playSteamTrailer = (wrap) => {
       if (!wrap || wrap.dataset.loaded === '1') return;
-      const webm = wrap.dataset.webm;
-      const mp4 = wrap.dataset.mp4;
+      const generation = playbackGeneration;
+      const stream = wrap.dataset.hls;
       const label = wrap.getAttribute('aria-label') || 'Steam trailer';
-      wrap.innerHTML = `<video autoplay muted controls playsinline preload="auto" aria-label="${label}">
-        <source src="${webm}" type="video/webm">
-        <source src="${mp4}" type="video/mp4">
-      </video>`;
+      wrap.innerHTML = `<video controls playsinline preload="metadata" aria-label="${label}"></video>`;
+      const video = wrap.querySelector('video');
+      video.volume = 0.5;
+      video.muted = false;
+      const start = () => {
+        if (generation === playbackGeneration && wrap.getClientRects().length) video.play().catch(() => { /* Keep controls if browser requires another click. */ });
+      };
+      const showError = () => {
+        if (wrap.querySelector('.video-error')) return;
+        const message = document.createElement('p');
+        message.className = 'video-error';
+        message.textContent = 'The trailer could not load. You can watch it using the View on Steam link.';
+        wrap.after(message);
+      };
+      if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = stream;
+        start();
+      } else if (window.Hls?.isSupported()) {
+        const hls = new Hls({ capLevelToPlayerSize: true, maxBufferLength: 20 });
+        hls.loadSource(stream);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, start);
+        hls.on(Hls.Events.ERROR, (_, data) => {
+          if (data.fatal) { hls.destroy(); showError(); }
+        });
+      } else {
+        showError();
+      }
+      video.addEventListener('error', showError);
       wrap.dataset.loaded = '1';
       wrap.removeAttribute('role');
       wrap.removeAttribute('tabindex');
@@ -1323,12 +1450,30 @@
         playSteamTrailer(wrap);
         return;
       }
+      if (wrap.dataset.localVideo) {
+        const video = document.createElement('video');
+        video.controls = true;
+        video.playsInline = true;
+        video.preload = 'metadata';
+        video.volume = 0.5;
+        video.muted = false;
+        video.setAttribute('aria-label', 'Alienated video');
+        video.src = wrap.dataset.localVideo;
+        wrap.replaceChildren(video);
+        const card = wrap.closest('.mac-window');
+        const syncAward = () => {
+          const playing = Array.from(card.querySelectorAll('video')).some(media => !media.paused && !media.ended);
+          card.classList.toggle('alienated-video-playing', playing);
+        };
+        ['play', 'pause', 'ended', 'error'].forEach(event => video.addEventListener(event, syncAward));
+        video.play().catch(syncAward);
+        wrap.dataset.loaded = '1';
+        wrap.removeAttribute('role');
+        wrap.removeAttribute('tabindex');
+        return;
+      }
       const id = wrap.dataset.video;
-      const src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&start=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1`;
-      wrap.innerHTML = `<iframe src="${src}" title="Trailer" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
-      wrap.dataset.loaded = '1';
-      wrap.removeAttribute('role');
-      wrap.removeAttribute('tabindex');
+      playYouTubeTrailer(wrap, id);
     });
 
     document.addEventListener('keydown', (e) => {
@@ -1339,36 +1484,7 @@
       wrap.click();
     });
 
-    // Stop Steam trailers when their minimized or expanded panel is hidden.
-    document.querySelectorAll('.mac-window:has([data-steam-video])').forEach((card) => {
-      new MutationObserver(() => {
-        card.querySelectorAll('video').forEach((video) => video.pause());
-      }).observe(card, { attributes: true, attributeFilter: ['class'] });
-    });
-
-    // Pause Pulse & Pole gameplay whenever the card changes window state.
-    (function pauseHiddenPulseVideo(){
-      const card = document.querySelector('[data-win-id="jam-pulsepole"]');
-      if (!card) return;
-      new MutationObserver(() => {
-        card.querySelectorAll('iframe').forEach((frame) => {
-          frame.contentWindow?.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-        });
-      }).observe(card, { attributes: true, attributeFilter: ['class'] });
-    })();
-
-    // Pause Things Left Unspoken whenever its window changes state.
-    (function pauseHiddenThingsVideo(){
-      const card = document.querySelector('[data-win-id="jam-thingsleftunspoken"]');
-      if (!card) return;
-      new MutationObserver(() => {
-        card.querySelectorAll('iframe').forEach((frame) => {
-          frame.contentWindow?.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-        });
-      }).observe(card, { attributes: true, attributeFilter: ['class'] });
-    })();
-
-    // Observe .is-max state to autoplay/reset video WITHOUT touching classes
+    // Prepare a click-to-play expanded trailer; maximizing must never start audio.
     (function observeMaxState(){
       const target = document.querySelector('[data-win-id="steam-markus"]');
       if (!target) return;
@@ -1376,13 +1492,6 @@
       const thumbWrap = target.querySelector('.desc-short .video-wrap');
       if (!maxBox || !thumbWrap) return;
 
-      const loadAutoplay = (el) => {
-        if (!el || el.dataset.loaded === '1') return;
-        const id = el.dataset.video || maxBox.dataset.video;
-        const src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1`;
-        el.innerHTML = `<iframe src="${src}" title="Trailer" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
-        el.dataset.loaded = '1';
-      };
       const resetThumb = (wrap) => {
         const id = wrap.dataset.video;
         wrap.innerHTML = `
@@ -1393,28 +1502,16 @@
         wrap.dataset.loaded = '0';
       };
 
-      const mo = new MutationObserver((muts) => {
-        for (const m of muts) {
-          if (m.attributeName === 'class') {
-            const isMax = target.classList.contains('is-max');
-            if (isMax) {
-              // entering maximized → autoplay in the large player
-              loadAutoplay(maxBox);
-            } else {
-              // leaving maximized → reset both
-              resetThumb(thumbWrap);
-              maxBox.innerHTML = '';
-              maxBox.dataset.loaded = '0';
-            }
-          }
-        }
-      });
-      mo.observe(target, { attributes: true });
+      maxBox.classList.add('video-wrap');
+      maxBox.setAttribute('role', 'button');
+      maxBox.setAttribute('tabindex', '0');
+      maxBox.setAttribute('aria-label', 'Play Markus’s Miasma trailer');
+      resetThumb(maxBox);
     })();
   </script>
 
   <!-- Window behavior (fullscreen on all pages, smooth FLIP, stable close) -->
-<script src="window-ui.js?v=20260831-1"></script>
+<script src="window-ui.js?v=20260831-2"></script>
   <!-- Shared site utilities (mobile nav, etc.) -->
   <script src="site.js?v=20260829-1"></script>
 </body>

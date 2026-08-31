@@ -179,6 +179,10 @@
       if (!win) return;
 
       const action = btn.dataset.action;
+      if (action === 'minimize' || action === 'maximize') {
+        document.querySelectorAll('video, audio').forEach(media => media.pause());
+        document.dispatchEvent(new Event('portfolio:pause-media'));
+      }
 
       // Close -> just show modal; DO NOT change classes or state
       if (action === 'close') {
