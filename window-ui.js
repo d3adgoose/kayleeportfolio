@@ -45,7 +45,7 @@
     const lockScroll = (on) => { document.documentElement.style.overflow = on ? 'hidden' : ''; };
     const pageRect = (el) => {
       const r = el.getBoundingClientRect();
-      return { left: r.left + window.scrollX, top: r.top + window.scrollY, width: r.width, height: r.height };
+      return { left: r.left, top: r.top, width: r.width, height: r.height };
     };
 
     function makePlaceholder(win){
@@ -60,15 +60,14 @@
       return ph;
     }
 
-    function lift(win){
-      const r = pageRect(win);
+    function lift(win, r = pageRect(win)){
       if (!win.dataset._savedMargin)   win.dataset._savedMargin = getComputedStyle(win).margin;
       if (!win.dataset._savedMaxWidth) win.dataset._savedMaxWidth = getComputedStyle(win).maxWidth;
 
       win.classList.add('is-animating','no-hover');
       win.style.position = 'fixed';
-      win.style.left = px(r.left - window.scrollX);
-      win.style.top  = px(r.top  - window.scrollY);
+      win.style.left = px(r.left);
+      win.style.top  = px(r.top);
       win.style.width  = px(r.width);
       win.style.height = px(r.height);
       win.style.zIndex = 2000;
@@ -116,7 +115,8 @@
 
       const dist = Math.hypot(dx, dy);
       const maxDuration = target.mode === 'box' ? 360 : 500;
-      const duration = Math.min(maxDuration, Math.max(280, dist * 0.38));
+      const duration = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        ? 1 : Math.min(maxDuration, Math.max(320, dist * 0.38));
 
       const anim = win.animate(
         [
@@ -125,7 +125,10 @@
         ],
         { duration, easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)', fill: 'both' }
       );
-      anim.addEventListener('finish', () => { win.style.transform = ''; });
+      anim.addEventListener('finish', () => {
+        win.style.transform = '';
+        anim.cancel();
+      }, { once: true });
       return anim;
     }
 
@@ -185,8 +188,17 @@
 
       if (!state.get(win)) state.set(win, { mode: 'normal', placeholder: null });
       const st = state.get(win);
+      if (st.busy) return;
 
       if (action === 'maximize') {
+        if (st.mode === 'maximized') return;
+        st.busy = true;
+        // Capture compact geometry before swapping content or locking scroll.
+        const first = pageRect(win);
+        const ph = makePlaceholder(win);
+        win.parentNode.insertBefore(ph, win);
+        st.placeholder = ph;
+        lift(win, first);
         // Mark logical state
         st.mode = 'maximized';
         state.set(win, st);
@@ -194,17 +206,12 @@
         document.body.classList.add('has-maximized-window');
         win.classList.remove('is-scrollable', 'has-scrolled');
 
-        // Create placeholder (for perfect minimize)
-        if (!st.placeholder) {
-          const ph = makePlaceholder(win);
-          win.parentNode.insertBefore(ph, win);
-          st.placeholder = ph;
-          state.set(win, st);
-        }
-
         lockScroll(true);
-        const first = lift(win);
+        const panel = win.querySelector('.win-body');
+        if (panel) panel.scrollTop = 0;
         flipAnimate(win, first, fullscreenTarget()).addEventListener('finish', () => {
+          st.busy = false;
+          win.classList.remove('is-animating');
           const body = win.querySelector('.win-body');
           if (body && body.scrollHeight > body.clientHeight + 16) {
             win.classList.add('is-scrollable');
@@ -216,10 +223,16 @@
       if (action === 'minimize') {
         const ph = st.placeholder;
         if (!ph) return;
+        st.busy = true;
 
         // Target rect BEFORE move
         const r = ph.getBoundingClientRect();
         const first = lift(win);
+        // Animate the compact layout back to its original place, not a
+        // fullscreen article squeezed into a card at the final frame.
+        win.classList.remove('is-max', 'is-scrollable', 'has-scrolled');
+        const panel = win.querySelector('.win-body');
+        if (panel) panel.scrollTop = 0;
         flipAnimate(win, first, { mode: 'box', left: r.left, top: r.top, width: r.width, height: r.height })
           .addEventListener('finish', () => {
             // Switch back to the compact content at the animation endpoint,
@@ -231,6 +244,7 @@
             document.body.classList.remove('has-maximized-window');
             st.mode = 'normal';
             st.placeholder = null;
+            st.busy = false;
             state.set(win, st);
           });
         return;
@@ -241,9 +255,13 @@
     window.addEventListener('resize', () => {
       document.querySelectorAll(WIN_SEL).forEach(win => {
         const st = state.get(win);
-        if (st?.mode === 'maximized') {
+        if (st?.mode === 'maximized' && !st.busy) {
+          st.busy = true;
           const first = lift(win);
-          flipAnimate(win, first, fullscreenTarget());
+          flipAnimate(win, first, fullscreenTarget()).addEventListener('finish', () => {
+            st.busy = false;
+            win.classList.remove('is-animating');
+          });
         }
       });
     });

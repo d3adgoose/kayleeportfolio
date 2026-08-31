@@ -56,9 +56,7 @@
      position: sticky !important;
      top: 0;
      z-index: 1000;
-     background:
-       radial-gradient(1200px 400px at 20% -50%, rgba(159,140,255,.35), transparent 60%),
-       linear-gradient(90deg, #521f90, #9e5fe5 40%, #a07cff 100%);
+     background: linear-gradient(90deg, #521f90 0%, #7942ba 50%, #a07cff 100%);
      color: #fff;
      box-shadow: var(--shadow);
      border-bottom: 1px solid rgba(255,255,255,.15);
@@ -96,7 +94,8 @@
      line-height: 1;
      transform: translateX(-50%) rotate(-1.8deg);
      transform-origin: 50% 0;
-     animation: header-note-sway 4.8s ease-in-out infinite;
+     --note-sway-angle: 3deg;
+     animation: header-note-sway 4s ease-in-out infinite;
      transition: opacity .16s ease, visibility .16s ease;
    }
 
@@ -145,8 +144,8 @@
    }
 
    @keyframes header-note-sway{
-     0%, 100%{ transform: translateX(-50%) rotate(-1.8deg); }
-     50%{ transform: translateX(-50%) rotate(.8deg); }
+     0%, 100%{ transform: translateX(-50%) rotate(calc(-1 * var(--note-sway-angle))); }
+     50%{ transform: translateX(-50%) rotate(var(--note-sway-angle)); }
    }
 
    @media (max-width: 900px){
@@ -162,7 +161,10 @@
    }
 
    @media (prefers-reduced-motion: reduce){
-     .header-window-tip{ animation: none; }
+     .header-window-tip{
+       --note-sway-angle: .75deg;
+       animation-duration: 6s;
+     }
    }
    
    .brand{
@@ -576,7 +578,7 @@
   
   /* Maximize / Minimize transition states */
   .mac-window.is-animating{
-    transition: left .28s ease, top .28s ease, width .28s ease, height .28s ease, transform .28s ease, box-shadow .28s ease;
+    transition: none !important;
   }
   
   /* Fullscreen (portfolio) and centered (other pages) target styles are applied inline by JS */
@@ -1057,7 +1059,7 @@ body[data-page="home"] footer{
 
 /* Prevent hover bumps while animating */
 .mac-window.no-hover:hover,
-.photo-popup.no-hover:hover { transform: none !important; }
+.photo-popup.no-hover:hover { transform: none; }
 
 .desc-box {
   background: rgba(255,255,255,0.9);
@@ -2011,6 +2013,7 @@ body[data-page="games"] .usc-srr .sushi-rat-frame > img.win-thumb{
 }
 body::before{ z-index: 0; }
 body > .section,
+body > main.hero,
 body > footer{
   position: relative;
   z-index: 1;
@@ -2705,5 +2708,120 @@ body[data-page="games"] .steam-video-wrap video{
 @media (max-width: 900px){
   body[data-page="work"] .projects-pair{
     grid-template-columns: 1fr;
+  }
+}
+
+/* Expanded case studies: comfortable line lengths on wide monitors. */
+.mac-window.is-max:not(.mac-window--home) .desc-long{
+  width: min(100%, 960px);
+  margin-inline: auto;
+  padding-block: 8px 32px;
+  box-sizing: border-box;
+}
+.mac-window.is-max .desc-long > .desc-box{
+  margin: 18px auto;
+  padding: clamp(18px, 3vw, 28px);
+}
+.mac-window.is-max .desc-long .desc-box p,
+.mac-window.is-max .desc-long .desc-box > ul:not(.features ul){
+  max-width: 72ch;
+}
+.mac-window.is-max .desc-long .desc-box p{
+  line-height: 1.7;
+}
+.mac-window.is-max .desc-long .desc-box.features ul{
+  column-count: 1;
+  max-width: 72ch;
+}
+.mac-window.is-max .desc-long .desc-box li{
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+.mac-window.is-max .desc-long .media-row{
+  gap: 24px;
+  margin-block: 16px 28px;
+}
+html{ scrollbar-gutter: stable; }
+body.has-maximized-window > .section,
+body.has-maximized-window > main.hero{ z-index: 3000; }
+body.has-maximized-window .is-animating{ z-index: 3100 !important; }
+.photo-popup.is-animating{ transition: none !important; }
+.is-animating > .win-body{ pointer-events: none; }
+.exit-overlay{ z-index: 5000; }
+@media (max-width: 600px){
+  .mac-window.is-max .desc-long > .desc-box{ padding: 16px; }
+  .mac-window.is-max .desc-long .media-row > *{ max-width: 100%; }
+}
+
+/* Keep the expanded introduction together rather than spread across the screen. */
+body[data-page="home"] .mac-window--home.is-max .about-grid{
+  width: min(100%, 1120px);
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 56px) 12px 48px;
+  grid-template-columns: minmax(0, 1fr) 350px;
+  gap: 56px;
+  align-items: start;
+}
+body[data-page="home"] .mac-window--home.is-max .about-copy p{
+  max-width: 64ch;
+  font-size: .95rem;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+body[data-page="home"] .mac-window--home.is-max .about-section-title{
+  margin-top: 24px;
+}
+body[data-page="home"] .mac-window--home.is-max .about-photo{
+  padding: 8px 0 0;
+}
+body[data-page="home"] .mac-window--home.is-max .about-photo img{
+  width: 100%;
+  max-width: 350px;
+  margin: 0;
+}
+body[data-page="home"] .mac-window--home.is-max .about-photo .role-explorer{
+  position: relative;
+  inset: auto;
+  width: min(310px, 100%);
+  margin: -24px 0 0 -16px;
+  padding: 18px;
+  z-index: 1;
+}
+.nav a[href="contact.html"]:not(.active){
+  color: #fff;
+  background: #521f90;
+  box-shadow: 0 3px 10px rgba(43,16,84,.16);
+}
+.nav a[href="contact.html"]:not(.active):hover{
+  background: #421774;
+}
+.contact-resume{
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+.contact-resume-link{
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  color: #fff;
+  background: #521f90;
+}
+.contact-resume-link:hover{ background: #421774; color: #fff; }
+.resume-format{ font-size: .65rem; opacity: .8; }
+@media (max-width: 900px){
+  body[data-page="home"] .mac-window--home.is-max .about-grid{
+    max-width: 680px;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 24px 4px 40px;
+  }
+  body[data-page="home"] .mac-window--home.is-max .about-photo{
+    width: min(350px, 100%);
+    margin-inline: auto;
+  }
+  body[data-page="home"] .mac-window--home.is-max .about-photo .role-explorer{
+    margin: -20px auto 0;
   }
 }
