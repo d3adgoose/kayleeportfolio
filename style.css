@@ -2500,7 +2500,7 @@ body[data-page="home"] .about-photo{
 }
 body[data-page="home"] .about-photo .role-explorer{
   position: absolute;
-  left: -26px;
+  left: 0;
   right: auto;
   bottom: 0;
   width: min(285px, 100%);
@@ -2943,5 +2943,313 @@ body[data-page="home"] .mac-window--home.is-max .about-photo .role-explorer{
   }
   body[data-page="home"] .mac-window--home.is-max .about-photo .role-explorer{
     margin: -20px auto 0;
+  }
+}
+
+/* Keep the portrait note and credentials centered as one responsive stack. */
+body[data-page="home"] .about-photo,
+body[data-page="home"] .mac-window--home.is-max .about-photo{
+  padding-bottom: 0;
+  align-content: start;
+  min-width: 0;
+}
+body[data-page="home"] .about-photo .role-explorer,
+body[data-page="home"] .mac-window--home.is-max .about-photo .role-explorer{
+  position: relative;
+  inset: auto;
+  width: min(310px, 90%);
+  box-sizing: border-box;
+  margin: -30px auto 0;
+  z-index: 1;
+}
+.home-certifications{
+  box-sizing: border-box;
+  width: min(350px, 100%);
+  margin: 20px auto 0;
+  padding: 0 10px 10px;
+  border: 1px solid #ddd7e8;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #faf9fc, #eeebf4);
+  box-shadow: 0 8px 22px rgba(48,31,73,.08);
+}
+.home-certifications h2{
+  margin: 0 -10px 8px;
+  padding: 9px 14px;
+  border-bottom: 1px solid #ddd7e8;
+  color: #716580;
+  font-size: .7rem;
+  font-weight: 600;
+  text-align: center;
+}
+.home-certifications h2 i{ margin-right: 5px; }
+.home-certifications a{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 44px;
+  margin-top: 7px;
+  padding: 8px 12px;
+  border: 1px solid #e0d8ee;
+  border-radius: 16px;
+  background: #fff;
+  color: #493367;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+.home-certifications strong{ display: block; font-size: .72rem; line-height: 1.35; }
+.home-certifications small{ display: block; margin-top: 3px; font-size: .62rem; color: #756b82; }
+.home-certifications a:hover{ background: #f5efff; border-color: #bca5df; }
+.home-certifications a:focus-visible{ outline: 3px solid #9f79dd; outline-offset: 3px; }
+
+/* An editorial reading rhythm, without changing the portrait column. */
+body[data-page="home"] .about-copy{ min-width: 0; }
+body[data-page="home"] .about-copy > p:not(.hero-sub){
+  max-width: 58ch;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+body[data-page="home"] .about-copy > .about-intro{
+  font-size: 1.12rem;
+  line-height: 1.45;
+  font-weight: 600;
+  color: #39284f;
+  max-width: 44ch;
+}
+body[data-page="home"] .about-education{
+  max-width: 58ch;
+  border-left: 2px solid #ded2ee;
+  padding-left: 16px;
+}
+body[data-page="home"] .education-entry + .education-entry{ margin-top: 16px; }
+body[data-page="home"] .education-entry h3{
+  margin: 0 0 4px;
+  font-size: .95rem;
+  line-height: 1.4;
+  color: #39284f;
+}
+body[data-page="home"] .about-copy .education-entry p{
+  margin: 0;
+  font-size: .85rem;
+  line-height: 1.5;
+}
+body[data-page="home"] .about-copy .education-entry .education-award{
+  margin-top: 7px;
+  font-size: .78rem;
+  max-width: 54ch;
+}
+.education-status{
+  display: inline-block;
+  margin: 3px 0 3px 5px;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: #f1ebf9;
+  color: #69498b;
+  font-size: .7rem;
+  white-space: nowrap;
+}
+
+/* Original centered window, with balanced space for biography and credentials. */
+@media (min-width: 901px){
+  body[data-page="home"] .section.hero--centered{
+    width: min(960px, calc(100% - 40px));
+    max-width: none;
+    min-height: 0;
+    margin: clamp(18px, 4vh, 44px) auto 0;
+    padding: 0;
+  }
+  body[data-page="home"] .mac-window--home:not(.is-max){
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+  }
+  body[data-page="home"] .about-grid,
+  body[data-page="home"] .mac-window--home.is-max .about-grid{
+    width: min(100%, 1120px);
+    max-width: none;
+    box-sizing: border-box;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 24px;
+    padding: 8px 6px;
+    margin: 0 auto;
+  }
+  body[data-page="home"] .about-copy > p:not(.hero-sub),
+  body[data-page="home"] .mac-window--home.is-max .about-copy > p{
+    max-width: none;
+    font-size: .9rem;
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+  body[data-page="home"] .mac-window--home.is-max .about-section-title{
+    margin-top: 17px;
+  }
+  body[data-page="home"] .about-photo img,
+  body[data-page="home"] .mac-window--home.is-max .about-photo img{
+    width: 100%;
+    max-width: 100%;
+    margin-inline: auto;
+  }
+  body[data-page="home"] .about-photo .role-explorer,
+  body[data-page="home"] .mac-window--home.is-max .about-photo .role-explorer{
+    margin-top: -16px;
+    padding: 12px 14px;
+  }
+  body[data-page="home"] .home-certifications{ margin-top: 12px; }
+  body[data-page="home"] footer{ margin-top: 8px; padding-block: 8px; }
+}
+
+/* Reserve a real row for the notes so they cannot cover the link tabs. */
+body[data-page="home"] .section.hero--centered{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: end;
+  column-gap: 16px;
+  row-gap: 12px;
+}
+body[data-page="home"] .section.hero--centered > .window-controls-tip{
+  margin: 0 0 0 8px;
+}
+body[data-page="home"] .section.hero--centered > .tab-sticky-note{
+  position: relative;
+  inset: auto;
+  justify-self: end;
+  width: min(190px, 100%);
+  box-sizing: border-box;
+  margin: 0 8px 0 0;
+  padding: 9px 12px;
+}
+body[data-page="home"] .tab-sticky-note strong{ font-size: .88rem; line-height: 1.15; }
+body[data-page="home"] .tab-sticky-note small{ font-size: .7rem; line-height: 1.2; margin-top: 4px; }
+body[data-page="home"] .section.hero--centered > .mac-window--home{ grid-column: 1 / -1; }
+body[data-page="home"] .about-copy > p:not(.hero-sub){
+  text-wrap: pretty;
+  margin-bottom: 10px;
+}
+@media (max-width: 600px){
+  body[data-page="home"] .section.hero--centered{ column-gap: 8px; }
+  body[data-page="home"] .section.hero--centered > .window-controls-tip{ max-width: 100%; margin-left: 0; }
+  body[data-page="home"] .section.hero--centered > .tab-sticky-note{ margin-right: 0; }
+}
+
+/* Final About composition: two readable text groups and a compact media stack. */
+body[data-page="home"] .about-text-section{
+  max-width: 61ch;
+  padding: 6px 0;
+}
+body[data-page="home"] .about-text-section + .about-text-section{ margin-top: 12px; }
+body[data-page="home"] .about-copy .about-text-section .about-section-title{
+  margin: 0 0 6px;
+}
+body[data-page="home"] .about-copy .about-text-section p{
+  max-width: none;
+  margin: 0;
+  font-size: .9rem;
+  line-height: 1.52;
+  text-wrap: pretty;
+}
+body[data-page="home"] .about-photo .role-explorer,
+body[data-page="home"] .mac-window--home.is-max .about-photo .role-explorer{
+  width: min(270px, 88%);
+  margin-top: -20px;
+  padding: 9px 12px 10px;
+}
+body[data-page="home"] .about-photo .role-explorer .role-filter-kicker{
+  margin-bottom: 3px !important;
+}
+body[data-page="home"] .about-photo .role-explorer .role-focus-copy{
+  font-size: .65rem !important;
+  line-height: 1.3 !important;
+}
+body[data-page="home"] .home-certifications{
+  width: min(300px, 100%);
+  margin-top: 10px;
+  padding-bottom: 8px;
+}
+body[data-page="home"] .home-certifications h2{
+  margin-bottom: 5px;
+  padding-block: 7px;
+}
+body[data-page="home"] .home-certifications a{
+  min-height: 38px;
+  margin-top: 5px;
+  padding: 6px 10px;
+  border-radius: 12px;
+}
+body[data-page="home"] .home-certifications strong{ font-size: .69rem; }
+body[data-page="home"] .home-certifications small{ margin-top: 1px; font-size: .61rem; }
+
+@media (max-width: 900px){
+  body[data-page="home"] .about-text-section{ max-width: none; }
+  body[data-page="home"] .about-copy .about-text-section p{ font-size: 1rem; }
+}
+
+/* Balanced spacing inside the regular (non-maximized) About window. */
+@media (min-width: 901px){
+  body[data-page="home"] .mac-window--home:not(.is-max) > .win-body{
+    padding: 24px 26px 26px;
+  }
+  body[data-page="home"] .mac-window--home:not(.is-max) .about-grid{
+    gap: 30px;
+    padding: 0;
+  }
+  body[data-page="home"] .mac-window--home:not(.is-max) .hero-title{
+    margin-bottom: 7px;
+  }
+  body[data-page="home"] .mac-window--home:not(.is-max) .hero-sub{
+    margin-bottom: 16px;
+  }
+  body[data-page="home"] .mac-window--home:not(.is-max) .about-text-section{
+    padding: 0;
+  }
+  body[data-page="home"] .mac-window--home:not(.is-max) .about-text-section + .about-text-section{
+    margin-top: 16px;
+  }
+  body[data-page="home"] .mac-window--home:not(.is-max) .about-photo{
+    gap: 0;
+  }
+}
+
+/* Let the note overlap the portrait so the two columns end together. */
+body[data-page="home"] .photo-note-stack{
+  position: relative;
+  width: 100%;
+  padding-bottom: 42px;
+  box-sizing: border-box;
+}
+body[data-page="home"] .photo-note-stack > img{
+  display: block;
+  margin-inline: auto;
+}
+body[data-page="home"] .photo-note-stack > .role-explorer,
+body[data-page="home"] .mac-window--home.is-max .photo-note-stack > .role-explorer{
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(250px, 88%);
+  margin: 0;
+  padding: 8px 11px 9px;
+  transform: translateX(-50%) rotate(.65deg);
+}
+body[data-page="home"] .photo-note-stack .role-focus-copy{
+  font-size: .61rem !important;
+  line-height: 1.25 !important;
+}
+body[data-page="home"] .home-certifications{
+  margin-top: 6px;
+  padding-bottom: 6px;
+}
+body[data-page="home"] .home-certifications h2{
+  padding-block: 6px;
+}
+body[data-page="home"] .home-certifications a{
+  min-height: 34px;
+  padding: 5px 9px;
+}
+body[data-page="home"] .home-certifications strong{ line-height: 1.2; }
+
+@media (max-width: 900px){
+  body[data-page="home"] .photo-note-stack{
+    width: min(350px, 100%);
+    margin-inline: auto;
   }
 }
