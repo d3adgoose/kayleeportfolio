@@ -1,5 +1,12 @@
 // Self-hosted PDF.js renders pages without invoking browser PDF extensions.
 const documents = {
+  'nudge-playtest-111': { title: 'nudge — Playtest Feedback · Playday v1.11', file: 'assets/files/Nudge-Playday-v1.11.pdf' },
+  'nudge-playtest-113': { title: 'nudge — Playtest Feedback · Playday v1.13 · 02/20', file: 'assets/files/Nudge-Playday-v1.13-02-20.pdf' },
+  'nudge-gacha-qa': { title: 'nudge — Gacha Polish Task Tracking · Gacha QA', file: 'assets/files/Nudge-Gacha-QA.pdf' },
+  'fullcourt-dialogue': { title: 'Full Court Uprising — JuVee Dialogue System', file: 'assets/files/JuVee-Dialogue-System.pdf' },
+  'fullcourt-tasks': { title: 'Full Court Uprising — Trello Production Task Board', file: 'assets/images/Full-Court-Uprising-Task-Board.png', type: 'image', alt: 'Full Court Uprising Trello production board with tasks organized by Design / Engineering, 3D Art / Animation, VFX / Lighting, UI, Audio, and Narrative.' },
+  'line-milestones': { title: 'Line By Line — Milestone Calendar', file: 'assets/files/Line-By-Line-Milestones.pdf' },
+  'line-design': { title: 'Line By Line — Design Task Tracking', file: 'assets/files/Line-By-Line-Design-Tasks.pdf' },
   'unspoken-code': { title: 'Things Left Unspoken — Code Architecture', file: 'assets/files/Things-Left-Unspoken-Code-Architecture.pdf' },
   'unspoken-gdd': { title: 'Things Left Unspoken — Game Design Document', file: 'assets/files/Things-Left-Unspoken-GDD.pdf' },
   'sushi-rules': { title: 'Sushi Rat Revolution — Rules', file: 'assets/files/Team4-Rules.pdf' },
@@ -31,7 +38,7 @@ async function load() {
   if (chosen.type === 'image') {
     download.textContent = 'Download image';
     const image = document.createElement('img');
-    image.alt = 'Alienated symbol cheat sheet: Neutral A and B (0), Good (+1), Bad (-1), Very Good (+2), Very Bad (-2), Copy Previous, Copy Next, Copy First, Reset, Invert, and Nullify Next.';
+    image.alt = chosen.alt || 'Alienated symbol cheat sheet: Neutral A and B (0), Good (+1), Bad (-1), Very Good (+2), Very Bad (-2), Copy Previous, Copy Next, Copy First, Reset, Invert, and Nullify Next.';
     image.style.cssText = 'display:block;width:100%;height:auto';
     image.addEventListener('load', () => { status.textContent = 'Scroll to explore · Use zoom for a closer look'; });
     image.addEventListener('error', () => { status.textContent = 'The image could not load. Use Download image above to open a copy.'; });

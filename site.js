@@ -12,9 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
         <span><i class="tip-dot tip-dot--green"></i> expand</span>`;
       const navToggle = siteHeader.querySelector('.nav-toggle');
       siteHeader.insertBefore(headerTip, navToggle || siteHeader.querySelector('.nav'));
+      document.querySelectorAll('body:is([data-page="games"], [data-page="work"]) .mac-window .win-header').forEach(header => {
+        const expandedTip = headerTip.cloneNode(true);
+        expandedTip.classList.add('expanded-window-tip');
+        header.append(expandedTip);
+      });
     }
 
     const projectRoles = {
+      'indev-fullcourt': 'Tech Producer & Engineer',
       'indev-linebyline': 'Lead Producer',
       'indev-nudge': 'Usability Team Member',
       'ucsc-mural': 'Creative Director & Mural Artist',
@@ -31,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const portfolioProjects = [
       { match: 'Sushi Rat', title: 'Sushi Rat Revolution', roles: ['game-design'], slug: 'sushi-rat-revolution' },
+      { match: 'Full Court Uprising', title: 'Full Court Uprising', roles: ['production', 'programming'], slug: 'full-court-uprising' },
       { match: 'Line By Line', title: 'Line By Line', roles: ['production'], slug: 'line-by-line' },
       { match: 'nudge', title: 'nudge', roles: ['usability'], slug: 'nudge' },
       { match: 'Markus’s Miasma', title: 'Markus’s Miasma', roles: ['production'], slug: 'markus-miasma' },

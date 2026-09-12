@@ -3253,3 +3253,57 @@ body[data-page="home"] .home-certifications strong{ line-height: 1.2; }
     margin-inline: auto;
   }
 }
+
+/* Hang the reminder from the expanded title bar, clear of its controls. */
+.expanded-window-tip{ display: none; }
+body:is([data-page="games"], [data-page="work"]) .mac-window.is-max .win-header{ overflow: visible; }
+body:is([data-page="games"], [data-page="work"]) .mac-window.is-max .expanded-window-tip{
+  display: grid;
+  position: absolute;
+  top: calc(100% + 6px);
+  right: auto;
+  left: 174px;
+  width: 300px;
+  padding: 22px 20px 18px;
+  font-size: 1rem;
+  z-index: 4;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) rotate(-3deg);
+  animation: header-note-sway 4s ease-in-out infinite;
+  pointer-events: none;
+}
+body:is([data-page="games"], [data-page="work"]) .expanded-window-tip strong{
+  font-size: 1.35rem;
+}
+body:is([data-page="games"], [data-page="work"]) .mac-window.is-max .win-body{ padding-top: 130px; }
+@media (max-width: 900px){
+  .banner-inner > .header-window-tip{
+    position: relative;
+    left: auto;
+    top: auto;
+    order: 3;
+    margin: 12px auto 0;
+    transform: none;
+    animation: none;
+  }
+  body:is([data-page="games"], [data-page="work"]) .mac-window.is-max .expanded-window-tip{
+    left: min(174px, 50%);
+    width: min(300px, calc(80vw - 28px));
+  }
+}
+@media (prefers-reduced-motion: reduce){
+  body:is([data-page="games"], [data-page="work"]) .mac-window.is-max .expanded-window-tip{ animation: none; }
+}
+body[data-page="games"] .fullcourt-media-frame{
+  aspect-ratio: auto;
+  background: transparent;
+}
+body[data-page="games"] .fullcourt-media-frame::before{ display: none; }
+body[data-page="games"] .fullcourt-media-frame img{
+  position: static;
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}

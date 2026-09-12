@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Full Court Uprising — Dialogue System Guide</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#eeeaf5;color:#292136;font:16px/1.65 system-ui,sans-serif}main{max-width:850px;margin:24px auto;padding:clamp(20px,5vw,52px);background:white;border:1px solid #ded7eb;border-radius:12px}h1{font-size:clamp(26px,5vw,36px);line-height:1.2;margin:8px 0 16px}h2{font-size:21px;margin-top:32px;color:#521f90}h3{font-size:17px;margin-bottom:4px}.eyebrow{color:#70588c;font-size:13px;letter-spacing:.08em;text-transform:uppercase}code{background:#f2eef9;border-radius:4px;padding:2px 5px;overflow-wrap:anywhere}li{margin:8px 0}dt{font-weight:700;margin-top:16px}dd{margin:4px 0 0}.note{padding:14px 18px;background:#fff5cb;border-left:4px solid #dfbd56}footer{margin-top:32px;border-top:1px solid #ded7eb;padding-top:16px;color:#635970;font-size:14px}@media print{body{background:white}main{border:0;margin:0;max-width:none;padding:0}h2,h3{break-after:avoid}li,dd{break-inside:avoid}}
+  </style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">Full Court Uprising · Technical documentation</div>
+  <h1>Dialogue System Guide</h1>
+  <p>A setup and testing reference for placing dialogue conversations in a level using <code>BP_DialogueTrigger</code>. Conversations begin when the player enters a trigger and progress through an ordered list of dialogue lines.</p>
+  <h2>Player interaction</h2>
+  <ul>
+    <li><strong>Start:</strong> Walking into the dialogue trigger automatically starts the conversation.</li>
+    <li><strong>Advance:</strong> Press <code>E</code> on keyboard or the dodge button on controller to advance one line per press.</li>
+    <li><strong>Finish:</strong> Press interact while the final line is displayed to close the dialogue.</li>
+    <li><strong>Active conversation only:</strong> Dialogue progression should respond to input only while a conversation is active.</li>
+  </ul>
+  <p class="note">The final line stays visible until the player presses interact again. “Automatically closes” means the conversation closes when there are no remaining lines after that press; no timed dismissal is specified.</p>
+  <h2>Dialogue data and presentation</h2>
+  <p>Each entry in <code>DialogueLines</code> contains the following fields:</p>
+  <dl>
+    <dt><code>SpeakerName</code></dt><dd>The name of the character speaking the current line, displayed in the dialogue UI.</dd>
+    <dt><code>DialogueText</code></dt><dd>The current line of dialogue shown in the dialogue box.</dd>
+    <dt><code>LeftPortrait</code></dt><dd>The character image displayed in the fixed left portrait position.</dd>
+    <dt><code>RightPortrait</code></dt><dd>The character image displayed in the fixed right portrait position.</dd>
+  </dl>
+  <p>Both portraits remain displayed on their respective sides during the conversation. For a conversation between the same two characters, assign the same left and right portraits to every line, including when the speaker changes.</p>
+  <h2>Set up a conversation</h2>
+  <ol>
+    <li><strong>Place the trigger.</strong> Drag <code>BP_DialogueTrigger</code> into the level where the conversation should begin.</li>
+    <li><strong>Size the trigger area.</strong> Select <code>DialogueTriggerBox</code> and scale it to cover the area the player should enter to start dialogue.</li>
+    <li><strong>Add dialogue entries.</strong> Select <code>BP_DialogueTrigger</code>. In the Details panel, locate <code>DialogueLines</code> and press <strong>+</strong> for each line.</li>
+    <li><strong>Fill in every entry.</strong> Set <code>SpeakerName</code>, <code>DialogueText</code>, <code>LeftPortrait</code>, and <code>RightPortrait</code>. Arrange the entries in the order the player should read them.</li>
+  </ol>
+  <h2>Test in game</h2>
+  <p>Use the following checks to verify the intended behavior:</p>
+  <ol>
+    <li>Press Play and walk into the trigger box. Confirm that dialogue appears automatically with the first line.</li>
+    <li>Confirm that the speaker name, dialogue text, and both portraits match the configured entry.</li>
+    <li>Press <code>E</code> once. Confirm that dialogue advances exactly one line. Repeat using the controller dodge button.</li>
+    <li>Continue through the conversation. Confirm that portraits stay on their assigned sides when the speaker changes.</li>
+    <li>With the final line visible, press interact once more. Confirm that the dialogue closes.</li>
+    <li>After the conversation closes, press interact again. Confirm that inactive dialogue does not advance or reappear from that input.</li>
+  </ol>
+  <footer>Scope: trigger setup, dialogue data, input behavior, and expected test results. This guide does not specify trigger replay behavior, movement restrictions, branching choices, or input priority relative to dodge.</footer>
+</main>
+</body>
+</html>

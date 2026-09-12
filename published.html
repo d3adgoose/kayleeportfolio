@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Games — Kaylee Linette Morales</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css?v=20260831-20" />
+  <link rel="stylesheet" href="style.css?v=20260911-1" />
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -254,7 +254,7 @@
     <button class="dot red" data-action="close"></button>
     <button class="dot yellow" data-action="minimize"></button>
     <button class="dot green" data-action="maximize"></button>
-    <div class="win-title">Line By Line — In Development</div>
+    <div class="win-title">Line By Line — In Production</div>
   </div>
 
   <div class="win-body">
@@ -270,12 +270,13 @@
     <!-- Maximized -->
     <div class="desc-long">
 
+
       <div class="media-row media-row--solo">
         <div class="image-box">
           <div class="media-frame line-by-line-media-frame">
             <img src="assets/images/LineByLine.png" alt="Line By Line cover art" />
           </div>
-          <div class="video-caption">Line By Line — In Development</div>
+          <div class="video-caption">Line By Line — In Production</div>
         </div>
       </div>
 
@@ -303,34 +304,141 @@
         </ul>
       </div>
 
+      <section class="desc-box sushi-documents" aria-label="Line By Line project documents">
+        <h3>Project Documents</h3>
+        <p class="document-hint">Choose a document, then scroll inside the preview.</p>
+        <div class="sushi-document-browser">
+          <div class="sushi-document-choices" role="group" aria-label="Choose a Line By Line document">
+            <span class="sushi-document-group">Production</span>
+            <button class="btn" type="button" data-line-document="milestones" aria-pressed="true">Milestone Calendar</button>
+            <button class="btn" type="button" data-line-document="design" aria-pressed="false">Design Task Tracking</button>
+          </div>
+          <div class="sushi-document-stage">
+            <iframe id="line-document-preview" class="game-document-preview" src="document-viewer.html?doc=line-milestones" title="Line By Line — Milestone Calendar" loading="lazy"></iframe>
+            <a id="line-document-open" class="btn document-open" href="document-viewer.html?doc=line-milestones" target="_blank" rel="noopener">Open Milestone Calendar in new tab ↗</a>
+          </div>
+        </div>
+      </section>
+
       <div class="desc-box">
         <h3>My Role & Production</h3>
         <p>
-          <strong>Lead Producer</strong> for a USC <strong>Advanced Games Project (AGP)</strong>, currently in pre-production.
-          I am responsible for defining the production structure and preparing the project to scale into a full development team.
+          I am the <strong>Lead Producer</strong> for Line By Line, a USC <strong>Advanced Games Project (AGP)</strong>
+          now in full production. I helped grow the project from its original four-person core into a
+          multidisciplinary team: <strong>4 → 27 Developers</strong>.
         </p>
         <p>
-          I establish <strong>pipelines, workflows, and team structure</strong> across design, engineering, and art to
-          ensure clear communication and alignment between disciplines. This includes organizing sprint structure,
-          milestone planning, and maintaining documentation that supports both short-term iteration and long-term development.
+          I built and maintain the <strong>production structure</strong> that supports our larger team, including
+          sprint planning, task tracking, and shared workflows that keep work organized across disciplines.
         </p>
         <p>
-          During pre-production, my focus is on <strong>scope definition, risk management, and onboarding strategy</strong>.
-          I work closely with discipline leads to refine the game’s vision into actionable tasks while ensuring the project remains feasible at scale.
+          I work directly with leads across <strong>design, engineering, art, narrative, UI/UX, audio, QA, usability,
+          and marketing</strong> to break down work into actionable tasks and help each lead delegate it with clear ownership.
         </p>
         <p>
-          The project is expected to grow to a team of ~25 developers, and my role centers on creating a production environment
-          that can support that growth while maintaining clarity, efficiency, and creative direction.
+          I manage <strong>sprint structure, priorities, and task ownership</strong>, tracking progress and coordinating
+          dependencies between disciplines. I work with leads to identify risks, resolve blockers, and adjust priorities
+          so each team understands what needs to happen next and who is responsible.
         </p>
       </div>
 
       <div class="desc-box">
         <h3>Status</h3>
         <p>
-          Currently in <strong>pre-production</strong> with a leads-only team, preparing for full production.
+          Currently <strong>In Production</strong> with a multidisciplinary team of <strong>27 Developers</strong>.
         </p>
       </div>
 
+    </div>
+  </div>
+</article>
+
+<!-- Full Court Uprising -->
+<article class="mac-window" data-win-id="indev-fullcourt">
+  <div class="win-header">
+    <button class="dot red" data-action="close" aria-label="Close"></button>
+    <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
+    <button class="dot green" data-action="maximize" aria-label="Maximize"></button>
+    <div class="win-title">Full Court Uprising — In Development</div>
+  </div>
+  <div class="win-body">
+    <div class="desc-short">
+      <img class="win-thumb" src="assets/images/FullCourtUprising.png" alt="Full Court Uprising cover art" />
+      <p>A third-person action-adventure game about protecting your community through streetball-inspired combat and rail grinding in a Frutiger Aero-themed Los Angeles.</p>
+      <p>Radical Play Lab at USC · In Development</p>
+    </div>
+    <div class="desc-long">
+      <div class="media-row">
+        <div class="image-box">
+          <div class="media-frame fullcourt-media-frame"><img src="assets/images/FullCourtUprising.png" alt="Full Court Uprising cover art" /></div>
+          <div class="video-caption">Radical Play Lab at USC · In Development</div>
+        </div>
+        <div class="action-col"><a class="btn btn-itch" href="https://nyela.itch.io/full-court-uprising" target="_blank" rel="noopener"><i class="fa-brands fa-itch-io" aria-hidden="true"></i> Play on itch.io</a></div>
+      </div>
+      <div class="desc-box">
+        <h3>Overview</h3>
+        <p><strong>Full Court Uprising</strong> is a third-person action-adventure game about fighting immigration enforcement. Join rebellious teenage engineer Xiara as she protects her community and turns a Frutiger Aero-themed Los Angeles on its head with snappy streetball-inspired combat and a healthy dose of rail-grinding action.</p>
+      </div>
+      <section class="desc-box sushi-documents" aria-label="Full Court Uprising project documents">
+        <h3>Project Documents</h3>
+        <p class="document-hint">Choose a document, then scroll inside the preview.</p>
+        <div class="sushi-document-browser">
+          <div class="sushi-document-choices" role="group" aria-label="Choose a Full Court Uprising document">
+            <span class="sushi-document-group">Production</span>
+            <button class="btn" type="button" data-fullcourt-document="tasks" aria-pressed="true">Trello Production Task Board</button>
+            <span class="sushi-document-group">Engineering</span>
+            <button class="btn" type="button" data-fullcourt-document="dialogue" aria-pressed="false">JuVee Dialogue System</button>
+          </div>
+          <div class="sushi-document-stage">
+            <iframe id="fullcourt-document-preview" class="game-document-preview" src="document-viewer.html?doc=fullcourt-tasks" title="Full Court Uprising — Trello Production Task Board" loading="lazy"></iframe>
+            <a id="fullcourt-document-open" class="btn document-open" href="document-viewer.html?doc=fullcourt-tasks" target="_blank" rel="noopener">Open Trello Production Task Board in new tab ↗</a>
+          </div>
+        </div>
+      </section>
+      <div class="desc-box">
+        <h3>My Role & Production</h3>
+        <p>I am a <strong>Tech Producer & Engineer</strong> on Full Court Uprising with <strong>Radical Play Lab at USC</strong>. I support technical production for a <strong>team of three</strong> and contribute engineering work alongside my production responsibilities.</p>
+        <p>I help maintain project documentation so the team has a shared reference for tasks, decisions, and next steps. Alongside my engineering work, I help translate production discussions into clear, actionable work for the team.</p>
+        <p>I delegate tasks within the technical team and communicate with design to clarify requirements, align priorities, and connect design goals with engineering work. This helps keep task ownership clear and gives both disciplines a shared understanding of what needs to be delivered.</p>
+        <p>When the lead producer is unavailable, I step in to support milestone planning and task delegation. I help break milestone goals into manageable tasks, clarify priorities and ownership, and coordinate what needs to happen next so the team can keep moving forward.</p>
+      </div>
+      <div class="desc-box">
+        <h3>Notes</h3>
+        <p>For fans of <em>Jet Set Radio</em>, <em>The Legend of Zelda</em>, and <em>Sunset Overdrive</em>.</p>
+        <p><strong>1 level · 15 minutes of play.</strong></p>
+      </div>
+      <div class="desc-box">
+        <h3>Controls</h3>
+        <ul>
+          <li><strong>Punch:</strong> Left Click / Square</li>
+          <li><strong>Stomp:</strong> Right Click / Triangle</li>
+          <li><strong>Dash:</strong> Shift / L2 / R2</li>
+          <li><strong>Target:</strong> Ctrl / L1 / R1</li>
+          <li><strong>Change targets:</strong> Move mouse / right stick while targeting</li>
+          <li><strong>Parry:</strong> Shift / L2 / R2 while targeting</li>
+          <li><strong>Homing Ball Throw:</strong> E / Circle while targeting</li>
+        </ul>
+      </div>
+      <div class="desc-box features">
+        <h3>Credits</h3>
+        <ul>
+          <li><strong>Drew Henderson</strong> — Director &amp; Designer</li>
+          <li><strong>Nyela Allen</strong> — Lead Producer &amp; Engineer</li>
+          <li><strong>Caelia LaPenna</strong> — Lead Artist &amp; 3D Artist</li>
+          <li><strong>Jonathan Williams</strong> — Lead Designer &amp; Engineer</li>
+          <li><strong>Tiffany Renderos</strong> — Lead Usability</li>
+          <li><strong>Tobi Adefidiya</strong> — Lead Narrative</li>
+          <li><strong>Kaylee Morales</strong> — Tech Producer &amp; Engineer</li>
+          <li><strong>Steven Atha</strong> — Level Designer</li>
+          <li><strong>Robert Cole Jr.</strong> — 3D Artist</li>
+          <li><strong>Kyra Godoy</strong> — Concept &amp; 3D Artist</li>
+          <li><strong>Emi Bennett</strong> — Concept &amp; 2D Artist</li>
+          <li><strong>James Moore IV</strong> — Concept &amp; 2D Artist</li>
+          <li><strong>Kennedy Thompson</strong> — Technical Artist</li>
+          <li><strong>Kash Hodges</strong> — Composer</li>
+          <li><strong>Olivia D’Agati</strong> — Composer</li>
+        </ul>
+      </div>
     </div>
   </div>
 </article>
@@ -405,7 +513,23 @@
         </ul>
       </div>
 
-      <div class="desc-box">
+      <section class="desc-box sushi-documents" data-document-project="nudge" aria-label="nudge project documents">
+    <h3>Project Documents</h3>
+    <p class="document-hint">Choose a document, then scroll inside the preview.</p>
+    <div class="sushi-document-browser">
+      <div class="sushi-document-choices" role="group" aria-label="Choose a nudge document"><span class="sushi-document-group">Playtesting</span>
+<button class="btn" type="button" data-project-document="nudge-playtest-111" aria-pressed="true">Playday v1.11</button>
+
+<button class="btn" type="button" data-project-document="nudge-playtest-113" aria-pressed="false">Playday v1.13 · 02/20</button>
+<span class="sushi-document-group">Quality assurance</span>
+<button class="btn" type="button" data-project-document="nudge-gacha-qa" aria-pressed="false">Gacha Polish Task Tracking</button></div>
+      <div class="sushi-document-stage">
+        <iframe class="game-document-preview" src="document-viewer.html?doc=nudge-playtest-111" title="nudge — Playday v1.11" loading="lazy"></iframe>
+        <a class="btn document-open" href="document-viewer.html?doc=nudge-playtest-111" target="_blank" rel="noopener">Open Playday v1.11 in new tab ↗</a>
+      </div>
+    </div>
+  </section>
+<div class="desc-box">
         <h3>My Role & Production</h3>
         <p>
           <strong>Usability Team Member.</strong> I observed playtest sessions, tested builds for bugs,
@@ -721,23 +845,21 @@
         </ul>
       </div>
 
-      <div class="game-documents">
-      <div class="desc-box">
-        <h3>Game Design Document</h3>
-        <p class="document-hint">Scroll inside the preview to explore the document.</p>
-        <iframe class="game-document-preview" src="document-viewer.html?doc=design" title="Pulse &amp; Pole Game Design Document" loading="lazy"></iframe>
-        <a class="btn document-open" href="document-viewer.html?doc=design" target="_blank" rel="noopener" aria-label="Open Game Design Document in a new tab">Open in new tab ↗</a>
+      <section class="desc-box sushi-documents" data-document-project="Pulse &amp; Pole" aria-label="Pulse &amp; Pole project documents">
+    <h3>Project Documents</h3>
+    <p class="document-hint">Choose a document, then scroll inside the preview.</p>
+    <div class="sushi-document-browser">
+      <div class="sushi-document-choices" role="group" aria-label="Choose a Pulse &amp; Pole document"><span class="sushi-document-group">Design</span>
+<button class="btn" type="button" data-project-document="design" aria-pressed="true">Game Design Document</button>
+<span class="sushi-document-group">Development</span>
+<button class="btn" type="button" data-project-document="log" aria-pressed="false">Development Log</button></div>
+      <div class="sushi-document-stage">
+        <iframe class="game-document-preview" src="document-viewer.html?doc=design" title="Pulse &amp; Pole — Game Design Document" loading="lazy"></iframe>
+        <a class="btn document-open" href="document-viewer.html?doc=design" target="_blank" rel="noopener">Open Game Design Document in new tab ↗</a>
       </div>
-
-      <div class="desc-box">
-        <h3>Development Log</h3>
-        <p class="document-hint">Scroll inside the preview to follow the development process.</p>
-        <iframe class="game-document-preview" src="document-viewer.html?doc=log" title="Pulse &amp; Pole Development Log" loading="lazy"></iframe>
-        <a class="btn document-open" href="document-viewer.html?doc=log" target="_blank" rel="noopener" aria-label="Open Development Log in a new tab">Open in new tab ↗</a>
-      </div>
-      </div>
-
-      <div class="desc-box">
+    </div>
+  </section>
+<div class="desc-box">
         <h3>My Role & Design / Programming</h3>
         <p>
           I served as the project's <strong>designer and programmer</strong>,
@@ -984,22 +1106,21 @@
                 </ul>
               </div>
 
-              <div class="game-documents">
-                <div class="desc-box">
-                  <h3>Global Game Jam 2026</h3>
-                  <p class="document-hint">Scroll inside the preview to explore the document.</p>
-                  <iframe class="game-document-preview" src="document-viewer.html?doc=alienated" title="Alienated Global Game Jam 2026 document" loading="lazy"></iframe>
-                  <a class="btn document-open" href="document-viewer.html?doc=alienated" target="_blank" rel="noopener" aria-label="Open Alienated Global Game Jam document in a new tab">Open in new tab ↗</a>
-                </div>
-                <div class="desc-box">
-                  <h3>Symbol Cheat Sheet</h3>
-                  <p class="document-hint">Scroll inside the preview to explore the symbols.</p>
-                  <iframe class="game-document-preview" src="document-viewer.html?doc=alienated-symbols" title="Alienated Symbol Cheat Sheet" loading="lazy"></iframe>
-                  <a class="btn document-open" href="document-viewer.html?doc=alienated-symbols" target="_blank" rel="noopener" aria-label="Open Alienated Symbol Cheat Sheet in a new tab">Open in new tab ↗</a>
-                </div>
-              </div>
+              <section class="desc-box sushi-documents" data-document-project="Alienated" aria-label="Alienated project documents">
+    <h3>Project Documents</h3>
+    <p class="document-hint">Choose a document, then scroll inside the preview.</p>
+    <div class="sushi-document-browser">
+      <div class="sushi-document-choices" role="group" aria-label="Choose a Alienated document"><span class="sushi-document-group">Design</span>
+<button class="btn" type="button" data-project-document="alienated" aria-pressed="true">Global Game Jam 2026</button>
 
-              <div class="desc-box">
+<button class="btn" type="button" data-project-document="alienated-symbols" aria-pressed="false">Symbol Cheat Sheet</button></div>
+      <div class="sushi-document-stage">
+        <iframe class="game-document-preview" src="document-viewer.html?doc=alienated" title="Alienated — Global Game Jam 2026" loading="lazy"></iframe>
+        <a class="btn document-open" href="document-viewer.html?doc=alienated" target="_blank" rel="noopener">Open Global Game Jam 2026 in new tab ↗</a>
+      </div>
+    </div>
+  </section>
+<div class="desc-box">
                 <h3>My Role & Design</h3>
                 <p>
                   I worked on <strong>design</strong> and helped shape the core concept: communication as a puzzle, and belonging as the emotional “goal.”
@@ -1105,21 +1226,21 @@
                 </p>
               </div>
 
-              <div class="game-documents">
-                <div class="desc-box">
-                  <h3>Code Architecture</h3>
-                  <p class="document-hint">Scroll inside the preview to explore the document.</p>
-                  <iframe class="game-document-preview" src="document-viewer.html?doc=unspoken-code" title="Things Left Unspoken Code Architecture" loading="lazy"></iframe>
-                  <a class="btn document-open" href="document-viewer.html?doc=unspoken-code" target="_blank" rel="noopener" aria-label="Open Things Left Unspoken Code Architecture in a new tab">Open in new tab ↗</a>
-                </div>
-                <div class="desc-box">
-                  <h3>Game Design Document</h3>
-                  <p class="document-hint">Scroll inside the preview to explore the document.</p>
-                  <iframe class="game-document-preview" src="document-viewer.html?doc=unspoken-gdd" title="Things Left Unspoken Game Design Document" loading="lazy"></iframe>
-                  <a class="btn document-open" href="document-viewer.html?doc=unspoken-gdd" target="_blank" rel="noopener" aria-label="Open Things Left Unspoken Game Design Document in a new tab">Open in new tab ↗</a>
-                </div>
-              </div>
-              <div class="desc-box">
+              <section class="desc-box sushi-documents" data-document-project="Things Left Unspoken" aria-label="Things Left Unspoken project documents">
+    <h3>Project Documents</h3>
+    <p class="document-hint">Choose a document, then scroll inside the preview.</p>
+    <div class="sushi-document-browser">
+      <div class="sushi-document-choices" role="group" aria-label="Choose a Things Left Unspoken document"><span class="sushi-document-group">Engineering</span>
+<button class="btn" type="button" data-project-document="unspoken-code" aria-pressed="true">Code Architecture</button>
+<span class="sushi-document-group">Design</span>
+<button class="btn" type="button" data-project-document="unspoken-gdd" aria-pressed="false">Game Design Document</button></div>
+      <div class="sushi-document-stage">
+        <iframe class="game-document-preview" src="document-viewer.html?doc=unspoken-code" title="Things Left Unspoken — Code Architecture" loading="lazy"></iframe>
+        <a class="btn document-open" href="document-viewer.html?doc=unspoken-code" target="_blank" rel="noopener">Open Code Architecture in new tab ↗</a>
+      </div>
+    </div>
+  </section>
+<div class="desc-box">
                 <h3>My Role & Programming</h3>
                 <p>
                   I was the <strong>main programmer</strong> responsible for bringing the core mechanic to life: we wanted the interaction to
@@ -1326,6 +1447,50 @@
   <!-- Page helper: click-to-play thumbnail only (minimized) -->
   <script src="assets/vendor/hls/dist/hls.min.js"></script>
   <script>
+    document.querySelectorAll('[data-document-project]').forEach(section => {
+      section.querySelectorAll('[data-project-document]').forEach(button => {
+        button.addEventListener('click', () => {
+          if (button.getAttribute('aria-pressed') === 'true') return;
+          section.querySelectorAll('[data-project-document]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+          const url = 'document-viewer.html?doc=' + button.dataset.projectDocument;
+          const label = button.textContent;
+          const preview = section.querySelector('.game-document-preview');
+          preview.title = section.dataset.documentProject + ' — ' + label;
+          preview.src = url;
+          const link = section.querySelector('.document-open');
+          link.href = url;
+          link.textContent = 'Open ' + label + ' in new tab ↗';
+        });
+      });
+    });
+    document.querySelectorAll('[data-line-document]').forEach(button => {
+      button.addEventListener('click', () => {
+        if (button.getAttribute('aria-pressed') === 'true') return;
+        document.querySelectorAll('[data-line-document]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+        const url = 'document-viewer.html?doc=line-' + button.dataset.lineDocument;
+        const label = button.textContent;
+        const preview = document.getElementById('line-document-preview');
+        preview.title = 'Line By Line — ' + label;
+        preview.src = url;
+        const link = document.getElementById('line-document-open');
+        link.href = url;
+        link.textContent = 'Open ' + label + ' in new tab ↗';
+      });
+    });
+    document.querySelectorAll('[data-fullcourt-document]').forEach(button => {
+      button.addEventListener('click', () => {
+        if (button.getAttribute('aria-pressed') === 'true') return;
+        document.querySelectorAll('[data-fullcourt-document]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+        const url = 'document-viewer.html?doc=fullcourt-' + button.dataset.fullcourtDocument;
+        const label = button.textContent;
+        const preview = document.getElementById('fullcourt-document-preview');
+        preview.title = 'Full Court Uprising — ' + label;
+        preview.src = url;
+        const link = document.getElementById('fullcourt-document-open');
+        link.href = url;
+        link.textContent = 'Open ' + label + ' in new tab ↗';
+      });
+    });
     document.querySelectorAll('[data-sushi-document]').forEach(button => {
       button.addEventListener('click', () => {
         if (button.getAttribute('aria-pressed') === 'true') return;
@@ -1513,6 +1678,6 @@
   <!-- Window behavior (fullscreen on all pages, smooth FLIP, stable close) -->
 <script src="window-ui.js?v=20260831-2"></script>
   <!-- Shared site utilities (mobile nav, etc.) -->
-  <script src="site.js?v=20260829-1"></script>
+  <script src="site.js?v=20260911-1"></script>
 </body>
 </html>
