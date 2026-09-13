@@ -2,7 +2,7 @@
    Works for: .mac-window, .photo-popup
    Maximize: fullscreen (100vw x 100vh)
    Minimize: FLIP back to exact placeholder
-   Close: confirm -> Google (NO state change if user cancels)
+   Close: confirm -> homepage (NO state change if user cancels)
 */
 (() => {
   const onReady = (fn) => {
@@ -21,11 +21,11 @@
       overlay.className = 'exit-overlay';
       overlay.innerHTML = `
         <div class="exit-modal" role="dialog" aria-modal="true" aria-labelledby="exitTitle">
-          <div class="exit-modal-header" id="exitTitle">Leave site?</div>
-          <div class="exit-modal-body">Are you sure you want to exit the website?</div>
+          <div class="exit-modal-header" id="exitTitle">Back to home?</div>
+          <div class="exit-modal-body">This will close this window and return you to the homepage.</div>
           <div class="exit-modal-actions">
-            <button class="btn btn-ghost" data-exit="no">No</button>
-            <button class="btn btn-danger" data-exit="yes">Yes</button>
+            <button class="btn btn-ghost" data-exit="no">Keep browsing</button>
+            <button class="btn btn-danger" data-exit="yes">Go home</button>
           </div>
         </div>`;
       document.body.appendChild(overlay);
@@ -34,7 +34,7 @@
           overlay.classList.remove('show');             // Do nothing else (state unchanged)
         }
         if (e.target.matches('[data-exit="yes"]')) {
-          window.location.href = 'https://www.google.com';
+          window.location.href = 'home.html';
         }
       });
     }
@@ -184,7 +184,7 @@
         document.dispatchEvent(new Event('portfolio:pause-media'));
       }
 
-      // Close -> just show modal; DO NOT change classes or state
+      // Confirm before the red Mac-style control returns visitors home.
       if (action === 'close') {
         openExitModal();
         return;

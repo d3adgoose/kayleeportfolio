@@ -135,6 +135,7 @@
      display: inline-flex;
      align-items: center;
      gap: 3px;
+     font-size: 1.08rem;
      white-space: nowrap;
    }
 
@@ -714,7 +715,7 @@ body[data-page="portfolio"] .section-heading {
   padding: 0;
   list-style: none;
   font-family: "Caveat", cursive;
-  font-size: .72rem;
+  font-size: .98rem;
   color: #685f72;
 }
 
@@ -801,6 +802,81 @@ body[data-page="portfolio"] .section-heading {
   line-height: 1.2;
 }
 
+a.lab-pill{
+  position: relative;
+  align-items: center;
+  margin-top: 12px;
+  width: fit-content;
+  min-height: 0;
+  padding: 4px 10px 4px 7px;
+  gap: 5px;
+  color: #543581;
+  background: #f8f2ff;
+  border: 1px dashed rgba(111,58,255,.38);
+  box-shadow: 2px 3px 0 rgba(111,58,255,.10);
+  font-size: .64rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+}
+a.lab-pill::before{
+  content: "✦";
+  display: grid;
+  place-items: center;
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+  color: #fff;
+  background: linear-gradient(135deg, #8b5cf6, #6332c5);
+  border-radius: 50%;
+  font-size: .52rem;
+  line-height: 1;
+}
+a.lab-pill:hover{
+  background: #f0e5ff;
+  border-color: rgba(82,31,144,.35);
+  transform: translate(-1px, -1px) rotate(-.5deg);
+  box-shadow: 3px 4px 0 rgba(111,58,255,.13);
+}
+a.lab-pill:focus-visible{
+  outline: 3px solid rgba(111,58,255,.32);
+  outline-offset: 3px;
+}
+.action-col a.lab-pill{
+  justify-content: center;
+  align-self: flex-start;
+  width: fit-content;
+  margin: 0;
+  padding: 4px 10px 4px 7px;
+  text-align: center;
+}
+a.lab-pill > span{
+  flex: 0 0 auto;
+  font-size: .7rem;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.card-actions a.lab-pill{
+  justify-self: start;
+  width: fit-content;
+  padding: 5px 9px;
+}
+.project-role-pill--compact{
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 5px 9px;
+  gap: 2px;
+  font-size: .68rem;
+  line-height: 1.2;
+}
+.card-actions .project-role-pill--compact{
+  padding: 5px 9px;
+}
+.project-role-pill--compact span{ font-size: .57rem; }
+
 .card-actions{
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -852,6 +928,65 @@ body[data-page="portfolio"] .section-heading {
   overflow-wrap: anywhere;
 }
 
+/* Full Court uses one neat, horizontal ownership pill in both views. */
+[data-win-id="indev-fullcourt"] .project-role-pill--compact,
+[data-win-id="indev-fullcourt"] .card-actions .project-role-pill--compact{
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 0;
+  padding: 7px 13px;
+  gap: 8px;
+  border-radius: 999px;
+  font-size: .76rem;
+  white-space: nowrap;
+}
+[data-win-id="indev-fullcourt"] .project-role-pill--compact span{
+  font-size: .66rem;
+}
+[data-win-id="indev-fullcourt"] .desc-short .card-actions{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "lab lab"
+    "role play";
+  align-items: center;
+}
+[data-win-id="indev-fullcourt"] .desc-short .card-actions .lab-pill{
+  grid-area: lab;
+  justify-self: start;
+  width: fit-content;
+}
+[data-win-id="indev-fullcourt"] .desc-short .card-actions .btn{
+  grid-area: play;
+  width: fit-content;
+}
+[data-win-id="indev-fullcourt"] .desc-short .card-actions .project-role-pill--compact{
+  grid-area: role;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  justify-self: stretch;
+  width: 100%;
+  min-height: 52px;
+  padding: 8px 14px;
+  gap: 3px;
+  border-radius: 12px;
+  white-space: normal;
+}
+[data-win-id="indev-fullcourt"] .action-col{
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+[data-win-id="indev-fullcourt"] .action-col .lab-pill{
+  align-self: center;
+  margin-inline: auto;
+}
+
 @media (max-width: 520px){
   .card-actions{
     grid-template-columns: minmax(0, 1fr) !important;
@@ -859,6 +994,18 @@ body[data-page="portfolio"] .section-heading {
 
   .card-actions .btn,
   .card-actions .role-pill{
+    width: 100%;
+  }
+
+  [data-win-id="indev-fullcourt"] .desc-short .card-actions{
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "lab"
+      "role"
+      "play";
+  }
+  [data-win-id="indev-fullcourt"] .desc-short .card-actions .btn{
+    justify-self: stretch;
     width: 100%;
   }
 }
@@ -3274,6 +3421,9 @@ body:is([data-page="games"], [data-page="work"]) .mac-window.is-max .expanded-wi
   pointer-events: none;
 }
 body:is([data-page="games"], [data-page="work"]) .expanded-window-tip strong{
+  font-size: 1.35rem;
+}
+body:is([data-page="games"], [data-page="work"]) .expanded-window-tip span{
   font-size: 1.35rem;
 }
 body:is([data-page="games"], [data-page="work"]) .mac-window.is-max .win-body{ padding-top: 130px; }

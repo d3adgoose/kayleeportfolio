@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Games — Kaylee Linette Morales</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css?v=20260911-1" />
+  <link rel="stylesheet" href="style.css?v=20260912-10" />
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -359,21 +359,29 @@
     <button class="dot red" data-action="close" aria-label="Close"></button>
     <button class="dot yellow" data-action="minimize" aria-label="Minimize"></button>
     <button class="dot green" data-action="maximize" aria-label="Maximize"></button>
-    <div class="win-title">Full Court Uprising — In Development</div>
+    <div class="win-title">Full Court Uprising — In Production</div>
   </div>
   <div class="win-body">
     <div class="desc-short">
       <img class="win-thumb" src="assets/images/FullCourtUprising.png" alt="Full Court Uprising cover art" />
       <p>A third-person action-adventure game about protecting your community through streetball-inspired combat and rail grinding in a Frutiger Aero-themed Los Angeles.</p>
-      <p>Radical Play Lab at USC · In Development</p>
+      <a class="btn btn-itch" href="https://nyela.itch.io/full-court-uprising" target="_blank" rel="noopener"><i class="fa-brands fa-itch-io" aria-hidden="true"></i> Play</a>
+      <a class="role-pill lab-pill" href="https://treaandrea.squarespace.com/radical-play/overview" target="_blank" rel="noopener">
+        Radical Play Lab at USC <span aria-hidden="true">↗</span>
+      </a>
     </div>
     <div class="desc-long">
       <div class="media-row">
         <div class="image-box">
           <div class="media-frame fullcourt-media-frame"><img src="assets/images/FullCourtUprising.png" alt="Full Court Uprising cover art" /></div>
-          <div class="video-caption">Radical Play Lab at USC · In Development</div>
+          <div class="video-caption">Full Court Uprising</div>
         </div>
-        <div class="action-col"><a class="btn btn-itch" href="https://nyela.itch.io/full-court-uprising" target="_blank" rel="noopener"><i class="fa-brands fa-itch-io" aria-hidden="true"></i> Play on itch.io</a></div>
+        <div class="action-col">
+          <a class="btn btn-itch" href="https://nyela.itch.io/full-court-uprising" target="_blank" rel="noopener"><i class="fa-brands fa-itch-io" aria-hidden="true"></i> Play on itch.io</a>
+          <a class="role-pill lab-pill" href="https://treaandrea.squarespace.com/radical-play/overview" target="_blank" rel="noopener">
+            Radical Play Lab at USC <span aria-hidden="true">↗</span>
+          </a>
+        </div>
       </div>
       <div class="desc-box">
         <h3>Overview</h3>
@@ -644,12 +652,31 @@
               <div class="desc-box">
                 <h3>My Role & Production</h3>
                 <p>
-                  <strong>Product Owner & Project Manager</strong> for a six-month development cycle. Led an interdisciplinary team of eight using Scrum: sprint planning, backlog management, milestone builds. Directed creative vision, coordinated cross-discipline work (design, programming, art, audio), presented regularly, and maintained documentation.
+                  <strong>Product Owner & Project Manager</strong> for a six-month development cycle. Led an interdisciplinary team of eight using Scrum: sprint planning, backlog management, milestone builds. Directed creative vision, coordinated cross-discipline work (design, programming, art, audio), and presented regularly. I was responsible for the project files shown below and owned the team’s shared documentation, keeping plans, research, tasks, and design decisions organized and accessible throughout development.
                 </p>
                 <p>
                   Originated as a <strong>UCSC undergraduate capstone</strong>. Progressed from <strong>pre-production</strong> (vision, scope, prototypes) to <strong>production</strong> (feature/content) and <strong>post-production</strong> (polish, QA). Refined via structured playtests with classmates and faculty.
                 </p>
               </div>
+
+              <section class="desc-box sushi-documents" data-document-project="Markus’s Miasma" aria-label="Markus’s Miasma project documents">
+                <h3>Project Documents</h3>
+                <p class="document-hint">Choose a document, then scroll inside the preview.</p>
+                <div class="sushi-document-browser">
+                  <div class="sushi-document-choices" role="group" aria-label="Choose a Markus’s Miasma document">
+                    <span class="sushi-document-group">Production</span>
+                    <button class="btn" type="button" data-project-document="markus-sprint-board" aria-pressed="true">Sprint 1 Taskboard</button>
+                    <span class="sushi-document-group">Design</span>
+                    <button class="btn" type="button" data-project-document="markus-design-macro" aria-pressed="false">Game Design Macro</button>
+                    <span class="sushi-document-group">Research</span>
+                    <button class="btn" type="button" data-project-document="markus-market-analysis" aria-pressed="false">Market Analysis</button>
+                  </div>
+                  <div class="sushi-document-stage">
+                    <iframe class="game-document-preview" src="document-viewer.html?doc=markus-sprint-board" title="Markus’s Miasma — Sprint 1 Taskboard" loading="lazy"></iframe>
+                    <a class="btn document-open" href="document-viewer.html?doc=markus-sprint-board" target="_blank" rel="noopener">Open Sprint 1 Taskboard in new tab ↗</a>
+                  </div>
+                </div>
+              </section>
 
               <!-- ADDED: Markus credits -->
               <div class="desc-box">
@@ -1447,6 +1474,39 @@
   <!-- Page helper: click-to-play thumbnail only (minimized) -->
   <script src="assets/vendor/hls/dist/hls.min.js"></script>
   <script>
+    const activateDocumentPreview = (preview, url, forceReload = false) => {
+      if (!preview || !url || url === 'about:blank') return;
+      preview.removeAttribute('loading');
+      preview.dataset.documentUrl = url;
+      const isMobile = window.matchMedia('(max-width: 900px)').matches;
+      if (forceReload) {
+        if (!isMobile || preview.dataset.mobileLoaded === url) return;
+        // Mark it before swapping src so class mutations during the next frame
+        // cannot start a second, competing reload.
+        preview.dataset.mobileLoaded = url;
+        preview.src = 'about:blank';
+        requestAnimationFrame(() => {
+          preview.src = url;
+        });
+        return;
+      }
+      preview.src = url;
+      if (isMobile) preview.dataset.mobileLoaded = url;
+    };
+
+    // Mobile Safari can skip lazy iframes that begin inside hidden case studies.
+    // Activate only the selected preview once its Mac window is expanded.
+    document.querySelectorAll('.mac-window').forEach(win => {
+      const observer = new MutationObserver(() => {
+        if (!win.classList.contains('is-max')) return;
+        const preview = win.querySelector('.game-document-preview');
+        if (!preview) return;
+        const selectedUrl = preview.dataset.documentUrl || preview.getAttribute('src');
+        activateDocumentPreview(preview, selectedUrl, true);
+      });
+      observer.observe(win, { attributes: true, attributeFilter: ['class'] });
+    });
+
     document.querySelectorAll('[data-document-project]').forEach(section => {
       section.querySelectorAll('[data-project-document]').forEach(button => {
         button.addEventListener('click', () => {
@@ -1456,7 +1516,7 @@
           const label = button.textContent;
           const preview = section.querySelector('.game-document-preview');
           preview.title = section.dataset.documentProject + ' — ' + label;
-          preview.src = url;
+          activateDocumentPreview(preview, url);
           const link = section.querySelector('.document-open');
           link.href = url;
           link.textContent = 'Open ' + label + ' in new tab ↗';
@@ -1471,7 +1531,7 @@
         const label = button.textContent;
         const preview = document.getElementById('line-document-preview');
         preview.title = 'Line By Line — ' + label;
-        preview.src = url;
+        activateDocumentPreview(preview, url);
         const link = document.getElementById('line-document-open');
         link.href = url;
         link.textContent = 'Open ' + label + ' in new tab ↗';
@@ -1485,7 +1545,7 @@
         const label = button.textContent;
         const preview = document.getElementById('fullcourt-document-preview');
         preview.title = 'Full Court Uprising — ' + label;
-        preview.src = url;
+        activateDocumentPreview(preview, url);
         const link = document.getElementById('fullcourt-document-open');
         link.href = url;
         link.textContent = 'Open ' + label + ' in new tab ↗';
@@ -1499,74 +1559,34 @@
         const label = button.getAttribute('aria-label') || button.textContent;
         const preview = document.getElementById('sushi-document-preview');
         preview.title = 'Sushi Rat Revolution — ' + label;
-        preview.src = url;
+        activateDocumentPreview(preview, url);
         const link = document.getElementById('sushi-document-open');
         link.href = url;
         link.textContent = 'Open ' + label + ' in new tab ↗';
       });
     });
-    // Apply the initial volume once, then leave visitors' volume choices alone.
-    let youtubeReady;
+    // Start media directly from the visitor's click so browsers permit audio.
     let playbackGeneration = 0;
-    const youtubePlayers = new Set();
     document.addEventListener('portfolio:pause-media', () => {
       playbackGeneration++;
-      youtubePlayers.forEach(player => { player.pauseVideo?.(); });
+      document.querySelectorAll('.video-wrap iframe').forEach(frame => {
+        frame.contentWindow?.postMessage(JSON.stringify({ event: 'command', func: 'pauseVideo', args: [] }), '*');
+      });
       document.querySelectorAll('.award-video-playing').forEach(card => card.classList.remove('award-video-playing'));
     });
-    const loadYouTubeAPI = () => {
-      if (window.YT?.Player) return Promise.resolve();
-      if (!youtubeReady) youtubeReady = new Promise((resolve, reject) => {
-        const previousReady = window.onYouTubeIframeAPIReady;
-        window.onYouTubeIframeAPIReady = () => {
-          previousReady?.();
-          resolve();
-        };
-        const script = document.createElement('script');
-        script.src = 'https://www.youtube.com/iframe_api';
-        script.onerror = () => { youtubeReady = null; reject(new Error('YouTube could not load')); };
-        document.head.append(script);
-      });
-      return youtubeReady;
-    };
-    const playYouTubeTrailer = async (wrap, id) => {
+    const playYouTubeTrailer = (wrap, id) => {
       if (!wrap || wrap.dataset.loaded === '1') return;
-      const generation = playbackGeneration;
       wrap.dataset.loaded = '1';
-      const placeholder = document.createElement('div');
-      placeholder.textContent = 'Loading video…';
-      wrap.replaceChildren(placeholder);
-      try {
-        await loadYouTubeAPI();
-        if (!placeholder.isConnected) return;
-        const player = new YT.Player(placeholder, {
-          width: '100%',
-          height: '100%',
-          host: 'https://www.youtube-nocookie.com',
-          videoId: id,
-          playerVars: { autoplay: 0, playsinline: 1, rel: 0, origin: location.origin },
-          events: {
-            onStateChange: ({ data }) => {
-              const card = wrap.closest('.mac-window');
-              if (data === YT.PlayerState.PLAYING) card?.classList.add('award-video-playing');
-              if ([YT.PlayerState.PAUSED, YT.PlayerState.ENDED, YT.PlayerState.CUED].includes(data)) card?.classList.remove('award-video-playing');
-            },
-            onReady: ({ target }) => {
-              target.setVolume(50);
-              target.unMute();
-              // If the visitor has since closed/minimized it, do not start hidden audio.
-              if (generation === playbackGeneration && wrap.getClientRects().length) target.playVideo();
-            }
-          }
-        });
-        youtubePlayers.add(player);
-        wrap.removeAttribute('role');
-        wrap.removeAttribute('tabindex');
-      } catch {
-        if (!placeholder.isConnected) return;
-        placeholder.textContent = 'Video could not load. Click to retry.';
-        wrap.dataset.loaded = '0';
-      }
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&mute=0&playsinline=1&rel=0&enablejsapi=1`;
+      iframe.title = wrap.getAttribute('aria-label') || 'YouTube video player';
+      iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      wrap.replaceChildren(iframe);
+      wrap.closest('.mac-window')?.classList.add('award-video-playing');
+      wrap.removeAttribute('role');
+      wrap.removeAttribute('tabindex');
     };
     const playSteamTrailer = (wrap) => {
       if (!wrap || wrap.dataset.loaded === '1') return;
@@ -1575,8 +1595,14 @@
       const label = wrap.getAttribute('aria-label') || 'Steam trailer';
       wrap.innerHTML = `<video controls playsinline preload="metadata" aria-label="${label}"></video>`;
       const video = wrap.querySelector('video');
-      video.volume = 0.5;
+      video.defaultMuted = false;
+      video.removeAttribute('muted');
+      video.volume = 1;
       video.muted = false;
+      video.addEventListener('play', () => {
+        video.muted = false;
+        video.volume = 1;
+      });
       const start = () => {
         if (generation === playbackGeneration && wrap.getClientRects().length) video.play().catch(() => { /* Keep controls if browser requires another click. */ });
       };
@@ -1592,9 +1618,11 @@
         start();
       } else if (window.Hls?.isSupported()) {
         const hls = new Hls({ capLevelToPlayerSize: true, maxBufferLength: 20 });
-        hls.loadSource(stream);
         hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, start);
+        hls.loadSource(stream);
+        // Calling play now (inside the click) preserves permission for audible playback
+        // while HLS.js fetches and buffers the stream.
+        start();
         hls.on(Hls.Events.ERROR, (_, data) => {
           if (data.fatal) { hls.destroy(); showError(); }
         });
@@ -1620,8 +1648,14 @@
         video.controls = true;
         video.playsInline = true;
         video.preload = 'metadata';
-        video.volume = 0.5;
+        video.defaultMuted = false;
+        video.removeAttribute('muted');
+        video.volume = 1;
         video.muted = false;
+        video.addEventListener('play', () => {
+          video.muted = false;
+          video.volume = 1;
+        });
         video.setAttribute('aria-label', 'Alienated video');
         video.src = wrap.dataset.localVideo;
         wrap.replaceChildren(video);
@@ -1676,8 +1710,8 @@
   </script>
 
   <!-- Window behavior (fullscreen on all pages, smooth FLIP, stable close) -->
-<script src="window-ui.js?v=20260831-2"></script>
+<script src="window-ui.js?v=20260912-2"></script>
   <!-- Shared site utilities (mobile nav, etc.) -->
-  <script src="site.js?v=20260911-1"></script>
+  <script src="site.js?v=20260912-6"></script>
 </body>
 </html>

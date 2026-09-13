@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
       headerTip.setAttribute('aria-label', 'Window button reminder');
       headerTip.innerHTML = `
         <strong>psst... the dots work!</strong>
-        <span><i class="tip-dot tip-dot--red"></i> exit</span>
-        <span><i class="tip-dot tip-dot--yellow"></i> shrink</span>
-        <span><i class="tip-dot tip-dot--green"></i> expand</span>`;
+        <span><i class="tip-dot tip-dot--red"></i> home</span>
+        <span><i class="tip-dot tip-dot--yellow"></i> minimize</span>
+        <span><i class="tip-dot tip-dot--green"></i> maximize</span>`;
       const navToggle = siteHeader.querySelector('.nav-toggle');
       siteHeader.insertBefore(headerTip, navToggle || siteHeader.querySelector('.nav'));
       document.querySelectorAll('body:is([data-page="games"], [data-page="work"]) .mac-window .win-header').forEach(header => {
@@ -129,6 +129,15 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(() => document.querySelector(location.hash).scrollIntoView({ behavior: 'smooth', block: 'start' }));
     }
 
+    // Keep evidence before ownership in every expanded game case study.
+    document.querySelectorAll('body[data-page="games"] .mac-window .desc-long').forEach((longPanel) => {
+      const documents = longPanel.querySelector(':scope > .sushi-documents');
+      const roleHeading = [...longPanel.querySelectorAll(':scope > .desc-box > h3')]
+        .find((heading) => heading.textContent.trim().startsWith('My Role'));
+      const roleSection = roleHeading?.closest('.desc-box');
+      if (documents && roleSection) longPanel.insertBefore(documents, roleSection);
+    });
+
     document.querySelectorAll('.mac-window[data-win-id]').forEach((windowCard) => {
       let role = projectRoles[windowCard.dataset.winId];
       const title = windowCard.querySelector('.win-title')?.textContent || '';
@@ -139,26 +148,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const makePill = () => {
         const pill = document.createElement('div');
-        pill.className = 'role-pill';
+        pill.className = 'role-pill project-role-pill';
+        if (windowCard.dataset.winId === 'indev-fullcourt') {
+          pill.classList.add('project-role-pill--compact');
+        }
         pill.innerHTML = `<span>My role</span><strong>${role}</strong>`;
         return pill;
       };
 
       const shortPanel = windowCard.querySelector('.desc-short');
-      if (shortPanel && !shortPanel.querySelector('.role-pill')) {
+      if (shortPanel && !shortPanel.querySelector('.project-role-pill')) {
         const actions = document.createElement('div');
         actions.className = 'card-actions';
-        const existingButtons = [...shortPanel.querySelectorAll(':scope > .btn')];
-        actions.appendChild(makePill());
-        existingButtons.forEach((button) => actions.appendChild(button));
+        const existingButtons = [...shortPanel.querySelectorAll(':scope > .btn, :scope > .lab-pill')];
+        if (windowCard.dataset.winId === 'indev-fullcourt') {
+          existingButtons.forEach((button) => actions.appendChild(button));
+          actions.appendChild(makePill());
+        } else {
+          actions.appendChild(makePill());
+          existingButtons.forEach((button) => actions.appendChild(button));
+        }
         shortPanel.appendChild(actions);
         const projectContext = shortPanel.querySelector(':scope > .project-context');
         if (projectContext) actions.insertAdjacentElement('afterend', projectContext);
       }
 
       const longPanel = windowCard.querySelector('.desc-long');
-      if (longPanel && !longPanel.querySelector(':scope > .role-pill')) {
-        longPanel.prepend(makePill());
+      if (longPanel && !longPanel.querySelector('.project-role-pill')) {
+        if (windowCard.dataset.winId === 'indev-fullcourt') {
+          // Keep ownership in the same familiar spot as every other expanded case study.
+          longPanel.prepend(makePill());
+        } else {
+          longPanel.prepend(makePill());
+        }
       }
     });
 
