@@ -957,7 +957,15 @@ a.lab-pill > span{
 [data-win-id="indev-fullcourt"] .desc-short .card-actions .lab-pill{
   grid-area: lab;
   justify-self: start;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   width: fit-content;
+  min-height: 0;
+  padding: 4px 10px 4px 7px;
+  gap: 5px;
+  border-radius: 999px;
 }
 [data-win-id="indev-fullcourt"] .desc-short .card-actions .btn{
   grid-area: play;
