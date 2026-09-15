@@ -1,7 +1,7 @@
 // site.js — single, conflict-free mobile nav
 document.addEventListener('DOMContentLoaded', () => {
     const siteHeader = document.querySelector('.site-banner .banner-inner');
-    if (siteHeader && !document.body.matches('[data-page="home"]')) {
+    if (siteHeader) {
       const headerTip = document.createElement('aside');
       headerTip.className = 'header-window-tip';
       headerTip.setAttribute('aria-label', 'Window button reminder');
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <span><i class="tip-dot tip-dot--green"></i> maximize</span>`;
       const navToggle = siteHeader.querySelector('.nav-toggle');
       siteHeader.insertBefore(headerTip, navToggle || siteHeader.querySelector('.nav'));
-      document.querySelectorAll('body:is([data-page="games"], [data-page="work"]) .mac-window .win-header').forEach(header => {
+      document.querySelectorAll('body:is([data-page="home"], [data-page="games"], [data-page="work"]) .mac-window .win-header').forEach(header => {
         const expandedTip = headerTip.cloneNode(true);
         expandedTip.classList.add('expanded-window-tip');
         header.append(expandedTip);
@@ -58,6 +58,52 @@ document.addEventListener('DOMContentLoaded', () => {
       'art-ux': 'Art / UX'
     };
     const roleStorageKey = 'kaylee-portfolio-role';
+    if (new URLSearchParams(location.search).get('embedded') === '1') document.body.classList.add('games-embedded');
+    const libraryOpener = document.getElementById('games-library-open');
+    if (libraryOpener) {
+      const aboutTab = document.getElementById("about-tab");
+      const about = document.getElementById("about-panel");
+      const panel = document.createElement("section");
+      panel.id = "home-games-panel";
+      panel.hidden = true;
+      panel.setAttribute("aria-label", "Games");
+      panel.innerHTML = '<a class="games-size-note" href="published.html"><strong>Click me to view games bigger</strong></a><iframe class="home-games-frame" title="Games portfolio"></iframe>';
+      about.after(panel);
+      const homeHeader = libraryOpener.closest('.win-header');
+      const lookNote = document.querySelector('.tab-sticky-note');
+      const controlsNote = document.querySelector('.window-controls-tip');
+      if (lookNote) {
+        lookNote.classList.add('navigation-projects-note');
+        siteHeader?.append(lookNote);
+      }
+      if (controlsNote) controlsNote.remove();
+      const sizeNote = panel.querySelector('.games-size-note');
+      homeHeader.append(sizeNote);
+      sizeNote.hidden = true;
+      const select = games => {
+        about.hidden = games;
+        panel.hidden = !games;
+        document.body.classList.toggle('mirror-expanded', games && panel.dataset.expanded === 'true');
+        sizeNote.hidden = !games;
+        if (lookNote) lookNote.hidden = games;
+        libraryOpener.classList.toggle("active", games);
+        aboutTab.classList.toggle("active", !games);
+        libraryOpener.setAttribute("aria-pressed", String(games));
+        aboutTab.setAttribute("aria-pressed", String(!games));
+        const frame = panel.querySelector("iframe");
+        if (games && !frame.getAttribute("src")) frame.src = "published.html?embedded=1";
+      };
+      libraryOpener.addEventListener("click", () => select(true));
+      aboutTab.addEventListener("click", () => select(false));
+      window.addEventListener('message', event => {
+        if (event.source !== panel.querySelector('iframe').contentWindow || event.origin !== location.origin) return;
+        if (event.data === 'portfolio:home') select(false);
+        if (event.data?.type === 'portfolio:expanded') {
+          panel.dataset.expanded = String(event.data.expanded);
+          document.body.classList.toggle('mirror-expanded', !panel.hidden && event.data.expanded);
+        }
+      });
+    }
     const readSavedRole = () => {
       try {
         const saved = localStorage.getItem(roleStorageKey);
@@ -85,6 +131,11 @@ document.addEventListener('DOMContentLoaded', () => {
       card.dataset.portfolioRoles = project.roles.join(' ');
       card.id = `project-${project.slug}`;
     });
+    if (document.body.classList.contains('games-embedded')) {
+      const reportExpansion = () => window.parent.postMessage({ type: 'portfolio:expanded', expanded: document.body.classList.contains('has-maximized-window') }, location.origin);
+      new MutationObserver(reportExpansion).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+      reportExpansion();
+    }
 
     const applyRole = (role, shouldSave = false) => {
       const selectedRole = roleLabels[role] ? role : 'all';
@@ -125,8 +176,14 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
     applyRole('all');
-    if (location.hash && document.querySelector(location.hash)) {
-      requestAnimationFrame(() => document.querySelector(location.hash).scrollIntoView({ behavior: 'smooth', block: 'start' }));
+    const linkedProject = document.getElementById(location.hash.slice(1));
+    if (linkedProject) {
+      requestAnimationFrame(() => {
+        linkedProject.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (new URLSearchParams(location.search).get('expand') === '1') {
+          linkedProject.querySelector('[data-action="maximize"]')?.click();
+        }
+      });
     }
 
     // Keep evidence before ownership in every expanded game case study.

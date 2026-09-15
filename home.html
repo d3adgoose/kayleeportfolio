@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Kaylee Linette Morales | Producer &amp; Game Designer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css?v=20260912-4" />
+  <link rel="stylesheet" href="style.css?v=20260914-solid-headers" />
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -59,11 +59,14 @@
 
         <!-- Browser-style tabs share the same bar as the Mac controls. -->
         <div class="tabs" aria-label="Portfolio links">
-          <button class="tab active" type="button">
+          <button class="tab active" id="about-tab" type="button" aria-pressed="true" aria-controls="about-panel">
             <span class="tab-favicon"></span>
             <span>About Me</span>
           </button>
 
+          <button class="tab" id="games-library-open" type="button" aria-pressed="false" aria-controls="home-games-panel">
+            <span>Games</span>
+          </button>
           <a class="tab" href="assets/files/Kaylee_Morales_Resume.pdf" target="_blank" rel="noopener">
             <span class="tab-favicon"></span>
             <span>Resume</span>
@@ -90,7 +93,7 @@
 
 
         <!-- Two-column content -->
-        <div class="about-grid">
+        <div class="about-grid" id="about-panel">
           <div class="about-copy">
             <h1 class="hero-title">Kaylee Linette Morales</h1>
             <p class="hero-sub">M.S. Computer Science (Game Development) @ USC</p>
@@ -142,7 +145,7 @@
   <!-- Scripts -->
   <div class="code-jumble-layer" aria-hidden="true"></div>
   <script src="code-jumble.js?v=20260823-2"></script>
-<script src="window-ui.js?v=20260912-2"></script>
-  <script src="site.js?v=20260912-5"></script>
+<script src="window-ui.js?v=20260914-mirror-controls"></script>
+  <script src="site.js?v=20260914-games-note-highlight"></script>
 </body>
 </html>

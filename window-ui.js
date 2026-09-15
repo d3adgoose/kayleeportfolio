@@ -34,7 +34,12 @@
           overlay.classList.remove('show');             // Do nothing else (state unchanged)
         }
         if (e.target.matches('[data-exit="yes"]')) {
-          window.location.href = 'home.html';
+          if (new URLSearchParams(location.search).get('embedded') === '1' && window.parent !== window) {
+            overlay.classList.remove('show');
+            window.parent.postMessage('portfolio:home', location.origin);
+          } else {
+            window.location.href = 'home.html';
+          }
         }
       });
     }
