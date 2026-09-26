@@ -59,38 +59,79 @@ async function load() {
     isEvalSupported: false
   }).promise;
   status.textContent = `${pdf.numPages} pages · Scroll to read`;
-  // Render only nearby pages to keep the two independent previews responsive.
+  // Render nearby pages at their displayed size and screen density.
+  const nearby = new Set();
+  const active = new Set();
+  const renderedWidths = new WeakMap();
+  const targetWidth = section => Math.max(1, Math.ceil(section.clientWidth * (window.devicePixelRatio || 1)));
+  function requestRender(section) {
+    if (active.has(section)) return;
+    active.add(section);
+    (async () => {
+      while (nearby.has(section) && renderedWidths.get(section) !== targetWidth(section)) {
+        const width = targetWidth(section);
+        await renderPage(section, width);
+        renderedWidths.set(section, width);
+      }
+    })().catch(error => {
+      console.error('Page preview failed:', error);
+      if (!section.querySelector('canvas')) section.textContent = 'This page could not load. Use Download PDF above to keep a copy.';
+    }).finally(() => active.delete(section));
+  }
   const observer = new IntersectionObserver(entries => {
     for (const entry of entries) {
-      if (!entry.isIntersecting) continue;
-      observer.unobserve(entry.target);
-      renderPage(entry.target).catch(() => {
-        entry.target.textContent = 'This page could not load. Use Download PDF above to keep a copy.';
-      });
+      if (entry.isIntersecting) {
+        nearby.add(entry.target);
+        requestRender(entry.target);
+      } else {
+        nearby.delete(entry.target);
+      }
     }
   }, { rootMargin: '600px' });
-  async function renderPage(section) {
+  let resizeTimer;
+  function refreshResolution() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => nearby.forEach(requestRender), 150);
+  }
+  new ResizeObserver(refreshResolution).observe(pages);
+  window.addEventListener('resize', refreshResolution);
+  function watchDensity() {
+    matchMedia('(resolution: ' + (window.devicePixelRatio || 1) + 'dppx)').addEventListener('change', () => {
+      refreshResolution();
+      watchDensity();
+    }, { once: true });
+  }
+  watchDensity();
+  async function renderPage(section, width) {
     const number = Number(section.dataset.page);
     const page = await pdf.getPage(number);
     const base = page.getViewport({ scale: 1 });
-    const viewport = page.getViewport({ scale: 1500 / base.width });
+    // Bound canvas memory for very large pages and extreme zoom levels.
+    const scale = Math.min(width / base.width,
+      8192 / Math.max(base.width, base.height),
+      Math.sqrt(16000000 / (base.width * base.height)));
+    const viewport = page.getViewport({ scale });
     const canvas = document.createElement('canvas');
     canvas.width = Math.ceil(viewport.width);
     canvas.height = Math.ceil(viewport.height);
     canvas.setAttribute('role', 'img');
     canvas.setAttribute('aria-label', `Page ${number}. Read the page text below.`);
     await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
-    section.replaceChildren(canvas);
+    const previous = section.querySelector('canvas');
+    if (previous) previous.replaceWith(canvas);
+    else section.replaceChildren(canvas);
     section.style.minHeight = '';
-    const details = document.createElement('details');
-    const summary = document.createElement('summary');
-    summary.textContent = `Page ${number} text`;
-    const text = document.createElement('div');
-    text.className = 'page-text';
-    const content = await page.getTextContent();
-    text.textContent = content.items.map(item => item.str + (item.hasEOL ? '\n' : ' ')).join('');
-    details.append(summary, text);
-    section.append(details);
+    if (!section.querySelector('details')) {
+      const details = document.createElement('details');
+      const summary = document.createElement('summary');
+      summary.textContent = `Page ${number} text`;
+      const text = document.createElement('div');
+      text.className = 'page-text';
+      const content = await page.getTextContent();
+      text.textContent = content.items.map(item => item.str + (item.hasEOL ? '\n' : ' ')).join('');
+      details.append(summary, text);
+      section.append(details);
+    }
     page.cleanup();
   }
   for (let number = 1; number <= pdf.numPages; number++) {
