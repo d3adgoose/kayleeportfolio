@@ -2993,6 +2993,7 @@ body[data-page="home"] .mac-window--home.is-max .about-photo .role-explorer{
 }
 .alienated-award-media{ position: relative; margin-top: 16px; }
 .alienated-award{
+  --award-size: 158px;
   position: absolute;
   right: -8px;
   top: -14px;
@@ -3001,8 +3002,8 @@ body[data-page="home"] .mac-window--home.is-max .about-photo .role-explorer{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 142px;
-  height: 142px;
+  width: calc(var(--award-size) - 10px);
+  height: calc(var(--award-size) - 10px);
   margin: 0 !important;
   padding: 22px 17px;
   border: 8px solid #521f90;
@@ -3028,11 +3029,12 @@ body[data-page="home"] .mac-window--home.is-max .about-photo .role-explorer{
 .alienated-award::after{
   content: "";
   position: absolute;
-  z-index: -1;
-  top: 112px;
-  left: 20px;
-  width: 86px;
-  height: 51px;
+  z-index: -3;
+  /* Measure from the outer rosette, including its border and decorative edge. */
+  top: calc(var(--award-size) * .78 - 13px);
+  left: calc(50% - var(--award-size) * .3);
+  width: calc(var(--award-size) * .6);
+  height: calc(var(--award-size) * .44);
   background: linear-gradient(100deg, #35115f, #7542a8 48%, #521f90);
   clip-path: polygon(12% 0, 88% 0, 100% 100%, 72% 78%, 60% 100%, 50% 37%, 40% 100%, 28% 78%, 0 100%);
 }
@@ -3063,11 +3065,12 @@ body[data-page="home"] .mac-window--home.is-max .about-photo .role-explorer{
 .alienated-award.award--light::after{
   background: linear-gradient(100deg, #825bcf, #9d77f9 48%, #b093ff);
 }
+.mac-window.is-max .alienated-award{ --award-size: 190px; }
 .mac-window.is-max .action-col > .alienated-award{
   position: relative;
   top: auto;
   right: auto;
-  margin: 20px auto 42px !important;
+  margin: 12px auto 48px !important;
   transform: none;
   flex-shrink: 0;
 }
@@ -3562,4 +3565,43 @@ body.games-embedded .mac-window.is-max > .win-header{
   border-radius:0;
   isolation:isolate;
   flex-shrink:0;
+}
+
+/* Official award artwork uses the same placement as the other project badges. */
+.alienated-award.award--image{
+  width: var(--award-size);
+  height: var(--award-size);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.alienated-award.award--image > img{
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+}
+.alienated-award.award--image::before{ content: none; }
+.alienated-award.award--image::after{
+  top: 78%;
+  left: 20%;
+  width: 60%;
+  height: 44%;
+  z-index: 0;
+  background: linear-gradient(100deg, #00594f, #078475 48%, #00695e);
+}
+
+/* Cover ribbon roots with the badge face, keeping tails behind each award. */
+.alienated-award > .award-face-backdrop{
+  position: absolute;
+  inset: -8px;
+  z-index: -1;
+  border: inherit;
+  border-radius: inherit;
+  background: inherit;
+  box-shadow: inherit;
+  pointer-events: none;
 }

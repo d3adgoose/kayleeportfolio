@@ -1,7 +1,7 @@
 // Self-hosted PDF.js renders pages without invoking browser PDF extensions.
 const documents = {
   'nudge-playtest-111': { title: 'nudge — Playtest Feedback · Playday v1.11', file: 'assets/files/Nudge-Playday-v1.11.pdf' },
-  'nudge-playtest-113': { title: 'nudge — Playtest Feedback · Playday v1.13 · 02/20', file: 'assets/files/Nudge-Playday-v1.13-02-20.pdf' },
+  'nudge-playtest-113': { title: 'nudge — Playtest Feedback · Playday v1.13', file: 'assets/files/Nudge-Playday-v1.13-02-20.pdf' },
   'nudge-gacha-qa': { title: 'nudge — Gacha Polish Task Tracking · Gacha QA', file: 'assets/files/Nudge-Gacha-QA.pdf' },
   'fullcourt-dialogue': { title: 'Full Court Uprising — JuVee Dialogue System', file: 'assets/files/JuVee-Dialogue-System.pdf' },
   'fullcourt-tasks': { title: 'Full Court Uprising — Trello Production Task Board', file: 'assets/images/Full-Court-Uprising-Task-Board.png', type: 'image', alt: 'Full Court Uprising Trello production board with tasks organized by Design / Engineering, 3D Art / Animation, VFX / Lighting, UI, Audio, and Narrative.' },
