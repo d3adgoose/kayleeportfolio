@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         libraryOpener.setAttribute("aria-pressed", String(games));
         aboutTab.setAttribute("aria-pressed", String(!games));
         const frame = panel.querySelector("iframe");
-        if (games && !frame.getAttribute("src")) frame.src = "published.html?embedded=1";
+        if (games && !frame.getAttribute("src")) frame.src = "published.html?embedded=1&v=20261020-matching-ribbons";
       };
       libraryOpener.addEventListener("click", () => select(true));
       aboutTab.addEventListener("click", () => select(false));
