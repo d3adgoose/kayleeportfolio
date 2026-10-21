@@ -3605,3 +3605,27 @@ body.games-embedded .mac-window.is-max > .win-header{
   box-shadow: inherit;
   pointer-events: none;
 }
+
+/* Visual sound cue portfolio evidence */
+.sound-cues-media { margin:16px 0; }
+.sound-cues-media video, .sound-cues-gallery img { display:block; width:100%; height:auto; border-radius:12px; }
+.sound-cues-media video { background:#07142b; }
+.sound-cues-media figcaption, .sound-cues-gallery figcaption { margin-top:8px; font-size:.9rem; line-height:1.5; }
+.sound-cues-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.sound-cues-gallery figure { margin:0; }
+@media(max-width:640px) { .sound-cues-gallery { grid-template-columns:1fr; } }
+
+.fullcourt-screenshots { margin-top:18px; border-top:1px solid var(--border); padding-top:14px; }
+.fullcourt-screenshots .sound-cues-gallery { margin-top:16px; }
+
+.fullcourt-evidence-links { display:flex; flex-wrap:wrap; gap:10px; margin:16px 0; }
+.fullcourt-evidence-links .btn { border-radius:999px; }
+.fullcourt-screenshots h4 { margin:6px 0 14px; }
+
+.advocacy-video-preview { position:relative; aspect-ratio:16 / 9; overflow:hidden; border-radius:12px; margin-bottom:16px; background:#07142b; box-shadow:var(--shadow); }
+.advocacy-video-play { position:relative; display:block; width:100%; height:100%; padding:0; border:0; cursor:pointer; background:#07142b; }
+.advocacy-video-play img, .advocacy-video-preview video { display:block; width:100%; height:100%; object-fit:contain; }
+.advocacy-play-icon { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); display:grid; place-items:center; width:66px; height:66px; border-radius:50%; background:rgba(255,255,255,.94); color:#111; font-size:26px; box-shadow:0 10px 24px rgba(0,0,0,.25); }
+.advocacy-video-play:focus-visible { outline:3px solid var(--primary); outline-offset:-4px; }
+
+.advocacy-video-thumbnail { pointer-events:none; }

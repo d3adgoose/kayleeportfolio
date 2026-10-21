@@ -277,7 +277,7 @@
 
 
         <!-- Audio Visualizer Advocacy -->
-        <article class="mac-window" data-win-id="usc-advocacy-av">
+        <article class="mac-window" data-win-id="usc-advocacy-av" id="accessibility-pitch">
           <div class="win-header">
             <div class="dots" aria-hidden="true">
               <span class="dot red" data-action="close" aria-label="Close"></span>
@@ -289,6 +289,13 @@
 
           <div class="win-body">
             <div class="desc-short">
+              <div class="advocacy-video-preview">
+                <button class="advocacy-video-play" type="button" aria-label="Play visual sound cues reel" data-advocacy-video="assets/videos/FCU_Visual_Sound_Cues_Portfolio.mp4">
+                  <video class="advocacy-video-thumbnail" muted playsinline preload="auto" aria-hidden="true" tabindex="-1"><source src="assets/videos/FCU_Visual_Sound_Cues_Portfolio.mp4#t=0.001" type="video/mp4" /></video>
+                  <span class="advocacy-play-icon" aria-hidden="true">▶</span>
+                </button>
+              </div>
+
               <div class="min-question-box" role="region" aria-label="Audio visualizer questions">
                 <p>How do we standardize visual audio as an accessibility option industry-wide?</p>
               </div>
@@ -332,6 +339,13 @@
                   experience fast-paced gameplay without exclusion or distress.
                 </p>
               </div>
+
+              <section class="desc-box">
+                <h3>From Advocacy to Implementation — Full Court Uprising</h3>
+                <p>I wanted to bring this thinking into our work on <strong>Full Court Uprising</strong>. I joined Radical Play Lab at USC as a <strong>Tech Producer &amp; Engineer</strong>, with design outside my original responsibilities. I advocated for visual sound cues, helped make the feature a priority for the team, and took on its <strong>design and implementation</strong> as an additional contribution.</p>
+                <p>I designed the system to give players a visual way to follow gameplay sounds, including abilities and enemy attacks. I considered players who cannot hear those cues or prefer less reliance on audio, and included an optional <strong>Visual Sound Cues</strong> setting so players can choose whether to use it.</p>
+                <p>For me, this was a chance to turn an accessibility concern into a concrete feature. The reel and screenshots below show how that work appears in gameplay.</p>
+                <figure class="sound-cues-media"><video controls playsinline preload="none" poster="assets/images/FCU_Portfolio_Cover.png" aria-label="Full Court Uprising visual sound cues reel"><source src="assets/videos/FCU_Visual_Sound_Cues_Portfolio.mp4" type="video/mp4" /><a href="assets/videos/FCU_Visual_Sound_Cues_Portfolio.mp4">Watch the reel</a></video><figcaption>Visual sound cues in action: on-screen indicators communicate gameplay sounds during abilities and enemy attacks.</figcaption></figure><p><a class="btn" href="assets/videos/FCU_Gameplay_Sound_Visualizer_Reel.mp4" target="_blank" rel="noopener">Watch the extended gameplay reel ↗</a></p><div class="sound-cues-gallery"><figure><img src="assets/images/Settings_Visual_Sound_Cues_ON.png" alt="Visual Sound Cues enabled in the player settings." loading="lazy" /><figcaption>Visual Sound Cues enabled in the player settings.</figcaption></figure><figure><img src="assets/images/Gameplay_Abilities_and_Sound_Cues.png" alt="Visual indicators for abilities and gameplay sounds during combat." loading="lazy" /><figcaption>Visual indicators for abilities and gameplay sounds during combat.</figcaption></figure><figure><img src="assets/images/Gameplay_Enemy_Attacks.png" alt="Visual sound cues during enemy attacks." loading="lazy" /><figcaption>Visual sound cues during enemy attacks.</figcaption></figure><figure><img src="assets/images/Gameplay_Overall_Use.png" alt="The visual sound cue system in the wider gameplay view." loading="lazy" /><figcaption>The visual sound cue system in the wider gameplay view.</figcaption></figure></div><p><a class="btn" href="published.html?expand=1#project-full-court-uprising">Explore my Full Court Uprising contributions ↗</a></p></section>
             </div>
           </div>
         </article>
@@ -590,6 +604,6 @@
   </script>
 
 <script src="window-ui.js?v=20260912-2"></script>
-<script src="site.js?v=20260912-5"></script>
+<script src="site.js?v=20261021-advocacy-video"></script>
 </body>
 </html>

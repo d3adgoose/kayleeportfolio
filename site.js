@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const portfolioProjects = [
       { match: 'Sushi Rat', title: 'Sushi Rat Revolution', roles: ['game-design'], slug: 'sushi-rat-revolution' },
-      { match: 'Full Court Uprising', title: 'Full Court Uprising', roles: ['production', 'programming'], slug: 'full-court-uprising' },
+      { match: 'Full Court Uprising', title: 'Full Court Uprising', roles: ['production', 'game-design', 'programming', 'accessibility'], slug: 'full-court-uprising' },
       { match: 'Line By Line', title: 'Line By Line', roles: ['production'], slug: 'line-by-line' },
       { match: 'nudge', title: 'nudge', roles: ['usability'], slug: 'nudge' },
       { match: 'Markus’s Miasma', title: 'Markus’s Miasma', roles: ['production'], slug: 'markus-miasma' },
@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
       production: 'Production',
       programming: 'Programming',
       usability: 'Usability',
+      accessibility: 'Accessibility',
       'art-ux': 'Art / UX'
     };
     const roleStorageKey = 'kaylee-portfolio-role';
@@ -91,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         libraryOpener.setAttribute("aria-pressed", String(games));
         aboutTab.setAttribute("aria-pressed", String(!games));
         const frame = panel.querySelector("iframe");
-        if (games && !frame.getAttribute("src")) frame.src = "published.html?embedded=1&v=20261020-matching-ribbons";
+        if (games && !frame.getAttribute("src")) frame.src = "published.html?embedded=1&v=20261021-fcu-layout";
       };
       libraryOpener.addEventListener("click", () => select(true));
       aboutTab.addEventListener("click", () => select(false));
@@ -316,3 +317,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   
+
+// Advocacy card: click a poster to play the local reel inline.
+document.querySelectorAll('[data-advocacy-video]').forEach(button => {
+  button.addEventListener('click', () => {
+    const video = document.createElement('video');
+    video.src = button.dataset.advocacyVideo;
+    video.controls = true;
+    video.playsInline = true;
+    video.setAttribute('aria-label', 'Visual sound cues reel');
+    button.replaceWith(video);
+    video.play().catch(() => {});
+    const card = video.closest('.mac-window');
+    new MutationObserver(() => {
+      if (card.classList.contains('is-max') || card.hidden || !video.getClientRects().length) video.pause();
+    }).observe(card, { attributes: true, attributeFilter: ['class', 'hidden', 'style'] });
+  });
+});
